@@ -77,7 +77,7 @@ public class Jogo {
 	}
 	
 	public void distribuicaoInicalCartas(Jogador j) {
-		j.retiraDinheiro(j.getMao(0).getValorAposta());		// tira dinheiro do saldo do jogador
+		//j.retiraDinheiro(j.getMao(0).getValorAposta());		// tira dinheiro do saldo do jogador
 		j.getMao(0).getCartasMao().add(retiraCarta()); // da ao jogador suas duas primeiras cartas
 		j.getMao(0).getCartasMao().add(retiraCarta());
 	}
@@ -194,13 +194,18 @@ public class Jogo {
 	
 
 	
-	public void apostar(Jogador j) { //Tem q retirar do saldo do jogador o valor apostado
+	public void apostar(Jogador j) { 
 		Scanner s = new Scanner(System.in);
 		int entrada;
 		
-		System.out.println("Jogador " + j.getNome() + " quanto vc quer apostar?"); //Lembrar de modificar isso dps
+		System.out.println("Jogador " + j.getNome() + " quanto vc quer apostar? A aposta deve estar entre 25 e 60");
 		entrada = s.nextInt();
+		while(entrada < 25 || entrada > 60){
+			System.out.println("Digite o valor da aposta novamente");
+			entrada = s.nextInt();
+		}
 		j.getMao(0).setValorAposta(entrada);
+		j.retiraDinheiro(entrada);
 	}
 	
 	
