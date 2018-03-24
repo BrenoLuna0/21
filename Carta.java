@@ -1,5 +1,59 @@
 
 public class Carta {
+	private int valor;
+	private String naipe;
+	private  char valorFace;
+	
+	
+	public void setValor(int valor) {
+		this.valor = valor;
+	}
+
+	public void setNaipe(String naipe) {
+		this.naipe = naipe;
+	}
+	
+	public void setValorFace(char c) {
+		this.valorFace = c;
+	}
+
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/*
+public class Carta {
 	
 	private int valor;
 	private String naipe;
@@ -36,4 +90,4 @@ public class Carta {
 	
 	
 
-}
+}*/

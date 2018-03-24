@@ -1,4 +1,66 @@
 import java.util.ArrayList;
+
+public class Jogo {
+	
+	private ArrayList<Jogador> jogadores = new ArrayList<Jogador>();
+	private Banca banca;
+	private RepositorioCartas rep;
+	
+	public Jogo(int q, Banca b, RepositorioCartas c) {
+		this.banca = b;
+		this.rep = c;
+		
+		if(q <= 7 ) { // quantidade maxima de jogadores é 7
+			for(int i = 0; i < q; i++) { // instancia quantidade de jogadores pedida
+				Jogador j = new Jogador();
+				jogadores.add(j);
+			}
+		}  
+		
+		iniciarJogo(); //-> Método ainda vai ser implementado
+	}
+	
+	private void iniciarJogo() {
+		
+	}
+
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/*import java.util.ArrayList;
 import java.util.Scanner;
 
 public class Jogo {
@@ -52,22 +114,22 @@ public class Jogo {
 	
 	public void finalrodada(Jogador j, Banca b) {
 		for(int i = 0; i < j.getArrayMao().size(); i++) { // verifica o resultado de todas as maos do jogador
-			if(j.getPontos() < 21 && b.getPontos() > 21) { // se a banca estourou 21 pontos
+			if(j.getPontuacao() < 21 && b.getPontuacao() > 21) { // se a banca estourou 21 pontos
 				j.recebeDinheiro(2 * j.getMao(i).getValorAposta()); // jogador ganha
 			} 
 			else
-				if(j.getPontos() < 21 && b.getPontos() < 21) { // se tanto jogador quanto banca n estouraram 21 pontos
-					if(j.getPontos() > b.getPontos()) {		// se jogador tem mais pontos q a banca
+				if(j.getPontuacao() < 21 && b.getPontuacao() < 21) { // se tanto jogador quanto banca n estouraram 21 pontos
+					if(j.getPontuacao() > b.getPontuacao()) {		// se jogador tem mais pontos q a banca
 						j.recebeDinheiro( 2 * j.getMao(i).getValorAposta());	// jogador ganha
 					}else
 						b.recebeDinheiro(j.getMao(i).getValorAposta());
 				}
 				else
-					if(j.getPontos() == 21 && b.getPontos() < 21) { // se jogador tem 21 e banca menos
+					if(j.getPontuacao() == 21 && b.getPontuacao() < 21) { // se jogador tem 21 e banca menos
 						j.recebeDinheiro( (((3 * j.getMao(i).getValorAposta())/2)+j.getMao(i).getValorAposta())); //  jogador ganha 150% da banca
 					}
 					else 
-						if(j.getPontos() == 21 && b.getPontos() == 21) { // se os dois tem 21
+						if(j.getPontuacao() == 21 && b.getPontuacao() == 21) { // se os dois tem 21
 							j.recebeDinheiro(j.getMao(i).getValorAposta());		// jogador recebe só oq apostou
 						}
 						else {
@@ -210,4 +272,4 @@ public class Jogo {
 	
 	
 
-}
+}*/

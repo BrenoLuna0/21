@@ -1,10 +1,64 @@
 import java.util.ArrayList;
-import java.util.Scanner;
 
-public class Jogador {
-	
+
+public class Jogador extends Participante {
+	private ArrayList<Mao> mao = new ArrayList<Mao>();
 	private String nome;
 	private int dinheiro;
+	
+	public Jogador() {
+		Mao m = new Mao();
+		this.mao.add(m);
+	}
+	
+	public ArrayList<Mao> getMao(){
+		return this.mao;
+	}
+	
+	public void setCartaMao(Carta c, int n) {
+		this.mao.get(n).setCartaMao(c);
+	}
+
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/*import java.util.ArrayList;
+import java.util.Scanner;
+
+public class Jogador extends Participante {
+	
+	private String nome;
 	private ArrayList <Mao> mao = new ArrayList<Mao>(); 
 	
 	private int pontos;
@@ -12,7 +66,7 @@ public class Jogador {
 	public Jogador() {
 		Scanner s = new Scanner(System.in);
 		
-		this.dinheiro = 1000;
+		super.recebeDinheiro(1000);
 		Mao m = new Mao();
 		this.mao.add(m); // sempre q iniciar um jogador, criar uma mão inicial
 		
@@ -31,17 +85,12 @@ public class Jogador {
 
 
 	public int getDinheiro() {
-		return dinheiro;
+		return super.getDinheiro();
 	}
 
 
-	public void setDinheiro(int dinheiro) {
-		this.dinheiro = dinheiro;
-	}
 	
-	public void recebeDinheiro(int valor) {
-		this.dinheiro += valor;
-	}
+	
 	
 	public void retiraDinheiro(int i) {
 		if(getDinheiro() > 0) {
@@ -82,4 +131,4 @@ public class Jogador {
 
 	
 
-}
+}*/

@@ -1,4 +1,66 @@
+import java.util.ArrayList;
 
+public class RepositorioCartas {
+	private Baralho baralho1 = new Baralho();
+	private Baralho baralho2 = new Baralho();
+	private Baralho baralho3 = new Baralho();
+	private Baralho baralho4 = new Baralho();
+	
+	private ArrayList<Carta> pilha = new ArrayList<Carta>();
+	
+	public RepositorioCartas() {
+		for(int i = 0; i < 52; i++) {
+			pilha.add(baralho1.getCarta(i));
+		}
+		
+		for(int i = 0; i < 52; i++) {
+			pilha.add(baralho2.getCarta(i));
+		}
+		
+		for(int i = 0; i < 52; i++) {
+			pilha.add(baralho3.getCarta(i));
+		}
+		
+		for(int i = 0; i < 52; i++) {
+			pilha.add(baralho4.getCarta(i));
+		}
+		
+	}
+
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/*
 public class RepositorioCartas {
 	
 	private Baralho baralho1 = new Baralho();
@@ -46,3 +108,4 @@ public class RepositorioCartas {
 	}
 
 }
+*/

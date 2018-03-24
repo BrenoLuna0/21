@@ -1,8 +1,69 @@
-public class Banca extends Jogador {
+import java.util.ArrayList;
+
+public class Banca extends Participante {
+	
+	private Mao maob;
+	
+	
+	public ArrayList<Carta> embaralhar(ArrayList<Carta> c) {
+		Utilidade.misturar(c);
+		return c;
+	}
+	
+	public void darCarta(ArrayList<Carta> c, Jogador j, int m) {
+		j.setCartaMao(c.get(0), m);
+		c.remove(0);
+	}
+	
+	public void receberCarta(ArrayList<Carta> c) {
+		this.maob.setCartaMao(c.get(0));
+		c.remove(0);
+	}
+
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/*public class Banca extends Participante {
 	
 	private Carta cartaAberta;
 	private Carta cartaFechada;
-	private int pontos;
+	//private int pontos;
 	
 	
 	
@@ -27,4 +88,4 @@ public class Banca extends Jogador {
 	
 	
 
-}
+}*/

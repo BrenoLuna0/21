@@ -1,4 +1,49 @@
-import java.util.Scanner;
+import java.util.ArrayList;
+import java.util.Collections;
+
+public class Utilidade {
+	
+	public static void misturar(ArrayList<Carta> c) {
+		Collections.shuffle(c);
+		Collections.shuffle(c);
+		Collections.shuffle(c);
+		Collections.shuffle(c);
+	}
+
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/*import java.util.Scanner;
 
 public  class Utilidade {
 	
@@ -22,5 +67,12 @@ public  class Utilidade {
 	public static int rand(int Str, int End) {
 		return (int) Math.ceil(Math.random() * (End - Str + 1)) - 1 + Str;
 	}
+	
+	
+	public static void estourado(Participante p) {
+		if(p.getPontuacao()> 21) {
+			p.setEstourado(true);
+		}
+	}
 
-}
+}*/
