@@ -1,4 +1,5 @@
 import java.util.ArrayList;
+import java.util.Scanner;
 
 public class Jogo {
 	
@@ -12,20 +13,67 @@ public class Jogo {
 		
 		if(q <= 7 ) { // quantidade maxima de jogadores é 7
 			for(int i = 0; i < q; i++) { // instancia quantidade de jogadores pedida
-				Jogador j = new Jogador();
+				Jogador j = new Jogador("");
 				jogadores.add(j);
 			}
 		}  
 		
-		iniciarJogo(); //-> Método ainda vai ser implementado
+		rodadaApostas(); 
 	}
 	
-	private void iniciarJogo() {
+	private void rodadaApostas() {
+		Scanner s = new Scanner(System.in);
+		int entrada;
 		
+		System.out.println("Rodada de apostas!!!!!!");
+		
+		
+		for(int i = 0; i < jogadores.size(); i++) {
+			System.out.println("Jogador " + i + "qual a sua aposta?");
+			entrada = s.nextInt();
+			
+			while(entrada < 25 || entrada > 75) {
+				System.out.println("Aposta inválida. Digite o número novamente");
+				entrada = s.nextInt();
+			}
+			
+			jogadores.get(i).apostar(entrada);
+		}
+	}
+	
+	
+	private void distribuirCartas() {
+		for(int i = 0; i < jogadores.size(); i++) {
+			banca.darCarta(rep.getRepositorio(), jogadores.get(i), 0);
+		}
+		
+		banca.receberCarta(rep.getRepositorio());
+		
+		for(int i = 0; i < jogadores.size(); i++) {
+			banca.darCarta(rep.getRepositorio(), jogadores.get(i), 0);
+		}
+		
+		banca.receberCarta(rep.getRepositorio());
+	}
+	
+	
+	private void calculoPontos() {
+		
+		for(int i = 0; i < jogadores.size(); i++) {
+			System.out.println("Jogador " + i + "possui:");
+			
+			for(int j = 0; j < jogadores.get(i).getMao().size(); j++) {
+				System.out.println(jogadores.get(i).getMao().get(j).getPontos() + "pontos na mao " + (j + 1));
+			}
+			
+			System.out.println();
+		}
+		
+		
+		System.out.println("A banca possui " + banca.getMao().getPontos() + "pontos");
 	}
 
 }
-
 
 
 
