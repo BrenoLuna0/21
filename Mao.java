@@ -3,6 +3,7 @@ import java.util.ArrayList;
 
 public class Mao {
 	private int valorAposta;
+	private int pontos;
 	private ArrayList<Carta> mao = new ArrayList<Carta>();
 	
 	
@@ -20,6 +21,15 @@ public class Mao {
 	
 	public void setCartaMao(Carta c) {
 		this.mao.add(c);
+	}
+	
+	public int getPontos() {
+		this.pontos = 0;
+		for(int i = 0; i < mao.size(); i++) {
+			this.pontos += mao.get(i).getvalor();
+		}
+		
+		return this.pontos;
 	}
 	
 	

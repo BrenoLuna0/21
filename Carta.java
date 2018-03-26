@@ -16,6 +16,10 @@ public class Carta {
 	public void setValorFace(char c) {
 		this.valorFace = c;
 	}
+	
+	public int getvalor() {
+		return this.valor;
+	}
 
 }
 

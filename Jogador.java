@@ -6,9 +6,9 @@ public class Jogador extends Participante {
 	private String nome;
 	private int dinheiro;
 	
-	public Jogador() {
-		Mao m = new Mao();
-		this.mao.add(m);
+	public Jogador(String nome) {
+		this.nome = nome;
+		this.dinheiro = 1000;
 	}
 	
 	public ArrayList<Mao> getMao(){
@@ -17,6 +17,17 @@ public class Jogador extends Participante {
 	
 	public void setCartaMao(Carta c, int n) {
 		this.mao.get(n).setCartaMao(c);
+	}
+	
+	public void apostar(int aposta) {
+		Mao m = new Mao();
+		this.mao.add(m);
+		
+		if(this.mao.get(1) == null) { // se ele nao tiver um segundo baralho.....
+			this.mao.get(0).setValorAposta(aposta);// a aposta vai para a primeira mao, senao.....
+		}else {
+			this.mao.get(1).setValorAposta(aposta);// a aposta vai para a segunda
+		}
 	}
 
 }

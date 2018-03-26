@@ -26,6 +26,10 @@ public class RepositorioCartas {
 		}
 		
 	}
+	
+	public ArrayList<Carta> getRepositorio() {
+		return this.pilha;
+	}
 
 }
 
