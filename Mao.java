@@ -1,10 +1,10 @@
-
+	
 import java.util.ArrayList;
 
 public class Mao {
 	private int valorAposta;
 	private int pontos;
-	private ArrayList<Carta> mao = new ArrayList<Carta>();
+	private ArrayList<Carta> cartasMao = new ArrayList<Carta>();
 	
 	
 	public int getValorAposta() {
@@ -16,20 +16,32 @@ public class Mao {
 	}
 	
 	public Carta getCartaMao(int i) {
-		return this.mao.get(i);
+		return this.cartasMao.get(i);
 	}
 	
 	public void setCartaMao(Carta c) {
-		this.mao.add(c);
+		this.cartasMao.add(c);
 	}
 	
 	public int getPontos() {
 		this.pontos = 0;
-		for(int i = 0; i < mao.size(); i++) {
-			this.pontos += mao.get(i).getvalor();
+		for(int i = 0; i < cartasMao.size(); i++) {
+			this.pontos += cartasMao.get(i).getValor();
 		}
 		
 		return this.pontos;
+	}
+	
+	public Carta getCartaUnica(int i) {
+		return this.cartasMao.get(i);
+	}
+	
+	public int qntCartas() {
+		return this.cartasMao.size();
+	}
+
+	public ArrayList<Carta> getArrayMao() {
+		return this.cartasMao;
 	}
 	
 	

@@ -17,7 +17,7 @@ public class Carta {
 		this.valorFace = c;
 	}
 	
-	public int getvalor() {
+	public int getValor(){
 		return this.valor;
 	}
 

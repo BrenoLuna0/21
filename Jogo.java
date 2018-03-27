@@ -17,11 +17,15 @@ public class Jogo {
 				jogadores.add(j);
 			}
 		}  
-		
-		rodadaApostas(); 
 	}
 	
-	private void rodadaApostas() {
+	public void rodada() {
+		apostas();
+		distribuirCartas();
+		
+	}
+	
+	private void apostas() {
 		Scanner s = new Scanner(System.in);
 		int entrada;
 		
@@ -73,7 +77,60 @@ public class Jogo {
 		System.out.println("A banca possui " + banca.getMao().getPontos() + "pontos");
 	}
 
+	public void jogada(Jogador j) {
+		Scanner s = new Scanner(System.in);
+		int entrada;
+		
+		for(int i = 0; i < j.getArrayMao().size(); i++) { // repete o processo p jogar todas as maos do jogador
+			if(j.getMao(i).qntCartas() == 2 && j.getMao(i).getCartaUnica(0).getValor() == j.getMao(i).getCartaUnica(1).getValor()){
+				entrada = s.nextInt();  // se tiver só duas cartas e as duas forem iguais
+				
+				// inserir aqui algum tratamento p a entrada do usuario
+				
+				if(entrada == 1) {
+					while(entrada == 1) { // pode pedir carta qntas vezes quiser ate estourar mais d 21
+						j.receberCarta(i, this.banca, this.rep.getRepositorio());
+						entrada = s.nextInt();
+					}
+				} 
+				if (entrada == 2){
+					j.dobrarAposta(i, this.banca, this.rep.getRepositorio());
+				}
+				else
+					if (entrada == 3) {
+						j.dividirPar(i, this.banca, this.rep.getRepositorio());
+					}
+					else 
+						if (entrada == 4) {
+							return; // alguma mensagem d q encerrou a jogada
+						}	
+			}
+			else {
+				entrada = s.nextInt();  // se tiver só duas cartas e as duas forem iguais
+				
+				// inserir aqui algum tratamento p a entrada do usuario
+				
+				if(entrada == 1) {
+					while(entrada == 1) { // pode pedir carta qntas vezes quiser ate estourar mais d 21
+						j.receberCarta(i, this.banca, this.rep.getRepositorio());
+						entrada = s.nextInt();
+					}
+				} 
+				if (entrada == 2){
+					j.dobrarAposta(i, this.banca, this.rep.getRepositorio());
+				}
+				else
+					if (entrada == 3) {
+						return;
+					}	
+			}
+		}
+	}
+
+	
+	
 }
+
 
 
 
