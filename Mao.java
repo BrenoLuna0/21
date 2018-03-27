@@ -3,8 +3,12 @@ import java.util.ArrayList;
 
 public class Mao {
 	private int valorAposta;
+<<<<<<< HEAD
 	private int pontos;
 	private ArrayList<Carta> cartasMao = new ArrayList<Carta>();
+=======
+	private ArrayList<Carta> mao = new ArrayList<Carta>();
+>>>>>>> parent of d332eb1... Classes alteradas para fazer com que a Classe 'Jogo' funcione melhor
 	
 	
 	public int getValorAposta() {
@@ -23,6 +27,7 @@ public class Mao {
 		this.cartasMao.add(c);
 	}
 	
+<<<<<<< HEAD
 	public int getPontos() {
 		this.pontos = 0;
 		for(int i = 0; i < cartasMao.size(); i++) {
@@ -44,6 +49,8 @@ public class Mao {
 		return this.cartasMao;
 	}
 	
+=======
+>>>>>>> parent of d332eb1... Classes alteradas para fazer com que a Classe 'Jogo' funcione melhor
 	
 
 }

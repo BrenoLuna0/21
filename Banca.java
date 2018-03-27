@@ -4,10 +4,6 @@ public class Banca extends Participante {
 	
 	private Mao maob;
 	
-	public Banca() {
-		this.maob =  new Mao();
-	}
-	
 	
 	public ArrayList<Carta> embaralhar(ArrayList<Carta> c) {
 		Utilidade.misturar(c);
@@ -22,10 +18,6 @@ public class Banca extends Participante {
 	public void receberCarta(ArrayList<Carta> c) {
 		this.maob.setCartaMao(c.get(0));
 		c.remove(0);
-	}
-	
-	public Mao getMao() {
-		return this.maob;
 	}
 
 }
