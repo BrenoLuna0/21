@@ -3,31 +3,10 @@ import java.util.ArrayList;
 
 public class Mao {
 	private int valorAposta;
-<<<<<<< HEAD
 	private int pontos;
 	private ArrayList<Carta> cartasMao = new ArrayList<Carta>();
-=======
-	private ArrayList<Carta> mao = new ArrayList<Carta>();
->>>>>>> parent of d332eb1... Classes alteradas para fazer com que a Classe 'Jogo' funcione melhor
 	
-	
-	public int getValorAposta() {
-		return this.valorAposta;
-	}
-	
-	public void setValorAposta(int v) {
-		this.valorAposta = v;
-	}
-	
-	public Carta getCartaMao(int i) {
-		return this.cartasMao.get(i);
-	}
-	
-	public void setCartaMao(Carta c) {
-		this.cartasMao.add(c);
-	}
-	
-<<<<<<< HEAD
+	// acesso a pontuação da mão
 	public int getPontos() {
 		this.pontos = 0;
 		for(int i = 0; i < cartasMao.size(); i++) {
@@ -37,20 +16,36 @@ public class Mao {
 		return this.pontos;
 	}
 	
-	public Carta getCartaUnica(int i) {
+	// acesso às cartas da mão
+	
+	public Carta getCartaMao(int i) { //  acesso a uma carta especifica
 		return this.cartasMao.get(i);
 	}
 	
+	public ArrayList<Carta> getArrayMao() { // acesso ao array c todas as cartas da mão
+		return this.cartasMao;
+	}
+
 	public int qntCartas() {
 		return this.cartasMao.size();
 	}
-
-	public ArrayList<Carta> getArrayMao() {
-		return this.cartasMao;
+	
+	public void setCartaMao(Carta c) {
+		this.cartasMao.add(c);
 	}
 	
-=======
->>>>>>> parent of d332eb1... Classes alteradas para fazer com que a Classe 'Jogo' funcione melhor
+	// apostas
+
+	public int getValorAposta() {
+		return this.valorAposta;
+	}
+	
+	public void setValorAposta(int v) {
+		this.valorAposta = v;
+	}
+	
+	
+	
 	
 
 }

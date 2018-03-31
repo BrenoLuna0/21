@@ -6,15 +6,13 @@ public class Jogador extends Participante {
 	private String nome;
 	private int dinheiro;
 	
-<<<<<<< HEAD
+
 	public Jogador(String nome) {
 		this.nome = nome;
 		this.setDinheiro(1000);
-=======
-	public Jogador() {
 		Mao m = new Mao();
 		this.mao.add(m);
->>>>>>> parent of d332eb1... Classes alteradas para fazer com que a Classe 'Jogo' funcione melhor
+
 	}
 	
 	
@@ -30,7 +28,7 @@ public class Jogador extends Participante {
 		}
 		
 	}
-<<<<<<< HEAD
+
 
 	public void dividirPar(int i, Banca b, ArrayList<Carta> c) {
 		if(this.getDinheiro() > this.getMao(i).getValorAposta()) { // se tiver dinheiro
@@ -39,7 +37,7 @@ public class Jogador extends Participante {
 			Mao novaMao = new Mao();		//instancia nova mão q sera formada
 			this.getArrayMao().add(novaMao);		//add no arraylist mao
 			
-			this.getMao(i + 1).getArrayMao().add(this.getMao(i).getCartaUnica(1)); // insere a carta do par na nova mão
+			this.getMao(i + 1).getArrayMao().add(this.getMao(i).getCartaMao(1)); // insere a carta do par na nova mão
 			this.getMao(i).getArrayMao().remove(1); // remove a carta da mão q ela foi tirada
 			b.darCarta(c, (Jogador) this, i);
 			b.darCarta(c, (Jogador) this, i+1);
@@ -57,11 +55,7 @@ public class Jogador extends Participante {
 		}else {
 			this.mao.get(1).setValorAposta(aposta);// a aposta vai para a segunda
 		}
-	}
-=======
->>>>>>> parent of d332eb1... Classes alteradas para fazer com que a Classe 'Jogo' funcione melhor
-
-	
+	}	
 }
 
 

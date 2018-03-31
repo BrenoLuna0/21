@@ -20,8 +20,16 @@ public class Jogo {
 	}
 	
 	public void rodada() {
-		apostas();
+		apostas(); 
 		distribuirCartas();
+		
+		for(int i = 0; i < jogadores.size(); i++) { //  depois q o jogo estiver preparado
+			jogada(this.jogadores.get(i));			// realiza a jogada de todos os jogadores
+		}
+		
+		// fazer metodo da rodada da banca pq é diferente da jogada de um jogador comum
+		
+		// fazer metodo do final rodada decidindo qm ganhou ou perdeu
 		
 	}
 	
@@ -32,57 +40,40 @@ public class Jogo {
 		System.out.println("Rodada de apostas!!!!!!");
 		
 		
-		for(int i = 0; i < jogadores.size(); i++) {
+		for(int i = 0; i < jogadores.size(); i++) { // recebe as apostas de cada jogador
 			System.out.println("Jogador " + i + "qual a sua aposta?");
 			entrada = s.nextInt();
 			
-			while(entrada < 25 || entrada > 75) {
+			while(entrada < 25 || entrada > 75) { // valida a entrada do jogador
 				System.out.println("Aposta inválida. Digite o número novamente");
 				entrada = s.nextInt();
 			}
 			
-			jogadores.get(i).apostar(entrada);
+			jogadores.get(i).apostar(entrada); // realiza a aposta
 		}
 	}
 	
 	
 	private void distribuirCartas() {
-		for(int i = 0; i < jogadores.size(); i++) {
+		for(int i = 0; i < jogadores.size(); i++) { // distribui primeira carta p todos os jogadores
 			banca.darCarta(rep.getRepositorio(), jogadores.get(i), 0);
 		}
 		
-		banca.receberCarta(rep.getRepositorio());
+		banca.receberCarta(rep.getRepositorio()); //  dá a primeira carta p banca
 		
-		for(int i = 0; i < jogadores.size(); i++) {
+		for(int i = 0; i < jogadores.size(); i++) { // distribui a segunda carta p todos os jogadores
 			banca.darCarta(rep.getRepositorio(), jogadores.get(i), 0);
 		}
 		
-		banca.receberCarta(rep.getRepositorio());
+		banca.receberCarta(rep.getRepositorio()); //  dá a segunda carta p banca
 	}
 	
-	
-	private void calculoPontos() {
-		
-		for(int i = 0; i < jogadores.size(); i++) {
-			System.out.println("Jogador " + i + "possui:");
-			
-			for(int j = 0; j < jogadores.get(i).getMao().size(); j++) {
-				System.out.println(jogadores.get(i).getMao().get(j).getPontos() + "pontos na mao " + (j + 1));
-			}
-			
-			System.out.println();
-		}
-		
-		
-		System.out.println("A banca possui " + banca.getMao().getPontos() + "pontos");
-	}
-
 	public void jogada(Jogador j) {
 		Scanner s = new Scanner(System.in);
 		int entrada;
 		
 		for(int i = 0; i < j.getArrayMao().size(); i++) { // repete o processo p jogar todas as maos do jogador
-			if(j.getMao(i).qntCartas() == 2 && j.getMao(i).getCartaUnica(0).getValor() == j.getMao(i).getCartaUnica(1).getValor()){
+			if(j.getMao(i).qntCartas() == 2 && j.getMao(i).getCartaMao(0).getValor() == j.getMao(i).getCartaMao(1).getValor()){
 				entrada = s.nextInt();  // se tiver só duas cartas e as duas forem iguais
 				
 				// inserir aqui algum tratamento p a entrada do usuario
@@ -105,8 +96,8 @@ public class Jogo {
 							return; // alguma mensagem d q encerrou a jogada
 						}	
 			}
-			else {
-				entrada = s.nextInt();  // se tiver só duas cartas e as duas forem iguais
+			else { // caso n seja possivel jogador fazer a jogada "dividir par"
+				entrada = s.nextInt();
 				
 				// inserir aqui algum tratamento p a entrada do usuario
 				
@@ -117,7 +108,7 @@ public class Jogo {
 					}
 				} 
 				if (entrada == 2){
-					j.dobrarAposta(i, this.banca, this.rep.getRepositorio());
+					j.dobrarAposta(i, this.banca , this.rep.getRepositorio());
 				}
 				else
 					if (entrada == 3) {
@@ -126,6 +117,28 @@ public class Jogo {
 			}
 		}
 	}
+	
+	
+	private void calculoPontos() {
+		
+		for(int i = 0; i < jogadores.size(); i++) { // calcula o ponto de cada jogador
+			System.out.println("Jogador " + i + "possui:");
+			
+			for(int j = 0; j < jogadores.get(i).getMao().size(); j++) { // calcula os pontos de cada mao do jogador
+				System.out.println(jogadores.get(i).getMao().get(j).getPontos() + "pontos na mao " + (j + 1));
+			}
+			
+			System.out.println();
+		}
+
+			System.out.println("A Banca possui:"); 
+			
+			for(int j = 0; j < banca.getMao().size(); j++) { // calcula os pontos de cada mao da banca
+				System.out.println(banca.getMao().get(j).getPontos() + "pontos na mao " + (j + 1));
+			}
+	}
+
+	
 
 	
 	

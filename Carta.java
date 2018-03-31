@@ -16,13 +16,10 @@ public class Carta {
 	public void setValorFace(char c) {
 		this.valorFace = c;
 	}
-<<<<<<< HEAD
-	
+
 	public int getValor(){
 		return this.valor;
 	}
-=======
->>>>>>> parent of d332eb1... Classes alteradas para fazer com que a Classe 'Jogo' funcione melhor
 
 }
 
