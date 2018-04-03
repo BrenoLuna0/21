@@ -19,6 +19,10 @@ public class Banca extends Participante {
 		this.maob.setCartaMao(c.get(0));
 		c.remove(0);
 	}
+	
+	public Mao getMao() { // retorna uma mão especifica p fazer a jogada 
+			return this.maob; 
+	}
 
 }
 

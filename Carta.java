@@ -20,6 +20,10 @@ public class Carta {
 	public int getValor(){
 		return this.valor;
 	}
+	
+	public String getNaipe() {
+		return this.naipe;
+	}
 
 }
 
