@@ -2,7 +2,7 @@ import java.util.ArrayList;
 
 public class Banca extends Participante {
 	
-	private Mao maob;
+	private Mao maob = new Mao();
 	
 	
 	public ArrayList<Carta> embaralhar(ArrayList<Carta> c) {

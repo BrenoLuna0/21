@@ -5,7 +5,9 @@ public abstract class Participante {
 	private ArrayList<Mao> mao = new ArrayList<Mao>();
 	private int dinheiro;
 	
-
+	public Participante () {
+		this.mao.add(new Mao());
+	}
 
 	// metodos da classe
 	

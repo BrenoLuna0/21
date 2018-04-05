@@ -21,9 +21,10 @@ public class Jogo {
 
 	public void rodada() {
 		apostas();
+		this.banca.embaralhar(this.rep.getRepositorio());
 		distribuirCartas();
 
-		System.out.println("Início das jogadas");
+		Exibicao.inicio();
 		for (int i = 0; i < jogadores.size(); i++) { // depois q o jogo estiver preparado
 			jogada(this.jogadores.get(i)); // realiza a jogada de todos os jogadores
 		}
@@ -39,17 +40,18 @@ public class Jogo {
 	private void apostas() {
 		Scanner s = new Scanner(System.in);
 		int entrada;
-		System.out.println("Rodada de apostas!");
+		Exibicao.rodadaApostas();
 		for (int i = 0; i < jogadores.size(); i++) { // recebe as apostas de cada jogador
-			System.out.println("Jogador " + i + " qual a sua aposta?");
+			Exibicao.apostaJogador(this.jogadores.get(i));
 			entrada = s.nextInt();
 
 			while (entrada < 25 || entrada > 75) { // valida a entrada do jogador
-				System.out.println("Aposta inválida. Digite o número novamente");
+				Exibicao.apostaInvalida();
 				entrada = s.nextInt();
 			}
 
 			jogadores.get(i).apostar(entrada); // realiza a aposta
+			Exibicao.confirmacaoAposta(this.jogadores.get(i), entrada);
 		}
 	}
 
@@ -71,26 +73,22 @@ public class Jogo {
 		Scanner s = new Scanner(System.in);
 		int entrada;
 
-		System.out.println(j.getNome() + " Escolha sua jogada:");
-		// repete o processo p jogar todas as maos do jogador
-		for (int i = 0; i < j.getArrayMao().size(); i++) {
-			// se tiver só duas cartas e as duas forem iguais
-			if (j.getMao(i).qntCartas() == 2
+		Exibicao.escolhaJogada(j);
+		
+		for (int i = 0; i < j.getArrayMao().size(); i++) { // repete o processo p jogar todas as maos do jogador
+			
+			if (j.getMao(i).qntCartas() == 2  // se tiver só duas cartas e as duas forem iguais
 					&& j.getMao(i).getCartaMao(0).getValor() == j.getMao(i).getCartaMao(1).getValor()) {
 
-				System.out.println("Mão atual: " + i);
+				Exibicao.maoAtual(i);
 
 				for (int a = 0; a < j.getMao(i).getArrayMao().size(); a++) { // exibe as cartas q o jogador tem na mão
-					System.out.println(
-							j.getMao(i).getCartaMao(a).getValor() + " de " + j.getMao(i).getCartaMao(a).getNaipe());
+					Exibicao.exibirCartasMao(j, i, a);
 				}
 
-				System.out.println("Você possui " + j.getMao(i).getPontos() + "pontos nessa mão");
+				Exibicao.pontuacaoMao(j, i); //  exibe pontuacao da mão q está sendo jogada
 
-				System.out.println(" 1 - Receber Carta");
-				System.out.println(" 2 - Dobrar Aposta");
-				System.out.println(" 3 - Dividir Par");
-				System.out.println(" 4 - Parar jogada");
+				Exibicao.menuJogadas1(); // exibe jogadas disponiveis
 
 				entrada = s.nextInt();
 
@@ -105,23 +103,20 @@ public class Jogo {
 				} else if (entrada == 3) {
 					j.dividirPar(i, this.banca, this.rep.getRepositorio());
 				} else if (entrada == 4) {
-					System.out.println("Jogada finalizada para essa mão");
+					Exibicao.jogadaFinalizada();
 					return;
 				}
 			} else { // caso n seja possivel jogador fazer a jogada "dividir par"
 
-				System.out.println("Mão atual: " + i);
+				Exibicao.maoAtual(i);
 
 				for (int a = 0; a < j.getMao(i).getArrayMao().size(); a++) { // exibe as cartas q o jogador tem na mão
-					System.out.println(
-							j.getMao(i).getCartaMao(a).getValor() + " de " + j.getMao(i).getCartaMao(a).getNaipe());
+					Exibicao.exibirCartasMao(j, i, a);
 				}
 
-				System.out.println("Você possui " + j.getMao(i).getPontos() + "pontos nessa mão");
+				Exibicao.pontuacaoMao(j, i);
 
-				System.out.println(" 1 - Receber Carta");
-				System.out.println(" 2 - Dobrar Aposta");
-				System.out.println(" 3 - Parar jogada");
+				Exibicao.menuJogadas2();
 
 				entrada = s.nextInt();
 
@@ -134,7 +129,7 @@ public class Jogo {
 				if (entrada == 2) {
 					j.dobrarAposta(i, this.banca, this.rep.getRepositorio());
 				} else if (entrada == 3) {
-					System.out.println("Jogada finalizada para essa mão");
+					Exibicao.jogadaFinalizada();
 					return;
 				}
 			}
@@ -145,19 +140,14 @@ public class Jogo {
 		for (int i = 0; i < j.getArrayMao().size(); i++) {
 			if (j.getMao(i).getPontos() < pontuacaoMaxima && b.getMao().getPontos() > pontuacaoMaxima) { // se a banca estourou 21
 																							// pontos
-
-				System.out.println("A banca estourou 21 pontos!");
-				System.out.println(j.getNome() + " você é venceu");
-				System.out.println(j.getNome() + " recebe R$" + 2 * j.getMao(i).getValorAposta());
-
+				Exibicao.msgVitoria1(j, i);
+				
 				j.recebeDinheiro(2 * j.getMao(i).getValorAposta()); // jogador recebe dinheiro
 				b.retiraDinheiro(2 * j.getMao(i).getValorAposta()); // retira o dinheiro da banca
 
-			} else if (j.getMao(i).getPontos() > pontuacaoMaxima && b.getMao().getPontos() < pontuacaoMaxima) { // se jogador
+			} else if (j.getMao(i).getPontos() > pontuacaoMaxima && b.getMao().getPontos() < pontuacaoMaxima) { // se jogador estourou 21 pontos
 
-				System.out.println(j.getNome() + " estourou 21 pontos!");
-				System.out.println(j.getNome() + " você é perdeu");
-				System.out.println("A banca recebe R$" + 2 * j.getMao(i).getValorAposta());
+				Exibicao.msgDerrota1(j, i);
 
 				j.retiraDinheiro(2 * j.getMao(i).getValorAposta()); // banca recebe dinheiro
 				b.recebeDinheiro(2 * j.getMao(i).getValorAposta()); // retira o dinheiro do jogador
@@ -166,36 +156,27 @@ public class Jogo {
 																									
 				if (j.getMao(i).getPontos() > b.getMao().getPontos()) { // se jogador tem mais pontos q a banca
 					
-					System.out.println(j.getNome() +"tem mais pontos!");
-					System.out.println(j.getNome() + " você é venceu");
-					System.out.println(j.getNome() + " recebe R$" + 2 * j.getMao(i).getValorAposta());
+					Exibicao.msgVitoria2(j, i);
 					
 					j.recebeDinheiro(2 * j.getMao(i).getValorAposta()); // jogador recebe dinheiro
 					b.retiraDinheiro(2 * j.getMao(i).getValorAposta()); // retira o dinheiro da banca
 
 				} else if (j.getMao(i).getPontos() < b.getMao().getPontos()) { // se a banca tem mais pontos q o jogador
 					
-					System.out.println("A banca tem mais pontos!");
-					System.out.println(j.getNome() + " você é perdeu");
-					System.out.println("A banca recebe R$" + 2 * j.getMao(i).getValorAposta());
+					Exibicao.msgDerrota2(j, i);
 					
 					j.retiraDinheiro(2 * j.getMao(i).getValorAposta()); // retira o dinheiro do jogador
 					b.recebeDinheiro(2 * j.getMao(i).getValorAposta()); // banca recebe dinheiro
 				}
 			} else if (j.getMao(i).getPontos() == pontuacaoMaxima && b.getMao().getPontos() != pontuacaoMaxima) { // se jogador tem 21 pontos e a banca n
 				
-				System.out.println(j.getNome() +"fez um vinte e um!!");
-				System.out.println(j.getNome() + " você é venceu");
-				System.out.println(j.getNome() + " recebe R$" + (3 * j.getMao(i).getValorAposta()) / 2);
-				
+				Exibicao.msgVitoria3(j, i);
 				
 				j.recebeDinheiro((3 * j.getMao(i).getValorAposta()) / 2); // jogador recebe aposta * 1,5
 				b.retiraDinheiro((3 * j.getMao(i).getValorAposta()) / 2); // retira o dinheiro da banca
 			} else if (j.getMao(i).getPontos() != pontuacaoMaxima && b.getMao().getPontos() == pontuacaoMaxima) { // se a banca tem 21 pontos e o jogador n
 				
-				System.out.println("A banca fez um vinte e um!!");
-				System.out.println(j.getNome() + " você é perdeu");
-				System.out.println(" A banca recebe R$" + (3 * j.getMao(i).getValorAposta()) / 2);
+				Exibicao.msgDerrota3(j, i);
 
 				j.retiraDinheiro(2 * j.getMao(i).getValorAposta()); // retira o dinheiro do jogador
 				b.recebeDinheiro(2 * j.getMao(i).getValorAposta()); // banca recebe dinheiro
