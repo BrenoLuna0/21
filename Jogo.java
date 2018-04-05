@@ -12,10 +12,10 @@ public class Jogo {
 		this.banca = b;
 		this.rep = c;
 
-		if (q <= 7) { // quantidade maxima de jogadores é 7
-			for (int i = 0; i < q; i++) { // instancia quantidade de jogadores pedida
-				jogadores.add(new Jogador(""));
-			}
+		for (int i = 0; i < q; i++) { // instancia quantidade de jogadores pedida
+			Exibicao.nomeJogador(i);
+			String entrada = new Scanner(System.in).nextLine();
+			jogadores.add(new Jogador(entrada));
 		}
 	}
 
@@ -81,10 +81,8 @@ public class Jogo {
 					&& j.getMao(i).getCartaMao(0).getValor() == j.getMao(i).getCartaMao(1).getValor()) {
 
 				Exibicao.maoAtual(i);
-
-				for (int a = 0; a < j.getMao(i).getArrayMao().size(); a++) { // exibe as cartas q o jogador tem na mão
-					Exibicao.exibirCartasMao(j, i, a);
-				}
+				
+				Exibicao.exibirCartasMao(j, i);  // exibe as cartas q o jogador tem na mão
 
 				Exibicao.pontuacaoMao(j, i); //  exibe pontuacao da mão q está sendo jogada
 
@@ -94,8 +92,21 @@ public class Jogo {
 
 				if (entrada == 1) {
 					while (entrada == 1) { // pode pedir carta qntas vezes quiser ate estourar mais d 21
-						j.receberCarta(i, this.banca, this.rep.getRepositorio());
-						entrada = s.nextInt();
+						if(j.getMao(i).getPontos() > 21) {
+							Exibicao.erroReceberCarta();
+							return;
+						} else {
+							j.receberCarta(i, this.banca, this.rep.getRepositorio());
+							
+							if(j.getMao(i).getPontos() >= 21) {
+								return;
+							}
+							
+							Exibicao.exibirCartasMao(j, i);
+							Exibicao.pontuacaoMao(j, i);
+							Exibicao.menuJogadas2();
+							entrada = s.nextInt();
+						}
 					}
 				}
 				if (entrada == 2) {
@@ -110,10 +121,8 @@ public class Jogo {
 
 				Exibicao.maoAtual(i);
 
-				for (int a = 0; a < j.getMao(i).getArrayMao().size(); a++) { // exibe as cartas q o jogador tem na mão
-					Exibicao.exibirCartasMao(j, i, a);
-				}
-
+				Exibicao.exibirCartasMao(j, i); // exibe as cartas q o jogador tem na mão
+				
 				Exibicao.pontuacaoMao(j, i);
 
 				Exibicao.menuJogadas2();
@@ -122,8 +131,21 @@ public class Jogo {
 
 				if (entrada == 1) {
 					while (entrada == 1) { // pode pedir carta qntas vezes quiser ate estourar mais d 21
-						j.receberCarta(i, this.banca, this.rep.getRepositorio());
-						entrada = s.nextInt();
+						if(j.getMao(i).getPontos() > 21) {
+							Exibicao.erroReceberCarta();
+							return;
+						} else {
+							j.receberCarta(i, this.banca, this.rep.getRepositorio());
+							
+							if(j.getMao(i).getPontos() >= 21) {
+								return;
+							}
+							
+							Exibicao.exibirCartasMao(j, i);
+							Exibicao.pontuacaoMao(j, i);
+							Exibicao.menuJogadas2();
+							entrada = s.nextInt();
+						}
 					}
 				}
 				if (entrada == 2) {
@@ -152,7 +174,7 @@ public class Jogo {
 				j.retiraDinheiro(2 * j.getMao(i).getValorAposta()); // banca recebe dinheiro
 				b.recebeDinheiro(2 * j.getMao(i).getValorAposta()); // retira o dinheiro do jogador
 
-			} else if (j.getMao(i).getPontos() < pontuacaoMaxima && b.getMao().getPontos() > pontuacaoMaxima) { // se tanto jogador qnt a banca n estourara, 21 pontos
+			} else if (j.getMao(i).getPontos() < pontuacaoMaxima && b.getMao().getPontos() < pontuacaoMaxima) { // se tanto jogador qnt a banca n estourara, 21 pontos
 																									
 				if (j.getMao(i).getPontos() > b.getMao().getPontos()) { // se jogador tem mais pontos q a banca
 					
@@ -186,21 +208,3 @@ public class Jogo {
 }
 
 
-/*private void calculoPontos() {
-
-for (int i = 0; i < jogadores.size(); i++) { // calcula o ponto de cada jogador
-	System.out.println("Jogador " + i + "possui:");
-
-	for (int j = 0; j < jogadores.get(i).getMao().size(); j++) { // calcula os pontos de cada mao do jogador
-		System.out.println(jogadores.get(i).getMao().get(j).getPontos() + "pontos na mao " + (j + 1));
-	}
-
-	System.out.println();
-}
-
-System.out.println("A Banca possui:");
-
-for (int j = 0; j < banca.getMao().size(); j++) { // calcula os pontos de cada mao da banca
-	System.out.println(banca.getMao().get(j).getPontos() + "pontos na mao " + (j + 1));
-}
-}*/

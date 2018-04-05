@@ -2,12 +2,9 @@ import java.util.ArrayList;
 
 public abstract class Participante {
 
-	private ArrayList<Mao> mao = new ArrayList<Mao>();
+	protected ArrayList<Mao> mao = new ArrayList<Mao>();
 	private int dinheiro;
 	
-	public Participante () {
-		this.mao.add(new Mao());
-	}
 
 	// metodos da classe
 	
@@ -28,7 +25,14 @@ public abstract class Participante {
 	// metodos de acesso a membros
 
 	public void setCartaMao(Carta c, int n) { // da uma carta p a mao selecionada
-		this.mao.get(n).setCartaMao(c);
+	
+		if (this.mao.size() == 0) { 
+			Mao m = new Mao();
+			this.mao.add(m);
+		} else {
+			this.mao.get(n).setCartaMao(c);
+		}
+		
 	}
 
 	public ArrayList<Mao> getArrayMao() { // retorna o array list c todas as mãos do jogador

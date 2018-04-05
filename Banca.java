@@ -12,6 +12,7 @@ public class Banca extends Participante {
 	
 	public void darCarta(ArrayList<Carta> c, Jogador j, int m) {
 		j.setCartaMao(c.get(0), m);
+		Exibicao.recebimentoCarta(j,c.get(0));
 		c.remove(0);
 	}
 	
