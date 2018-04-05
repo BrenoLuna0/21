@@ -22,16 +22,20 @@ public class Exibicao {
 	}
 	
 	public static void maoAtual(int i) {
-		System.out.println("Mão atual: " + i+1);
+		i+=1;
+		System.out.println("Mão atual: " + i);
 	}
 	
-	public static void exibirCartasMao(Jogador j, int i, int a) {
-		System.out.println(
-				j.getMao(i).getCartaMao(a).getValor() + " de " + j.getMao(i).getCartaMao(a).getNaipe());
+	public static void exibirCartasMao(Jogador j, int i) {
+		for (int a = 0; a < j.getMao(i).getArrayMao().size(); a++) {
+			System.out.println(
+					j.getMao(i).getCartaMao(a).getValor() + " de " + j.getMao(i).getCartaMao(a).getNaipe());
+		}
+		
 	}
 	
 	public static void pontuacaoMao(Jogador j, int i) {
-		System.out.println("Você possui " + j.getMao(i).getPontos() + "pontos nessa mão");
+		System.out.println("Você possui " + j.getMao(i).getPontos() + " pontos nessa mão");
 	}
 	
 	public static void menuJogadas1() {
@@ -57,12 +61,12 @@ public class Exibicao {
 	
 	public static void msgVitoria1(Jogador j, int i) { // 
 		System.out.println("A banca estourou 21 pontos!");
-		System.out.println(j.getNome() + " você é venceu");
+		System.out.println(j.getNome() + " você venceu");
 		System.out.println(j.getNome() + " recebe R$" + 2 * j.getMao(i).getValorAposta());
 	}
 	
 	public static void msgVitoria2(Jogador j, int i) { // 
-		System.out.println(j.getNome() +"tem mais pontos!");
+		System.out.println(j.getNome() +" tem mais pontos!");
 		System.out.println(j.getNome() + " você venceu");
 		System.out.println(j.getNome() + " recebe R$" + 2 * j.getMao(i).getValorAposta());
 	}
@@ -91,12 +95,44 @@ public class Exibicao {
 		System.out.println(" A banca recebe R$" + (3 * j.getMao(i).getValorAposta()) / 2);
 	}
 	
+	public static void erroReceberCarta() {
+		System.out.println("Voce não pode mais receber cartas");
+	}
 	
 	
+	public static void msgCartaRecebida() {
+		System.out.println("Voce não pode mais receber cartas");
+	}
+	
+	public static void recebimentoCarta(Jogador j, Carta c) {
+		System.out.println(j.getNome() + " recebeu um " + c.getValor() +" de "+ c.getNaipe());
+	}
+	
+	public static void iniciarJogadores() {
+		System.out.println("Quantidade de jogadores na mesa");
+	}
+	
+	public static void nomeJogador(int i) {
+		i+=1;
+		System.out.println("Qual o nome do jogador " + i);
+	}
+	
+	public static void validaQtdJogadores() {
+		System.out.println("Quantidade máxima de jogadores é 7");
+	}
 	
 	
+	public static void mostrarCartaBanca(Banca b) {
+		System.out.println("A banca possui um " + b.getMao().getCartaMao(0).getValor() + " de " + b.getMao().getCartaMao(0).getNaipe());
+		System.out.println();
+		System.out.println();
+	}
 	
 	
+	public static void mostrarTodasBanca(Banca b) {
+		System.out.println("A banca possui um " + b.getMao().getCartaMao(0).getValor() + " de " + b.getMao().getCartaMao(0).getNaipe());
+		System.out.println("A banca possui um " + b.getMao().getCartaMao(1).getValor() + " de " + b.getMao().getCartaMao(1).getNaipe());
+	}
 	
 	
 	

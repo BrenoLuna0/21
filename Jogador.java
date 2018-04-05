@@ -1,9 +1,9 @@
 import java.util.ArrayList;
 
 public class Jogador extends Participante {
-	private ArrayList<Mao> mao = new ArrayList<Mao>();
+	
 	private String nome;
-	private int dinheiro;
+
 
 	public Jogador(String nome) {
 		this.nome = nome;
@@ -41,9 +41,9 @@ public class Jogador extends Participante {
 		this.mao.add(m);
 
 		if (this.mao.size() == 0) { // se ele nao tiver um segundo baralho.....
-			this.mao.get(1).setValorAposta(aposta);// a aposta vai para a primeira mao, senao.....
+			this.mao.get(0).setValorAposta(aposta);// a aposta vai para a primeira mao, senao.....
 		} else {
-			this.mao.get(0).setValorAposta(aposta);// a aposta vai para a segunda
+			this.mao.get(this.mao.size() - 1).setValorAposta(aposta);// a aposta vai para ultima mao instanciada
 		}
 	}
 
