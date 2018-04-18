@@ -14,8 +14,7 @@ public class Jogador extends Participante {
 		if (this.getDinheiro() > this.getMao(i).getValorAposta()) { // se tiver dinheiro
 			this.retiraDinheiro(this.getMao(i).getValorAposta()); // tira dinheiro do saldo do jogador
 			this.getMao(i).setValorAposta(2 * this.getMao(i).getValorAposta()); // dobra o valor da aposta
-			b.darCarta(c, (Jogador) this, i); // retira uma carta p a mão q esta sendo jogada
-			this.getMao(i).setValorAposta(2 * (this.getMao(i).getValorAposta())); // dobra a aposta minima
+			b.darCarta(c, (Jogador) this, i); // retira uma carta p a mão q esta sendo jogada		
 		} else {
 			return; // n pode dobrar aposta
 		}

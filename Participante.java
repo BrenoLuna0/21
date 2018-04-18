@@ -29,6 +29,7 @@ public abstract class Participante {
 		if (this.mao.size() == 0) { 
 			Mao m = new Mao();
 			this.mao.add(m);
+			this.mao.get(n).setCartaMao(c);
 		} else {
 			this.mao.get(n).setCartaMao(c);
 		}
