@@ -44,6 +44,9 @@ public class Mao {
 		this.valorAposta = v;
 	}
 	
+	public void setPontos() {
+		this.pontos = 21;
+	}
 	
 	
 	

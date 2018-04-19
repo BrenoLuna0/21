@@ -4,6 +4,12 @@ public class Carta {
 	private String naipe;
 	private  char valorFace;
 	
+	/*public Carta(int valor, String naipe, char valorFace) {  >>>>>>>>> precisa ver como vai fazer isso
+		this.valor = valor;
+		this.naipe = naipe;
+		this.valorFace = valorFace;
+	}*/
+	
 	
 	public void setValor(int valor) {
 		this.valor = valor;

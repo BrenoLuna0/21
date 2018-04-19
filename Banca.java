@@ -18,11 +18,20 @@ public class Banca extends Participante {
 	
 	public void receberCarta(ArrayList<Carta> c) {
 		this.maob.setCartaMao(c.get(0));
+		Exibicao.recebimentoCarta(c.get(0));
 		c.remove(0);
 	}
 	
 	public Mao getMao() { // retorna uma mão especifica p fazer a jogada 
 			return this.maob; 
+	}
+	
+public void removerMaos(ArrayList<Jogador> j) {
+		for(int i = 0; i < j.size(); i++) {  // percorre todos os jogadores
+			for(int a = 0 ; a < j.get(i).getArrayMao().size(); a++) { // percorre todas as mãos dos jogadores
+				j.get(i).getArrayMao().remove(a); // remove todas as mãos para continuar a proxima rodada
+			}
+		}
 	}
 
 }
