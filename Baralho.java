@@ -26,30 +26,33 @@ public class Baralho {
 	
 	valor = 0;
 	for(int i = 13; i < 26; i++){
+		int j = 0;
 		if(valor < 10){
 			valor++;
 		}
 		
-		this.baralho[i] =  new Carta(valor,"espadas",faces[i]);
-		
+		this.baralho[i] =  new Carta(valor,"espadas",faces[j]);
+		j++;
 	}
 	
 	valor = 0;
 	for(int i = 26; i < 39; i++){
+		int j = 0;
 		if(valor < 10){
 			valor++;
 		}
-		this.baralho[i] = new Carta(valor, "ouro",faces[i]);
-		
+		this.baralho[i] = new Carta(valor, "ouro",faces[j]);
+		j++;
 	}
 	
 	valor = 0;
 	for(int i = 39; i < 52; i++){
+		int j = 0;
 		if(valor < 10){
 			valor++;
 		}
-		this.baralho[i] = new Carta(valor, "paus",faces[i]);
-		
+		this.baralho[i] = new Carta(valor, "paus",faces[j]);
+		j++;
 	}
 		
 	}
