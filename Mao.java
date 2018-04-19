@@ -5,6 +5,8 @@ public class Mao {
 	private int valorAposta;
 	private int pontos;
 	private ArrayList<Carta> cartasMao = new ArrayList<Carta>();
+	private static final int BLACKJACK = 21;
+	private int numAcess;
 	
 	// acesso a pontuação da mão
 	public int getPontos() {
@@ -49,6 +51,46 @@ public class Mao {
 	}
 	
 	
+	public boolean igualA (Mao m) {
+		if(this.getPontos() == m.getPontos()) {
+			return true;
+		}
+		else {
+			return false;
+		}
+	}
+	
+	public boolean maiorQ (Mao m) {
+		if(this.getPontos() > m.getPontos()) {
+			return true;
+		}
+		else {
+			return false;
+		}
+	}
+	
+	public boolean blackJack () {
+		if(this.getPontos() == BLACKJACK) {
+			return true;
+		}
+		else {
+			return false;
+		}
+	}
+	
+	public boolean estouro () {
+		if(this.getPontos() > BLACKJACK) {
+			return true;
+		}
+		else {
+			return false;
+		}
+	}
+	
+	public void limparMao() {
+		this.getArrayMao().clear();
+		this.numAcess = 0;
+	}
 	
 
 }
