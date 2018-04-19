@@ -61,7 +61,7 @@ public class Jogo {
 	public void rodada() {
 		apostas();
 		
-		distribuirCartas();
+		banca.distribuirCartas(jogadores,rep);
 
 		Exibicao.inicio();
 		for (int i = 0; i < jogadores.size(); i++) { // depois q o jogo estiver preparado
@@ -95,19 +95,6 @@ public class Jogo {
 		}
 	}
 
-	private void distribuirCartas() {
-		for (int i = 0; i < jogadores.size(); i++) { // distribui primeira carta p todos os jogadores
-			banca.darCarta(rep.getRepositorio(), jogadores.get(i), 0);
-		}
-
-		banca.receberCarta(rep.getRepositorio()); // dá a primeira carta p banca
-
-		for (int i = 0; i < jogadores.size(); i++) { // distribui a segunda carta p todos os jogadores
-			banca.darCarta(rep.getRepositorio(), jogadores.get(i), 0);
-		}
-
-		banca.receberCarta(rep.getRepositorio()); // dá a segunda carta p banca
-	}
 
 	public void jogada(Jogador j) {
 		Scanner s = new Scanner(System.in);

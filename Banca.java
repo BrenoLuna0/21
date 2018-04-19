@@ -26,12 +26,29 @@ public class Banca extends Participante {
 			return this.maob; 
 	}
 	
-public void removerMaos(ArrayList<Jogador> j) {
+	public void removerMaos(ArrayList<Jogador> j) {
 		for(int i = 0; i < j.size(); i++) {  // percorre todos os jogadores
 			for(int a = 0 ; a < j.get(i).getArrayMao().size(); a++) { // percorre todas as mãos dos jogadores
 				j.get(i).getArrayMao().remove(a); // remove todas as mãos para continuar a proxima rodada
 			}
 		}
+	}
+
+
+	public void distribuirCartas(ArrayList<Jogador> jogadores, RepositorioCartas rep) {
+		
+		for (int i = 0; i < jogadores.size(); i++) { // distribui primeira carta p todos os jogadores
+			this.darCarta(rep.getRepositorio(), jogadores.get(i), 0);
+		}
+
+		this.receberCarta(rep.getRepositorio()); // dá a primeira carta p banca
+
+		for (int i = 0; i < jogadores.size(); i++) { // distribui a segunda carta p todos os jogadores
+			this.darCarta(rep.getRepositorio(), jogadores.get(i), 0);
+		}
+
+		this.receberCarta(rep.getRepositorio()); // dá a segunda carta p banca
+		
 	}
 
 }

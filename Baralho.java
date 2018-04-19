@@ -1,170 +1,57 @@
 public class Baralho {
 	private Carta[] baralho = new Carta[52];
+	private final static char[] faces = Utilidade.delegarfaces();
 	
 	public Baralho() {
-		for(int i = 0; i < 52; i++){
-			this.baralho[i] = new Carta();
-		}
 		
-		int valor = 0;
-		for(int i = 0; i < 13; i++){
-			if(valor < 10){
-				valor++;
-			}
-			baralho[i].setValor(valor);
-			baralho[i].setNaipe("copas");
-			
-			switch(i) {
-				case 0:
-					baralho[i].setValorFace('A');
-				case 1:
-					baralho[i].setValorFace('2');
-				case 2:
-					baralho[i].setValorFace('3');
-				case 3:
-					baralho[i].setValorFace('4');
-				case 4:
-					baralho[i].setValorFace('5');
-				case 5:
-					baralho[i].setValorFace('6');
-				case 6:
-					baralho[i].setValorFace('7');
-				case 7:
-					baralho[i].setValorFace('8');
-				case 8:
-					baralho[i].setValorFace('9');
-				case 9:
-					baralho[i].setValorFace('D');
-				case 10:
-					baralho[i].setValorFace('J');
-				case 11:
-					baralho[i].setValorFace('Q');
-				case 12:
-					baralho[i].setValorFace('K');
-			}
-			
-		}
-		
-		valor = 0;
-		
-		for(int i = 13; i < 26; i++){
-			if(valor < 10){
-				valor++;
-			}
-			baralho[i].setValor(valor);
-			baralho[i].setNaipe("espadas");
-			
-			switch(i) {
-				case 0:
-					baralho[i].setValorFace('A');
-				case 1:
-					baralho[i].setValorFace('2');
-				case 2:
-					baralho[i].setValorFace('3');
-				case 3:
-					baralho[i].setValorFace('4');
-				case 4:
-					baralho[i].setValorFace('5');
-				case 5:
-					baralho[i].setValorFace('6');
-				case 6:
-					baralho[i].setValorFace('7');
-				case 7:
-					baralho[i].setValorFace('8');
-				case 8:
-					baralho[i].setValorFace('9');
-				case 9:
-					baralho[i].setValorFace('D');
-				case 10:
-					baralho[i].setValorFace('J');
-				case 11:
-					baralho[i].setValorFace('Q');
-				case 12:
-					baralho[i].setValorFace('K');
-			}
-		}
-		
-		valor = 0;
-		
-		for(int i = 26; i < 39; i++){
-			if(valor < 10){
-				valor++;
-			}
-			baralho[i].setValor(valor);
-			baralho[i].setNaipe("ouro");
-			
-			switch(i) {
-				case 0:
-					baralho[i].setValorFace('A');
-				case 1:
-					baralho[i].setValorFace('2');
-				case 2:
-					baralho[i].setValorFace('3');
-				case 3:
-					baralho[i].setValorFace('4');
-				case 4:
-					baralho[i].setValorFace('5');
-				case 5:
-					baralho[i].setValorFace('6');
-				case 6:
-					baralho[i].setValorFace('7');
-				case 7:
-					baralho[i].setValorFace('8');
-				case 8:
-					baralho[i].setValorFace('9');
-				case 9:
-					baralho[i].setValorFace('D');
-				case 10:
-					baralho[i].setValorFace('J');
-				case 11:
-					baralho[i].setValorFace('Q');
-				case 12:
-					baralho[i].setValorFace('K');
-			}
-		}
-		
-		valor = 0;
-		
-		for(int i = 39; i < 52; i++){
-			if(valor < 10){
-				valor++;
-			}
-			baralho[i].setValor(valor);
-			baralho[i].setNaipe("paus");
-			
-			switch(i) {
-				case 0:
-					baralho[i].setValorFace('A');
-				case 1:
-					baralho[i].setValorFace('2');
-				case 2:
-					baralho[i].setValorFace('3');
-				case 3:
-					baralho[i].setValorFace('4');
-				case 4:
-					baralho[i].setValorFace('5');
-				case 5:
-					baralho[i].setValorFace('6');
-				case 6:
-					baralho[i].setValorFace('7');
-				case 7:
-					baralho[i].setValorFace('8');
-				case 8:
-					baralho[i].setValorFace('9');
-				case 9:
-					baralho[i].setValorFace('D');
-				case 10:
-					baralho[i].setValorFace('J');
-				case 11:
-					baralho[i].setValorFace('Q');
-				case 12:
-					baralho[i].setValorFace('K');
-			}
-		}
+		inicializarBaralho();
 	}
 	
 	public Carta getCarta(int i) {
 		return this.baralho[i];
+	}
+	
+	
+	
+	private void inicializarBaralho() {
+	
+	int valor = 0;
+	for(int i = 0; i < 13; i++){
+		if(valor < 10){
+			valor++;
+		}
+		this.baralho[i] = new Carta(valor,"copas",faces[i]);
+		
+	}
+	
+	valor = 0;
+	for(int i = 13; i < 26; i++){
+		if(valor < 10){
+			valor++;
+		}
+		
+		this.baralho[i] =  new Carta(valor,"espadas",faces[i]);
+		
+	}
+	
+	valor = 0;
+	for(int i = 26; i < 39; i++){
+		if(valor < 10){
+			valor++;
+		}
+		this.baralho[i] = new Carta(valor, "ouro",faces[i]);
+		
+	}
+	
+	valor = 0;
+	for(int i = 39; i < 52; i++){
+		if(valor < 10){
+			valor++;
+		}
+		this.baralho[i] = new Carta(valor, "paus",faces[i]);
+		
+	}
+		
 	}
 	
 

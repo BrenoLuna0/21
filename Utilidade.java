@@ -9,6 +9,44 @@ public class Utilidade {
 		Collections.shuffle(c);
 		Collections.shuffle(c);
 	}
+	
+	public static char[] delegarfaces() {
+		char[] c = new char[13];
+		
+		for(int i = 0; i < 13; i++) {
+			switch(i) {
+			case 0:
+				c[i] = 'A';
+			case 1:
+				c[i] = '2';
+			case 2:
+				c[i] = '3';
+			case 3:
+				c[i] = '4';
+			case 4:
+				c[i] = '5';
+			case 5:
+				c[i] = '6';
+			case 6:
+				c[i] = '7';
+			case 7:
+				c[i] = '8';
+			case 8:
+				c[i] = '9';
+			case 9:
+				c[i] = 'D';
+			case 10:
+				c[i] = 'J';
+			case 11:
+				c[i] = 'Q';
+			case 12:
+				c[i] = 'K';
+			}
+		}
+		
+		return c;
+		
+	}
 
 }
 
