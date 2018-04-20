@@ -50,6 +50,27 @@ public class Banca extends Participante {
 		this.receberCarta(rep.getRepositorio()); // dá a segunda carta p banca
 		
 	}
+	
+	public void jogada(ArrayList<Jogador> jogadores, RepositorioCartas rep,int pontuacaoMaxima){
+		Exibicao.rodadaBanca();
+		Exibicao.mostrarTodasCartasBanca(this);
+		int jogosGanhos = 0;
+		
+		for(int i = 0; i < jogadores.size(); i++) {
+			if(this.getMao().getPontos() > jogadores.get(i).getMao(0).getPontos() || jogadores.get(i).getMao(0).getPontos() > pontuacaoMaxima) {
+				jogosGanhos += 1;
+			}
+		}
+		
+		if(jogosGanhos > (jogadores.size())/2) { // se a banca estiver vencendo da maioria dos jogadores
+			return; //nao faz nada
+		}else {
+			while(this.getMao().getPontos() < 16) { // senão ela pega mais cartas
+				this.receberCarta(rep.getRepositorio());		
+			}
+			return;
+		}
+	}
 
 }
 

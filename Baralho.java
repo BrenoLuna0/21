@@ -3,59 +3,56 @@ public class Baralho {
 	private final static char[] faces = Utilidade.delegarfaces();
 	
 	public Baralho() {
-		
-		inicializarBaralho();
-	}
-	
-	public Carta getCarta(int i) {
-		return this.baralho[i];
-	}
-	
-	
-	
-	private void inicializarBaralho() {
-	
-	int valor = 0;
-	for(int i = 0; i < 13; i++){
-		if(valor < 10){
-			valor++;
-		}
-		this.baralho[i] = new Carta(valor,"copas",faces[i]);
-		
-	}
-	
-	valor = 0;
-	for(int i = 13; i < 26; i++){
-		int j = 0;
-		if(valor < 10){
-			valor++;
+			
+			inicializarBaralho(0);
 		}
 		
-		this.baralho[i] =  new Carta(valor,"espadas",faces[j]);
-		j++;
-	}
-	
-	valor = 0;
-	for(int i = 26; i < 39; i++){
-		int j = 0;
-		if(valor < 10){
-			valor++;
+		public Carta getCarta(int i) {
+			return this.baralho[i];
 		}
-		this.baralho[i] = new Carta(valor, "ouro",faces[j]);
-		j++;
-	}
-	
-	valor = 0;
-	for(int i = 39; i < 52; i++){
-		int j = 0;
-		if(valor < 10){
-			valor++;
-		}
-		this.baralho[i] = new Carta(valor, "paus",faces[j]);
-		j++;
-	}
 		
-	}
+		
+		
+		private void inicializarBaralho(int j) {
+		
+		int valor = 0;
+		for(int i = 0; i < 13; i++){
+			if(valor < 10){
+				valor++;
+			}
+			this.baralho[i] = new Carta(valor,"copas",faces[i]);
+			
+		}
+		j = 0;
+		valor = 0;
+		for(int i = 13; i < 26; i++){
+			if(valor < 10){
+				valor++;
+			}
+			
+			this.baralho[i] =  new Carta(valor,"espadas",faces[j]);
+			j++;
+		}
+		j = 0;
+		valor = 0;
+		for(int i = 26; i < 39; i++){
+			if(valor < 10){
+				valor++;
+			}
+			this.baralho[i] = new Carta(valor, "ouro",faces[j]);
+			j++;
+		}
+		j = 0;
+		valor = 0;
+		for(int i = 39; i < 52; i++){
+			if(valor < 10){
+				valor++;
+			}
+			this.baralho[i] = new Carta(valor, "paus",faces[j]);
+			j++;
+		}
+			
+		}
 	
 
 }

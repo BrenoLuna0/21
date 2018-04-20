@@ -65,11 +65,12 @@ public class Jogo {
 
 		Exibicao.inicio();
 		for (int i = 0; i < jogadores.size(); i++) { // depois q o jogo estiver preparado
-			jogada(this.jogadores.get(i)); // realiza a jogada de todos os jogadores
+		 // realiza a jogada de todos os jogadores
+			jogadores.get(i).jogada(banca, rep);
 		}
 
 		// fazer metodo da rodada da banca pq é diferente da jogada de um jogador comum
-		jogadaBanca();
+		banca.jogada(jogadores, rep, pontuacaoMaxima);
 
 		for (int i = 0; i < jogadores.size(); i++) { // depois q todos jogarem
 			finalRodada(this.jogadores.get(i), this.banca); // verifica os vencedores e distribui as apostas
@@ -96,98 +97,6 @@ public class Jogo {
 	}
 
 
-	public void jogada(Jogador j) {
-		Scanner s = new Scanner(System.in);
-		int entrada;
-		
-		Exibicao.mostrarCartaBanca(banca);
-
-		Exibicao.escolhaJogada(j);
-		
-		for (int i = 0; i < j.getArrayMao().size(); i++) { // repete o processo p jogar todas as maos do jogador
-			
-			if (j.getMao(i).qntCartas() == 2  // se tiver só duas cartas e as duas forem iguais
-					&& j.getMao(i).getCartaMao(0).getValor() == j.getMao(i).getCartaMao(1).getValor()) {
-
-				Exibicao.maoAtual(i);
-				
-				Exibicao.exibirCartasMao(j, i);  // exibe as cartas q o jogador tem na mão
-
-				Exibicao.pontuacaoMao(j, i); //  exibe pontuacao da mão q está sendo jogada
-
-				Exibicao.menuJogadas1(); // exibe jogadas disponiveis
-
-				entrada = s.nextInt();
-
-				if (entrada == 1) {
-					while (entrada == 1) { // pode pedir carta qntas vezes quiser ate estourar mais d 21
-						if(j.getMao(i).getPontos() > 21) {
-							Exibicao.erroReceberCarta();
-							return;
-						} else {
-							j.receberCarta(i, this.banca, this.rep.getRepositorio());
-							
-							if(j.getMao(i).getPontos() >= 21) {
-								Exibicao.pontuacaoMao(j, i);
-								Exibicao.erroReceberCarta();
-								return;
-							}
-							
-							Exibicao.exibirCartasMao(j, i);
-							Exibicao.pontuacaoMao(j, i);
-							Exibicao.menuJogadas2();
-							entrada = s.nextInt();
-						}
-					}
-				}
-				if (entrada == 2) {
-					j.dobrarAposta(i, this.banca, this.rep.getRepositorio());
-				} else if (entrada == 3) {
-					j.dividirPar(i, this.banca, this.rep.getRepositorio());
-				} else if (entrada == 4) {
-					Exibicao.jogadaFinalizada();
-					return;
-				}
-			} else { // caso n seja possivel jogador fazer a jogada "dividir par"
-
-				Exibicao.maoAtual(i);
-
-				Exibicao.exibirCartasMao(j, i); // exibe as cartas q o jogador tem na mão
-				
-				Exibicao.pontuacaoMao(j, i);
-
-				Exibicao.menuJogadas2();
-
-				entrada = s.nextInt();
-
-				if (entrada == 1) {
-					while (entrada == 1) { // pode pedir carta qntas vezes quiser ate estourar mais d 21
-						if(j.getMao(i).getPontos() > 21) {
-							Exibicao.erroReceberCarta();
-							return;
-						} else {
-							j.receberCarta(i, this.banca, this.rep.getRepositorio());
-							
-							if(j.getMao(i).getPontos() >= 21) {
-								return;
-							}
-							
-							Exibicao.exibirCartasMao(j, i);
-							Exibicao.pontuacaoMao(j, i);
-							Exibicao.menuJogadas2();
-							entrada = s.nextInt();
-						}
-					}
-				}
-				if (entrada == 2) {
-					j.dobrarAposta(i, this.banca, this.rep.getRepositorio());
-				} else if (entrada == 3) {
-					Exibicao.jogadaFinalizada();
-					return;
-				}
-			}
-		}
-	}
 	
 	public void verificarDinheiroJogadores() {
 		for(int i = 0; i < this.jogadores.size(); i++) {
@@ -253,25 +162,4 @@ public class Jogo {
 		this.banca.removerMaos(this.jogadores);
 	}
 	
-	
-	private void jogadaBanca() { //alterações finalizadas
-		Exibicao.rodadaBanca();
-		Exibicao.mostrarTodasCartasBanca(this.banca);
-		int jogosGanhos = 0;
-		
-		for(int i = 0; i < this.jogadores.size(); i++) {
-			if(this.banca.getMao().getPontos() > jogadores.get(i).getMao(0).getPontos() || jogadores.get(i).getMao(0).getPontos() > pontuacaoMaxima) {
-				jogosGanhos += 1;
-			}
-		}
-		
-		if(jogosGanhos > (this.jogadores.size())/2) { // se a banca estiver vencendo da maioria dos jogadores
-			return; //nao faz nada
-		}else {
-			while(this.banca.getMao().getPontos() < 16) { // senão ela pega mais cartas
-				this.banca.receberCarta(rep.getRepositorio());		
-			}
-			return;
-		}
-	}
 }

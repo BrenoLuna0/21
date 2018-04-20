@@ -30,6 +30,10 @@ public class Carta {
 	public String getNaipe() {
 		return this.naipe;
 	}
+	
+	public char getValorFace(){
+		return this.valorFace;
+	}
 
 }
 
