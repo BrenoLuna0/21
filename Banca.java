@@ -5,13 +5,21 @@ public class Banca extends Participante {
 	private Mao maob = new Mao(this);
 	private ArrayList<Participante>estourados = new ArrayList<Participante>();
 	private ArrayList<Participante>blackJack = new ArrayList<Participante>();
+	private ArrayList<Participante>esperando = new ArrayList<Participante>();
+	private ArrayList<Jogador> jogadores = new ArrayList<Jogador>();
+	private RepositorioCartas rep;
 	
 	public void estourado(Participante p) {
 		this.estourados.add(p);
+		
 	}
 	
 	public void blackJack(Participante p) {
 		this.blackJack.add(p);
+	}
+	
+	public void esperando(Participante p){
+		this.esperando.add(p);
 	}
 	
 	public ArrayList<Carta> embaralhar(ArrayList<Carta> c) {
@@ -44,19 +52,19 @@ public class Banca extends Participante {
 	}
 
 
-	public void distribuirCartas(ArrayList<Jogador> jogadores, RepositorioCartas rep) {
+	public void distribuirCartas() {
 		
-		for (int i = 0; i < jogadores.size(); i++) { // distribui primeira carta p todos os jogadores
-			this.darCarta(rep.getRepositorio(), jogadores.get(i), 0);
+		for (int i = 0; i < this.jogadores.size(); i++) { // distribui primeira carta p todos os jogadores
+			this.darCarta(this.rep.getRepositorio(), this.jogadores.get(i), 0);
 		}
 
-		this.receberCarta(rep.getRepositorio()); // dá a primeira carta p banca
+		this.receberCarta(this.rep.getRepositorio()); // dá a primeira carta p banca
 
-		for (int i = 0; i < jogadores.size(); i++) { // distribui a segunda carta p todos os jogadores
-			this.darCarta(rep.getRepositorio(), jogadores.get(i), 0);
+		for (int i = 0; i < this.jogadores.size(); i++) { // distribui a segunda carta p todos os jogadores
+			this.darCarta(this.rep.getRepositorio(), this.jogadores.get(i), 0);
 		}
 
-		this.receberCarta(rep.getRepositorio()); // dá a segunda carta p banca
+		this.receberCarta(this.rep.getRepositorio()); // dá a segunda carta p banca
 		
 	}
 	
@@ -79,6 +87,18 @@ public class Banca extends Participante {
 			}
 			return;
 		}
+	}
+	
+	public ArrayList<Participante> getEstourados(){
+		return this.estourados;
+	}
+	
+	public ArrayList<Participante> getBlackJack(){
+		return this.blackJack;
+	}
+	
+	public ArrayList<Participante> getEsperando(){
+		return this.esperando;
 	}
 
 }
