@@ -13,6 +13,10 @@ public abstract class Participante {
 		this.estadoAtual = s;
 	}
 	
+	public PlayerState getEstado(){
+		return this.estadoAtual;
+	}
+	
 	public void receberCarta(int i, Banca b, ArrayList<Carta> c) {
 		b.darCarta(c, (Jogador) this, i); 
 	}

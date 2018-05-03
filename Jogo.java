@@ -60,22 +60,12 @@ public class Jogo {
 
 	public void rodada() {
 		apostas();
-		
 		banca.distribuirCartas(jogadores,rep);
 
 		Exibicao.inicio();
-		for (int i = 0; i < jogadores.size(); i++) { // depois q o jogo estiver preparado
-		 // realiza a jogada de todos os jogadores
-			jogadores.get(i).jogada(banca, rep);
+		for (int i = 0; i < jogadores.size(); i++) {
+			jogadores.get(i).getEstado().play(this.banca,jogadores.get(i));// realiza a jogada de todos os jogadores
 		}
-
-		// fazer metodo da rodada da banca pq é diferente da jogada de um jogador comum
-		banca.jogada(jogadores, rep, pontuacaoMaxima);
-
-		/*for (int i = 0; i < jogadores.size(); i++) { // depois q todos jogarem
-			finalRodada(this.jogadores.get(i), this.banca); // verifica os vencedores e distribui as apostas
-		}*/
-
 	}
 
 	private void apostas() {

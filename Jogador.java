@@ -9,6 +9,7 @@ public class Jogador extends Participante {
 	public Jogador(String nome) {
 		this.nome = nome;
 		this.setDinheiro(1000);
+		this.setEstadoAtual(new Espera());
 	}
 
 	public void dobrarAposta(int i, Banca b, ArrayList<Carta> c) {
