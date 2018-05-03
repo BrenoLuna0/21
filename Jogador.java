@@ -4,7 +4,7 @@ import java.util.Scanner;
 public class Jogador extends Participante {
 	
 	private String nome;
-
+	
 
 	public Jogador(String nome) {
 		this.nome = nome;
@@ -12,9 +12,9 @@ public class Jogador extends Participante {
 	}
 
 	public void dobrarAposta(int i, Banca b, ArrayList<Carta> c) {
-		if (this.getDinheiro() > this.getMao(i).getValorAposta()) { // se tiver dinheiro
-			this.retiraDinheiro(this.getMao(i).getValorAposta()); // tira dinheiro do saldo do jogador
-			this.getMao(i).setValorAposta(2 * this.getMao(i).getValorAposta()); // dobra o valor da aposta
+		if (this.getDinheiro() > this.getMao(i).getPontos()) { // se tiver dinheiro
+			this.retiraDinheiro(this.getMao(i).getPontos()); // tira dinheiro do saldo do jogador
+			this.getMao(i).setValorAposta(2 * this.getMao(i).getPontos()); // dobra o valor da aposta
 			b.darCarta(c, (Jogador) this, i); // retira uma carta p a mão q esta sendo jogada		
 		} else {
 			return; // n pode dobrar aposta
@@ -23,10 +23,10 @@ public class Jogador extends Participante {
 	}
 
 	public void dividirPar(int i, Banca b, ArrayList<Carta> c) {
-		if (this.getDinheiro() > this.getMao(i).getValorAposta()) { // se tiver dinheiro
-			this.retiraDinheiro(this.getMao(i).getValorAposta()); // tira dinheiro do saldo do jogador
+		if (this.getDinheiro() > this.getMao(i).getPontos()) { // se tiver dinheiro
+			this.retiraDinheiro(this.getMao(i).getPontos()); // tira dinheiro do saldo do jogador
 
-			Mao novaMao = new Mao(); // instancia nova mão q sera formada
+			Mao novaMao = new Mao(this); // instancia nova mão q sera formada
 			this.getArrayMao().add(novaMao); // add no arraylist mao
 
 			this.getMao(i + 1).getArrayMao().add(this.getMao(i).getCartaMao(1)); // insere a carta do par na nova mão
@@ -37,7 +37,7 @@ public class Jogador extends Participante {
 	}
 
 	public void apostar(int aposta) {
-		Mao m = new Mao();
+		Mao m = new Mao(this);
 		this.mao.add(m);
 
 		if (this.mao.size() == 0) { // se ele nao tiver um segundo baralho.....

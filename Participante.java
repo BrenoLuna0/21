@@ -4,9 +4,14 @@ public abstract class Participante {
 
 	protected ArrayList<Mao> mao = new ArrayList<Mao>();
 	private int dinheiro;
-	
+	private PlayerState estadoAtual;
+	private PlayerListener listener;
 
 	// metodos da classe
+	
+	public void setEstadoAtual(PlayerState s) {
+		this.estadoAtual = s;
+	}
 	
 	public void receberCarta(int i, Banca b, ArrayList<Carta> c) {
 		b.darCarta(c, (Jogador) this, i); 
@@ -27,11 +32,11 @@ public abstract class Participante {
 	public void setCartaMao(Carta c, int n) { // da uma carta p a mao selecionada
 	
 		if (this.mao.size() == 0) { 
-			Mao m = new Mao();
+			Mao m = new Mao(this);
 			this.mao.add(m);
-			this.mao.get(n).setCartaMao(c);
+			this.mao.get(n).addCarta(c);
 		} else {
-			this.mao.get(n).setCartaMao(c);
+			this.mao.get(n).addCarta(c);
 		}
 		
 	}

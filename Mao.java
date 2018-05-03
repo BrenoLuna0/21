@@ -2,20 +2,30 @@
 import java.util.ArrayList;
 
 public class Mao {
-	private int valorAposta;
-	private int pontos;
-	private ArrayList<Carta> cartasMao = new ArrayList<Carta>();
+	
+	private ArrayList<Carta> cartasMao;
 	private static final int BLACKJACK = 21;
-	private int numAcess;
+	private HandListener holder;
+	private Participante participante;
+	
+	public Mao(Participante p) {
+		this.cartasMao = new ArrayList<Carta>();
+		this.participante = p;
+	}
+	
+	public void addCarta(Carta c) {
+		this.cartasMao.add(c);	
+		this.holder.modificada(this,this.participante);
+	}
 	
 	// acesso a pontuação da mão
 	public int getPontos() {
-		this.pontos = 0;
+		int pontos = 0;
 		for(int i = 0; i < cartasMao.size(); i++) {
-			this.pontos += cartasMao.get(i).getValor();
+			pontos += cartasMao.get(i).getValor();
 		}
 		
-		return this.pontos;
+		return pontos;
 	}
 	
 	// acesso às cartas da mão
@@ -31,27 +41,7 @@ public class Mao {
 	public int qntCartas() {
 		return this.cartasMao.size();
 	}
-	
-	public void setCartaMao(Carta c) {
-		this.cartasMao.add(c);
-	}
-	
-	// apostas
 
-	public int getValorAposta() {
-		return this.valorAposta;
-	}
-	
-	public void setValorAposta(int v) {
-		this.valorAposta = v;
-	}
-	
-	public void setPontos() {
-		this.pontos = 21;
-	}
-
-	
-	
 	public boolean igualA (Mao m) {
 		if(this.getPontos() == m.getPontos()) {
 			return true;
@@ -90,7 +80,11 @@ public class Mao {
 	
 	public void limparMao() {
 		this.getArrayMao().clear();
-		this.numAcess = 0;
+	}
+
+	public void setValorAposta(int i) {
+		// TODO Auto-generated method stub
+		
 	}
 	
 

@@ -2,8 +2,17 @@ import java.util.ArrayList;
 
 public class Banca extends Participante {
 	
-	private Mao maob = new Mao();
+	private Mao maob = new Mao(this);
+	private ArrayList<Participante>estourados = new ArrayList<Participante>();
+	private ArrayList<Participante>blackJack = new ArrayList<Participante>();
 	
+	public void estourado(Participante p) {
+		this.estourados.add(p);
+	}
+	
+	public void blackJack(Participante p) {
+		this.blackJack.add(p);
+	}
 	
 	public ArrayList<Carta> embaralhar(ArrayList<Carta> c) {
 		Utilidade.misturar(c);
@@ -17,7 +26,7 @@ public class Banca extends Participante {
 	}
 	
 	public void receberCarta(ArrayList<Carta> c) {
-		this.maob.setCartaMao(c.get(0));
+		this.maob.addCarta(c.get(0));
 		Exibicao.recebimentoCarta(c.get(0));
 		c.remove(0);
 	}
