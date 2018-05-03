@@ -34,6 +34,10 @@ public class Espera implements PlayerState{
 	}
 	
 	public void play(Banca b, Participante p) {
+		modificada(p.getArrayMao().get(0),p);
+		p.getEstado().play(b, p);
+		//b.esperando(p);
+		
 		
 	}
 }
