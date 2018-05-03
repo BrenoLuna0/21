@@ -72,9 +72,9 @@ public class Jogo {
 		// fazer metodo da rodada da banca pq é diferente da jogada de um jogador comum
 		banca.jogada(jogadores, rep, pontuacaoMaxima);
 
-		for (int i = 0; i < jogadores.size(); i++) { // depois q todos jogarem
+		/*for (int i = 0; i < jogadores.size(); i++) { // depois q todos jogarem
 			finalRodada(this.jogadores.get(i), this.banca); // verifica os vencedores e distribui as apostas
-		}
+		}*/
 
 	}
 

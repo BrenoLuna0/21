@@ -11,6 +11,21 @@ public class Mao {
 	public Mao(Participante p) {
 		this.cartasMao = new ArrayList<Carta>();
 		this.participante = p;
+		
+		setHolder(
+				new HandListener() {
+					public void jogavel(Participante p) {}
+					public void estourada(Participante p) {}
+					public void blackjack(Participante p) {}
+					public void modificada(Mao m, Participante p) {
+						new Espera().modificada(m, p);
+					}
+				}
+			);
+	}
+	
+	public void setHolder(HandListener h) {
+		this.holder = h;
 	}
 	
 	public void addCarta(Carta c) {
@@ -86,6 +101,7 @@ public class Mao {
 		// TODO Auto-generated method stub
 		
 	}
+	
 	
 
 }

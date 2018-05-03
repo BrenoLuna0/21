@@ -77,37 +77,37 @@ public class Exibicao {
 	public static void msgVitoria1(Jogador j, int i) { // 
 		System.out.println("A banca estourou 21 pontos!");
 		System.out.println(j.getNome() + " você venceu");
-		System.out.println(j.getNome() + " recebe R$" + 2 * j.getMao(i).getValorAposta());
+		//System.out.println(j.getNome() + " recebe R$" + 2 * j.getMao(i).getValorAposta());
 	}
 	
 	public static void msgVitoria2(Jogador j, int i) { // 
 		System.out.println(j.getNome() +" tem mais pontos!");
 		System.out.println(j.getNome() + " você venceu");
-		System.out.println(j.getNome() + " recebe R$" + 2 * j.getMao(i).getValorAposta());
+		//System.out.println(j.getNome() + " recebe R$" + 2 * j.getMao(i).getValorAposta());
 	}
 	
 	public static void msgVitoria3(Jogador j, int i) { // 
 		System.out.println(j.getNome() +" fez um vinte e um!!");
 		System.out.println(j.getNome() + " você venceu");
-		System.out.println(j.getNome() + " recebe R$" + ((3 * j.getMao(i).getValorAposta()) / 2));
+		//System.out.println(j.getNome() + " recebe R$" + ((3 * j.getMao(i).getValorAposta()) / 2));
 	}
 	
 	public static void msgDerrota1(Jogador j, int i) { // 
 		System.out.println(j.getNome() + " estourou 21 pontos!");
 		System.out.println(j.getNome() + " você perdeu");
-		System.out.println("A banca recebe R$" + j.getMao(i).getValorAposta());
+		//System.out.println("A banca recebe R$" + j.getMao(i).getValorAposta());
 	}
 	
 	public static void msgDerrota2(Jogador j, int i) { // 
 		System.out.println("A banca tem mais pontos!");
 		System.out.println(j.getNome() + " você perdeu");
-		System.out.println("A banca recebe R$" + j.getMao(i).getValorAposta());
+		//System.out.println("A banca recebe R$" + j.getMao(i).getValorAposta());
 	}
 	
 	public static void msgDerrota3(Jogador j, int i) { // 
 		System.out.println("A banca fez um vinte e um!!");
 		System.out.println(j.getNome() + " você perdeu");
-		System.out.println(" A banca recebe R$" + j.getMao(i).getValorAposta());
+		//System.out.println(" A banca recebe R$" + j.getMao(i).getValorAposta());
 	}
 	
 	public static void msgEmpate(Jogador j) {

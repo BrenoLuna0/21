@@ -2,25 +2,25 @@
 public class Jogavel implements PlayerState{
 
 	
-	public void jogavel() {
+	public void jogavel(Participante p) {
 		// TODO Auto-generated method stub
 		
 	}
 
 	
-	public void estourada() {
+	public void estourada(Participante p) {
 		// TODO Auto-generated method stub
 		
 	}
 
 	
-	public void blackjack() {
+	public void blackjack(Participante p) {
 		// TODO Auto-generated method stub
 		
 	}
 
 	
-	public void modificada() {
+	public void modificada(Mao m, Participante p) {
 		// TODO Auto-generated method stub
 		
 	}
@@ -30,5 +30,17 @@ public class Jogavel implements PlayerState{
 		// TODO Auto-generated method stub
 		
 	}
+	
+	public void verificar(Mao m, Participante p) {
+		
+	}
+	
+	
+	public void play(Banca b, Participante p) {
+		
+	}
+
+
+	
 
 }
