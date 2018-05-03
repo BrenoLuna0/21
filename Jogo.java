@@ -58,33 +58,9 @@ public class Jogo {
 		
 	}
 
-	public void rodada() {
-		apostas();
-		banca.distribuirCartas(jogadores,rep);
+	
 
-		Exibicao.inicio();
-		for (int i = 0; i < jogadores.size(); i++) {
-			jogadores.get(i).getEstado().play(this.banca,jogadores.get(i));// realiza a jogada de todos os jogadores
-		}
-	}
-
-	private void apostas() {
-		Scanner s = new Scanner(System.in);
-		int entrada;
-		Exibicao.rodadaApostas();
-		for (int i = 0; i < jogadores.size(); i++) { // recebe as apostas de cada jogador
-			Exibicao.apostaJogador(this.jogadores.get(i));
-			entrada = s.nextInt();
-
-			while (entrada < 25 || entrada > 75) { // valida a entrada do jogador
-				Exibicao.apostaInvalida();
-				entrada = s.nextInt();
-			}
-
-			jogadores.get(i).apostar(entrada); // realiza a aposta
-			Exibicao.confirmacaoAposta(this.jogadores.get(i), entrada);
-		}
-	}
+	
 
 
 	

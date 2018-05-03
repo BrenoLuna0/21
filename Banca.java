@@ -1,4 +1,5 @@
 import java.util.ArrayList;
+import java.util.Scanner;
 
 public class Banca extends Participante {
 	
@@ -10,8 +11,7 @@ public class Banca extends Participante {
 	private RepositorioCartas rep;
 	
 	public void estourado(Participante p) {
-		this.estourados.add(p);
-		
+		this.estourados.add(p);	
 	}
 	
 	public void blackJack(Participante p) {
@@ -20,6 +20,34 @@ public class Banca extends Participante {
 	
 	public void esperando(Participante p){
 		this.esperando.add(p);
+	}
+	
+	public void rodada() {
+		apostas();
+		this.distribuirCartas();
+
+		Exibicao.inicio();
+		for (int i = 0; i < jogadores.size(); i++) {
+			jogadores.get(i).getEstado().play(this,jogadores.get(i));// realiza a jogada de todos os jogadores
+		}
+	}
+	
+	private void apostas() {
+		Scanner s = new Scanner(System.in);
+		int entrada;
+		Exibicao.rodadaApostas();
+		for (int i = 0; i < jogadores.size(); i++) { // recebe as apostas de cada jogador
+			Exibicao.apostaJogador(this.jogadores.get(i));
+			entrada = s.nextInt();
+
+			while (entrada < 25 || entrada > 75) { // valida a entrada do jogador
+				Exibicao.apostaInvalida();
+				entrada = s.nextInt();
+			}
+
+			jogadores.get(i).apostar(entrada); // realiza a aposta
+			Exibicao.confirmacaoAposta(this.jogadores.get(i), entrada);
+		}
 	}
 	
 	public ArrayList<Carta> embaralhar(ArrayList<Carta> c) {
