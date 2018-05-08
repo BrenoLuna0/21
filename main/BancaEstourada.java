@@ -1,5 +1,7 @@
+package main;
+import estadosJogador.PlayerState;
 
-public  class BancaDistribuirCartas implements PlayerState {
+public class BancaEstourada implements PlayerState {
 
 	@Override
 	public void jogavel(Participante p) {
@@ -34,7 +36,17 @@ public  class BancaDistribuirCartas implements PlayerState {
 	@Override
 	public void play(Banca b, Participante p) {
 		
-		b.distribuirCartas();
+		for(int i = 0; i < b.getEstourados().size(); i++){
+			b.getEstourados().get(i);//.perdeu(); TEM Q IMPLEMENTAR ISSO DAQUI RÁPIDO
+		}
+		
+		for(int i = 0; i < b.getBlackJack().size(); i ++){
+			b.getBlackJack().get(i);//.ganhou(); TEM Q IMPLEMENTAR ISSO DAQUI RÁPIDO
+		}
+		
+		for(int i = 0; i < b.getEsperando().size(); i++){
+			b.getEsperando().get(i);//.ganhou(); TEM Q IMPLEMENTAR ISSO MAIS Q URGENTE
+		}
 	}
 
 }

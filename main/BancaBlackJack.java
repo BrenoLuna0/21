@@ -1,3 +1,5 @@
+package main;
+import estadosJogador.PlayerState;
 
 public  class BancaBlackJack implements PlayerState {
 

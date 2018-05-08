@@ -1,3 +1,4 @@
+package main;
 import java.util.ArrayList;
 import java.util.Scanner;
 
@@ -22,6 +23,18 @@ public class Banca extends Participante {
 		this.esperando.add(p);
 	}
 	
+	public ArrayList<Participante> getEstourados(){
+		return this.estourados;
+	}
+	
+	public ArrayList<Participante> getBlackJack(){
+		return this.blackJack;
+	}
+	
+	public ArrayList<Participante> getEsperando(){
+		return this.esperando;
+	}
+	
 	public void rodada() {
 		apostas();
 		this.distribuirCartas();
@@ -31,6 +44,24 @@ public class Banca extends Participante {
 			jogadores.get(i).getEstado().play(this,jogadores.get(i));// realiza a jogada de todos os jogadores
 		}
 	}
+	
+	public void darCarta(Jogador j) {
+		j.receberCarta(this.rep.getRepositorio().get(0)); // da a carta p o jogador passando cmo parametro apenas a carta
+		Exibicao.recebimentoCarta(j,this.rep.getRepositorio().get(0));
+		this.rep.getRepositorio().remove(0); // remove a carta entregue do repositorio
+	}
+	
+	public ArrayList<Carta> getRep() {
+		return this.rep.getRepositorio();
+	}
+	
+	
+	// metodos antigos q precisam ser revisados
+	//.
+	//.
+	//.
+	//.
+	//.
 	
 	private void apostas() {
 		Scanner s = new Scanner(System.in);
@@ -55,11 +86,6 @@ public class Banca extends Participante {
 		return c;
 	}
 	
-	public void darCarta(ArrayList<Carta> c, Jogador j, int m) {
-		j.setCartaMao(c.get(0), m);
-		Exibicao.recebimentoCarta(j,c.get(0));
-		c.remove(0);
-	}
 	
 	public void receberCarta(ArrayList<Carta> c) {
 		this.maob.addCarta(c.get(0));
@@ -117,17 +143,7 @@ public class Banca extends Participante {
 		}
 	}
 	
-	public ArrayList<Participante> getEstourados(){
-		return this.estourados;
-	}
-	
-	public ArrayList<Participante> getBlackJack(){
-		return this.blackJack;
-	}
-	
-	public ArrayList<Participante> getEsperando(){
-		return this.esperando;
-	}
+
 
 }
 

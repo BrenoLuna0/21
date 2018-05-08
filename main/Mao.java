@@ -1,24 +1,28 @@
+package main;
 	
 import java.util.ArrayList;
+
+import estadosJogador.Espera;
+import estadosJogador.HandListener;
 
 public class Mao {
 	
 	private ArrayList<Carta> cartasMao;
 	private static final int BLACKJACK = 21;
 	private HandListener holder;
-	private Participante participante;
+	private Jogador jogador;
 	
-	public Mao(Participante p) {
+	public Mao(Jogador j) {
 		this.cartasMao = new ArrayList<Carta>();
-		this.participante = p;
+		this.jogador = j;
 		
 		setHolder(
 				new HandListener() {
-					public void jogavel(Participante p) {}
-					public void estourada(Participante p) {}
-					public void blackjack(Participante p) {}
-					public void modificada(Mao m, Participante p) {
-						new Espera().modificada(m, p);
+					public void jogavel(Jogador j) {}
+					public void estourada(Jogador j) {}
+					public void blackjack(Jogador j) {}
+					public void modificada(Mao m, Jogador j) {
+						new Espera().modificada(m, j);
 					}
 				}
 			);
@@ -30,7 +34,7 @@ public class Mao {
 	
 	public void addCarta(Carta c) {
 		this.cartasMao.add(c);	
-		this.holder.modificada(this,this.participante);
+		this.holder.modificada(this,this.jogador);
 	}
 	
 	// acesso a pontuação da mão

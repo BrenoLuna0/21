@@ -1,4 +1,8 @@
+package main;
 import java.util.ArrayList;
+
+import estadosJogador.PlayerListener;
+import estadosJogador.PlayerState;
 
 public abstract class Participante {
 
@@ -17,9 +21,15 @@ public abstract class Participante {
 		return this.estadoAtual;
 	}
 	
-	public void receberCarta(int i, Banca b, ArrayList<Carta> c) {
-		b.darCarta(c, (Jogador) this, i); 
-	}
+	
+	// metodos antigos q precisam ser revisados
+	//.
+	//.
+	//.
+	//.
+	//.
+	//.
+	//.
 
 	public void retiraDinheiro(int i) {
 		if (getDinheiro() > 0) {

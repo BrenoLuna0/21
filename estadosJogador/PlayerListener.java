@@ -1,3 +1,5 @@
+package estadosJogador;
+import main.Jogador;
 
 public interface PlayerListener {
 	public void jogadorModificado(Jogador j);

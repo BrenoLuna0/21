@@ -1,5 +1,8 @@
+package main;
 import java.util.ArrayList;
 import java.util.Scanner;
+
+import estadosJogador.Espera;
 
 public class Jogador extends Participante {
 	
@@ -12,6 +15,21 @@ public class Jogador extends Participante {
 		this.setEstadoAtual(new Espera());
 	}
 
+	
+	public void receberCarta(Carta c) {
+		this.getArrayMao().get(0).addCarta(c);
+	}
+	
+	
+	
+	
+	
+	
+	// daqui p baixo tem q arrumar
+	//.
+	//.
+	//.
+	//.
 	public void dobrarAposta(int i, Banca b, ArrayList<Carta> c) {
 		if (this.getDinheiro() > this.getMao(i).getPontos()) { // se tiver dinheiro
 			this.retiraDinheiro(this.getMao(i).getPontos()); // tira dinheiro do saldo do jogador

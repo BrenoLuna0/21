@@ -1,3 +1,4 @@
+package main;
 public class Baralho {
 	private Carta[] baralho = new Carta[52];
 	private final static char[] faces = Utilidade.delegarfaces();
