@@ -55,6 +55,16 @@ public class Banca extends Participante {
 		return this.rep.getRepositorio();
 	}
 	
+	public int escolhaJogador() {
+		Scanner s = new Scanner(System.in);
+		int entrada;
+		
+		while (entrada < 1 || entrada > 2) { // valida a entrada do jogador
+			entrada = s.nextInt();
+			return entrada;
+		}
+	}
+	
 	
 	// metodos antigos q precisam ser revisados
 	//.

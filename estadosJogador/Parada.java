@@ -6,7 +6,8 @@ import main.Mao;
 public class Parada implements PlayerState{
 
 	
-
+	public void parada(Jogador j) {}
+	
 	public void jogavel(Jogador j) {}
 
 

@@ -6,6 +6,8 @@ import main.Mao;
 public class Estouro implements PlayerState{
 
 
+	public void parada(Jogador j) {}
+	
 	public void jogavel(Jogador j) {}
 
 

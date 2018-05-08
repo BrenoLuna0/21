@@ -37,5 +37,8 @@ public class Espera implements PlayerState{
 		modificada(j.getArrayMao().get(0),j);
 		j.getEstado().play(b, j);
 	}
+
+
+	public void parada(Jogador j) {}
 	
 }

@@ -7,4 +7,5 @@ public interface HandListener {
 	public void estourada(Jogador j);
 	public void blackjack(Jogador j);
 	public void modificada(Mao m, Jogador j);
+	public void parada(Jogador j);
 }

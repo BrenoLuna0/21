@@ -21,6 +21,7 @@ public class Mao {
 					public void jogavel(Jogador j) {}
 					public void estourada(Jogador j) {}
 					public void blackjack(Jogador j) {}
+					public void parada(Jogador j) {}
 					public void modificada(Mao m, Jogador j) {
 						new Espera().modificada(m, j);
 					}
