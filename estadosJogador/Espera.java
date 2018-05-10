@@ -1,6 +1,7 @@
 package estadosJogador;
 
 import main.Banca;
+import main.Exibicao;
 import main.Jogador;
 import main.Mao;
 import main.Participante;
@@ -19,14 +20,17 @@ public class Espera implements PlayerState {
 
 	public void jogavel(Participante p) {
 		p.setEstadoAtual(new Jogavel());
+		Exibicao.infoJogavel(p);
 	}
 
 	public void estourada(Participante p) {
 		p.setEstadoAtual(new Estouro());
+		Exibicao.infoEstourado(p);
 	}
 
 	public void blackjack(Participante p) {
 		p.setEstadoAtual(new BlackJack());
+		Exibicao.infoBlackJack(p);
 	}
 
 	public void modificada(Mao m, Participante p) {
@@ -44,7 +48,6 @@ public class Espera implements PlayerState {
 		p.getEstado().play(b, p);
 	}
 
-	public void parada(Participante p) {
-	}
+	public void parada(Participante p) {}
 
 }

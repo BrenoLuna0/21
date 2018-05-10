@@ -31,6 +31,20 @@ public abstract class Participante {
 		mao.addCarta(c);
 	}
 	
+	public void visualizarInfo() { // depuração
+		System.out.println("Nome: " + nome);
+		System.out.println("Pontuação da mão: " + mao.getPontos());
+		System.out.println("Estado Atual: " + this.getEstado().getNome());
+	}
+	
+	public void visualizarMao() { // depuração
+		System.out.println("Mao do "+ nome);
+		for(int i = 0; i < mao.getCartasMao().size(); i++) {
+				System.out.println(mao.getCartaMao(i).getValorFace() + " de " + mao.getCartaMao(i).getNaipe());
+		}
+		System.out.println("======================");
+	}
+	
 	// metodos antigos q precisam ser revisados
 	//.
 	//.

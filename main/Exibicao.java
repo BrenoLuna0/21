@@ -176,6 +176,31 @@ public class Exibicao {
 		System.out.println("Todos os jogadores Sairam, fim de jogo");		
 	}
 	
+	public static void inicioJogada(Jogador j) {
+		System.out.println(j.getNome() + " é a sua vez, o que você deseja fazer?");
+	}
+	
+	public static void opcoesJogada(Participante p) {
+		System.out.println(p.getNome()+" escolha:");
+		System.out.println(" 1 - Receber Carta");	
+		System.out.println(" 2 - Parar");	
+	}
+	
+	public static void infoParada(Participante p) {
+		System.out.println(p.getNome()+" encerrou sua jogada");		
+	}
+	
+	public static void infoJogavel(Participante p) {
+		System.out.println(p.getNome()+" pode continuar sua jogada se desejar");		
+	}
+	
+	public static void infoEstourado(Participante p) {
+		System.out.println(p.getNome()+" Estourou 21 pontos");		
+	}
+	
+	public static void infoBlackJack(Participante p) {
+		System.out.println(p.getNome()+" fez 21 pontos!");		
+	}
 	
 	
 	

@@ -9,13 +9,14 @@ public class Main {
 		
 		b.instanciarNovoBaralho(); // ok  b.getRepositorio().visualizarBaralho();
 		
-		b.instanciarJogadores(7); // ok  
+		b.instanciarJogadores(2); // ok  
 		
-		b.distribuirCartas(); // ok
+		b.distribuirCartas(); // ok	
 		
 		b.visualizarjogadores();
 		
-		
+		b.rodada();
+			
 		
 	}
 

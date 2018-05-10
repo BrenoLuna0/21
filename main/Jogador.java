@@ -14,18 +14,9 @@ public class Jogador extends Participante {
 		mao = new Mao(this);
 	}
 	
-	public void visualizarJogador() { // depuração
-		System.out.println("Nome: " + nome);
-		System.out.println("Estado Atual: " + this.getEstado().getNome());
-	}
 	
-	public void visualizarMao() { // depuração
-		System.out.println("Mao do "+ nome);
-		for(int i = 0; i < mao.getCartasMao().size(); i++) {
-				System.out.println(mao.getCartaMao(i).getValorFace() + " de " + mao.getCartaMao(i).getNaipe());
-		}
-		System.out.println("======================");
-	}
+	
+	
 	
 	
 	// daqui p baixo tem q arrumar
