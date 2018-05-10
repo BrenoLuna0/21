@@ -15,19 +15,19 @@ public class BancaEsperando implements PlayerState {
 
 	@Override
 	public void jogavel(Participante p) {
-		p.setEstadoAtual(new Jogavel());
+		p.setEstadoAtual(new BancaEsperando());
 		
 	}
 
 	@Override
 	public void estourada(Participante p) {
-		p.setEstadoAtual(new Estouro());
+		p.setEstadoAtual(new BancaEstourada());
 		
 	}
 
 	@Override
 	public void blackjack(Participante p) {
-		p.setEstadoAtual(new BlackJack());
+		p.setEstadoAtual(new BancaBlackJack());
 		
 	}
 
