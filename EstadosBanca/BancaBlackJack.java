@@ -50,17 +50,20 @@ public  class BancaBlackJack implements PlayerState {
 		for(int i = 0; i < b.getEsperando().size(); i++) {
 			
 			Exibicao.msgDerrota3(b.getEsperando().get(i), i);
+			b.perder(b.getEsperando().get(i));
 			
 		}
 		
 		for(int i = 0; i < b.getEstourados().size(); i++) {
 			
 			Exibicao.msgDerrota1(b.getEstourados().get(i), i);
+			b.perder(b.getEstourados().get(i));
 		}
 		
 		for(int i = 0; i < b.getBlackJack().size(); i++) {
 			
 			Exibicao.msgEmpate2(b.getBlackJack().get(i));
+			b.empatar(b.getBlackJack().get(i));
 			
 		}
 		

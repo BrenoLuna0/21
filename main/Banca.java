@@ -67,8 +67,9 @@ public class Banca extends Participante {
 	
 	public void rodada() {
 		//this.distribuirCartas();
-
+		
 		Exibicao.inicio();
+		
 		
 		for (int i = 0; i < jogadores.size(); i++) {
 			Exibicao.inicioJogada(jogadores.get(i));
@@ -129,23 +130,22 @@ public class Banca extends Participante {
 	//.
 	//.
 	
-	private void apostas() {
-		Scanner s = new Scanner(System.in);
-		int entrada;
-		Exibicao.rodadaApostas();
-		for (int i = 0; i < jogadores.size(); i++) { // recebe as apostas de cada jogador
-			Exibicao.apostaJogador(this.jogadores.get(i));
-			entrada = s.nextInt();
-
-			while (entrada < 25 || entrada > 75) { // valida a entrada do jogador
-				Exibicao.apostaInvalida();
-				entrada = s.nextInt();
-			}
-
-			jogadores.get(i).apostar(entrada); // realiza a aposta
-			Exibicao.confirmacaoAposta(this.jogadores.get(i), entrada);
-		}
+	public void empatar(Participante p) {
+		p.atualizarDinheiro(p.getMao().getValorAposta());
 	}
+	
+	public void ganharBlackJack(Participante p) {
+		p.atualizarDinheiro(p.getMao().getValorAposta()*2.5);
+	}
+	
+	public void ganhar(Participante p) {
+		p.atualizarDinheiro(p.getMao().getValorAposta()*2);
+	}
+	
+	public void perder(Participante p) {
+		System.out.println("Seu saldo é de " + p.getDinheiro());
+	}
+
 	
 	public ArrayList<Carta> embaralhar(ArrayList<Carta> c) {
 		Utilidade.misturar(c);
@@ -165,7 +165,13 @@ public class Banca extends Participante {
 	
 
 
-	
+	public void rodadaApostas() {
+		Exibicao.rodadaApostas();
+		
+		for(int i = 0; i < jogadores.size(); i++) {
+			jogadores.get(i).apostar();
+		}
+	}
 
 
 }

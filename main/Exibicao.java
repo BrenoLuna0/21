@@ -42,17 +42,17 @@ public class Exibicao {
 		System.out.println("Mão atual: " + i);
 	}
 	
-	public static void exibirCartasMao(Jogador j, int i) {
+	/*public static void exibirCartasMao(Jogador j, int i) {
 		for (int a = 0; a < j.getMao(i).getArrayMao().size(); a++) {
 			System.out.println(
 					j.getMao(i).getCartaMao(a).getValor() + " de " + j.getMao(i).getCartaMao(a).getNaipe());
 		}
 		
-	}
+	}*/
 	
-	public static void pontuacaoMao(Jogador j, int i) {
+	/*public static void pontuacaoMao(Jogador j, int i) {
 		System.out.println("Você possui " + j.getMao(i).getPontos() + " pontos nessa mão");
-	}
+	}*/
 	
 	public static void menuJogadas1() {
 		System.out.println(" 1 - Receber Carta");

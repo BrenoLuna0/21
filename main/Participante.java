@@ -10,6 +10,7 @@ public abstract class Participante {
 	private PlayerListener listener;
 	protected Mao mao;
 	protected String nome;
+	protected double dinheiro;
 	
 	public void setEstadoAtual(PlayerState s) {
 		this.estadoAtual = s;
@@ -43,6 +44,15 @@ public abstract class Participante {
 				System.out.println(mao.getCartaMao(i).getValorFace() + " de " + mao.getCartaMao(i).getNaipe());
 		}
 		System.out.println("======================");
+	}
+	
+	public void atualizarDinheiro(double d) {
+		this.dinheiro = dinheiro + d;
+		System.out.println("Seu novo saldo é de "+ dinheiro);
+	}
+	
+	public double getDinheiro() {
+		return this.dinheiro;
 	}
 	
 	// metodos antigos q precisam ser revisados

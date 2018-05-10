@@ -48,29 +48,33 @@ public class BancaParada implements PlayerState {
 	public void play(Banca b, Participante p) {
 		
 		for(int i = 0; i < b.getEsperando().size(); i++) {
-			if(b.getEsperando().get(i).getMao().igualA(b.getMao())) {
+			if(b.getEsperando().get(i).getMao().igualA(b.getMao())) { // se o jogador e a banca tiverem a mesma pontuação
 				
 				Exibicao.msgEmpate2(b.getEsperando().get(i));
+				b.empatar(b.getEsperando().get(i));
 				
-				
-			}else if(b.getEsperando().get(i).getMao().maiorQ(b.getMao())) {
+			}else if(b.getEsperando().get(i).getMao().maiorQ(b.getMao())) { // se o jogador tem mais pontos q a banca
 				
 				Exibicao.msgVitoria2(b.getEsperando().get(i), i);
+				b.ganhar(b.getEsperando().get(i));
 				
-			} else {
+			} else { // se o jogador tiver menos pontos q a banca
 
 				Exibicao.msgDerrota2(b.getEsperando().get(i), i);
+				b.perder(b.getEsperando().get(i));
 			}
 		}
 		
-		for(int i = 0; i < b.getBlackJack().size(); i++) {
+		for(int i = 0; i < b.getBlackJack().size(); i++) { //para todos os jogadores que fizeram black Jack
 			
 			Exibicao.msgVitoria3(b.getBlackJack().get(i), i);
+			b.ganharBlackJack(b.getBlackJack().get(i));
 		}
 		
-		for(int i = 0; i < b.getEstourados().size(); i++) {
+		for(int i = 0; i < b.getEstourados().size(); i++) { //para todos os jogadores que estouraram
 			
 			Exibicao.msgDerrota1(b.getEstourados().get(i), i);
+			b.perder(b.getEstourados().get(i));
 		}
 	}
 

@@ -11,6 +11,7 @@ public class Mao {
 	private static final int BLACKJACK = 21;
 	private HandListener holder;
 	private Participante participante;
+	private int aposta;
 	
 	public Mao(Jogador j) {
 		this.cartasMao = new ArrayList<Carta>();
@@ -112,8 +113,12 @@ public class Mao {
 	}
 
 	public void setValorAposta(int i) {
-		// TODO Auto-generated method stub
+		this.aposta = i;
 		
+	}
+	
+	public int getValorAposta() {
+		return this.aposta;
 	}
 	
 	

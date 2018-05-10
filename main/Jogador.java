@@ -7,14 +7,29 @@ import estadosJogador.PlayerListener;
 import estadosJogador.PlayerState;
 
 public class Jogador extends Participante {
+	
 
 	public Jogador(String nome) {
 		this.nome = nome;
 		this.setEstadoAtual(new Espera());
 		mao = new Mao(this);
+		super.dinheiro = 300;
 	}
 	
-	
+	public void apostar() {
+		int aposta;
+		Scanner s = new Scanner(System.in);
+		
+		Exibicao.apostaJogador(this);
+		aposta = s.nextInt();
+		while(aposta < 25 || aposta > 75) {
+			Exibicao.apostaInvalida();
+			aposta = s.nextInt();
+		}
+		
+		dinheiro = dinheiro - aposta;
+		mao.setValorAposta(aposta);
+	}
 	
 	
 	
@@ -24,7 +39,7 @@ public class Jogador extends Participante {
 	//.
 	//.
 	//.
-	public void dobrarAposta(int i, Banca b, ArrayList<Carta> c) {
+	/*public void dobrarAposta(int i, Banca b, ArrayList<Carta> c) {
 		if (this.getDinheiro() > this.getMao(i).getPontos()) { // se tiver dinheiro
 			this.retiraDinheiro(this.getMao(i).getPontos()); // tira dinheiro do saldo do jogador
 			this.getMao(i).setValorAposta(2 * this.getMao(i).getPontos()); // dobra o valor da aposta
@@ -47,19 +62,9 @@ public class Jogador extends Participante {
 			b.darCarta(c, (Jogador) this, i);
 			b.darCarta(c, (Jogador) this, i + 1);
 		}
-	}
-
-	public void apostar(int aposta) {
-		Mao m = new Mao(this);
-		this.mao.add(m);
-
-		if (this.mao.size() == 0) { // se ele nao tiver um segundo baralho.....
-			this.mao.get(0).setValorAposta(aposta);// a aposta vai para a primeira mao, senao.....
-		} else {
-			this.mao.get(this.mao.size() - 1).setValorAposta(aposta);// a aposta vai para ultima mao instanciada
-		}
-	}
-
+	}*/
+	
+	
 	
 	
 	/*public void jogada(Banca banca,RepositorioCartas rep){

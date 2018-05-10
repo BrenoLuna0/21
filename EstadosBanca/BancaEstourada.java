@@ -50,16 +50,19 @@ public class BancaEstourada implements PlayerState {
 		for(int i = 0; i < b.getEstourados().size(); i++){
 			
 			Exibicao.msgEmpate(b.getEstourados().get(i));
+			b.empatar(b.getEstourados().get(i));
 		}
 		
 		for(int i = 0; i < b.getBlackJack().size(); i ++){
 			
 			Exibicao.msgVitoria1(b.getBlackJack().get(i), i);
+			b.ganharBlackJack(b.getBlackJack().get(i));
 		}
 		
 		for(int i = 0; i < b.getEsperando().size(); i++){
 			
 			Exibicao.msgVitoria1(b.getEsperando().get(i), i);
+			b.ganhar(b.getEsperando().get(i));
 		}
 	}
 
