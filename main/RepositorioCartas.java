@@ -31,6 +31,12 @@ public class RepositorioCartas {
 	public ArrayList<Carta> getRepositorio() {
 		return this.pilha;
 	}
+	
+	public void visualizarBaralho() { // depuração
+		for(int i = 0; i < pilha.size(); i++) {
+			System.out.println(pilha.get(i).getValor() + " de " + pilha.get(i).getNaipe());
+		}
+	}
 
 }
 

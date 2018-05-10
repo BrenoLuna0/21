@@ -29,6 +29,10 @@ public class Mao {
 			);
 	}
 	
+	public Mao(Banca b) {
+		// overide p mão poder ser iniciada p banca
+	}
+	
 	public void setHolder(HandListener h) {
 		this.holder = h;
 	}

@@ -5,6 +5,16 @@ import main.Jogador;
 import main.Mao;
 
 public class BlackJack implements PlayerState {
+	
+	private String nome;
+	
+	public BlackJack(){
+		this.nome = "BlackJack";
+	}
+	
+	public String getNome() {
+		return nome;
+	}
 
 	public void parada(Jogador j) {}
 	

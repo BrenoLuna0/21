@@ -3,12 +3,18 @@ import java.util.ArrayList;
 import java.util.Scanner;
 
 import estadosJogador.Espera;
+import estadosJogador.PlayerListener;
+import estadosJogador.PlayerState;
 
 public class Jogador extends Participante {
 	
 	private String nome;
+	private int dinheiro;
+	private PlayerState estadoAtual;
+	private PlayerListener listener;
 	
-
+	protected Mao mao = new Mao(this);
+	
 	public Jogador(String nome) {
 		this.nome = nome;
 		this.setDinheiro(1000);
@@ -16,13 +22,32 @@ public class Jogador extends Participante {
 	}
 
 	
+	public void setEstadoAtual(PlayerState s) {
+		this.estadoAtual = s;
+	}
+	
+	public PlayerState getEstado(){
+		return this.estadoAtual;
+	}
+	
+	
 	public void receberCarta(Carta c) {
 		this.getArrayMao().get(0).addCarta(c);
 	}
 	
 	
+	public void visualizarJogador() { // depuração
+		System.out.println("Nome: " + this.nome);
+		System.out.println("Estado Atual: " + this.getEstado().getNome());
+	}
 	
-	
+	public void exibirMao() {
+		for(int i = 0; i < mao.size(); i++) {
+			for(int j = 0; i < mao.get(i).getArrayMao(); i++) {
+				
+			}
+		}
+	}
 	
 	
 	// daqui p baixo tem q arrumar

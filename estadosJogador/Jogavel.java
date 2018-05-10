@@ -5,6 +5,16 @@ import main.Mao;
 
 public class Jogavel implements PlayerState{
 
+	private String nome;
+	
+	public Jogavel(){
+		this.nome = "Jogavel";
+	}
+	
+	public String getNome() {
+		return nome;
+	}
+	
 	public void parada(Jogador j) {
 		j.setEstadoAtual(new Parada());
 	}
@@ -18,7 +28,6 @@ public class Jogavel implements PlayerState{
 		j.setEstadoAtual(new Estouro());
 		
 	}
-
 	
 	public void blackjack(Jogador j) {
 		j.setEstadoAtual(new BlackJack());

@@ -4,7 +4,16 @@ import main.Jogador;
 import main.Mao;
 
 public class Estouro implements PlayerState{
-
+	
+	private String nome;
+	
+	public Estouro(){
+		this.nome = "Estouro";
+	}
+	
+	public String getNome() {
+		return nome;
+	}
 
 	public void parada(Jogador j) {}
 	

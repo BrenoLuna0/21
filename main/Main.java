@@ -5,25 +5,14 @@ public class Main {
 
 	public static void main(String[] args) {
 		
-		Banca banca = new Banca();
+		Banca b = new Banca();
 		
-		int entrada;
-		Scanner s = new Scanner(System.in);
-		Exibicao.iniciarJogadores();
+		b.instanciarNovoBaralho(); // ok  b.getRepositorio().visualizarBaralho();
 		
-		entrada = s.nextInt();
-		
-		while(entrada > 7) {
-			Exibicao.validaQtdJogadores();
-			entrada = s.nextInt();
-		}
+		b.instanciarJogadores(1); // ok  b.visualizarjogadores();
 		
 		
-		Jogo jogo = new Jogo(entrada,banca);
 		
-		jogo.blackJack();
 	}
-
-	
 
 }

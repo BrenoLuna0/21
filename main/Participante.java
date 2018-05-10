@@ -6,20 +6,8 @@ import estadosJogador.PlayerState;
 
 public abstract class Participante {
 
-	protected ArrayList<Mao> mao = new ArrayList<Mao>();
-	private int dinheiro;
-	private PlayerState estadoAtual;
-	private PlayerListener listener;
-
-	// metodos da classe
 	
-	public void setEstadoAtual(PlayerState s) {
-		this.estadoAtual = s;
-	}
 	
-	public PlayerState getEstado(){
-		return this.estadoAtual;
-	}
 	
 	
 	// metodos antigos q precisam ser revisados

@@ -4,12 +4,35 @@ import java.util.Scanner;
 
 public class Banca extends Participante {
 	
-	private Mao maob = new Mao(this);
+	public static final int pontuacaoMaxima = 21;
+	public static final int apostaMinima = 25;
+	
 	private ArrayList<Participante>estourados = new ArrayList<Participante>();
 	private ArrayList<Participante>blackJack = new ArrayList<Participante>();
 	private ArrayList<Participante>esperando = new ArrayList<Participante>();
+	
 	private ArrayList<Jogador> jogadores = new ArrayList<Jogador>();
 	private RepositorioCartas rep;
+	private Mao maob = new Mao(this);
+	
+	public void instanciarJogadores(int q) {
+		for (int i = 0; i < q; i++) { // instancia quantidade de jogadores pedida
+			Exibicao.nomeJogador(i);
+			String entrada = new Scanner(System.in).nextLine();
+			jogadores.add(new Jogador(entrada));
+		}
+	}
+	
+	public void visualizarjogadores() { // depuração
+		for (int i = 0; i < jogadores.size(); i++) {
+			jogadores.get(i).visualizarJogador();
+		}
+	}
+
+	public void instanciarNovoBaralho() {
+		this.rep = new RepositorioCartas();
+		embaralhar(this.rep.getRepositorio());
+	}
 	
 	public void estourado(Participante p) {
 		this.estourados.add(p);	
@@ -36,7 +59,6 @@ public class Banca extends Participante {
 	}
 	
 	public void rodada() {
-		apostas();
 		this.distribuirCartas();
 
 		Exibicao.inicio();
@@ -55,14 +77,24 @@ public class Banca extends Participante {
 		return this.rep.getRepositorio();
 	}
 	
+	public RepositorioCartas getRepositorio() { // depuração
+		return this.rep;
+	}
+	
 	public int escolhaJogador() {
 		Scanner s = new Scanner(System.in);
-		int entrada;
+		int entrada = s.nextInt();
 		
-		while (entrada < 1 || entrada > 2) { // valida a entrada do jogador
-			entrada = s.nextInt();
-			return entrada;
+		try {
+			while (entrada < 1 || entrada > 2) { // valida a entrada do jogador
+				entrada = s.nextInt();
+				return entrada;
+			}
 		}
+		finally {
+			s.close();
+		}
+		return entrada;
 	}
 	
 	
@@ -119,13 +151,13 @@ public class Banca extends Participante {
 	public void distribuirCartas() {
 		
 		for (int i = 0; i < this.jogadores.size(); i++) { // distribui primeira carta p todos os jogadores
-			this.darCarta(this.rep.getRepositorio(), this.jogadores.get(i), 0);
+			this.darCarta(this.jogadores.get(i));
 		}
 
 		this.receberCarta(this.rep.getRepositorio()); // dá a primeira carta p banca
 
 		for (int i = 0; i < this.jogadores.size(); i++) { // distribui a segunda carta p todos os jogadores
-			this.darCarta(this.rep.getRepositorio(), this.jogadores.get(i), 0);
+			this.darCarta(this.jogadores.get(i));
 		}
 
 		this.receberCarta(this.rep.getRepositorio()); // dá a segunda carta p banca

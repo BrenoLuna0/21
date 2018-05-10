@@ -5,6 +5,15 @@ import main.Mao;
 
 public class Parada implements PlayerState{
 
+	private String nome;
+	
+	public Parada(){
+		this.nome = "Parada";
+	}
+	
+	public String getNome() {
+		return nome;
+	}
 	
 	public void parada(Jogador j) {}
 	

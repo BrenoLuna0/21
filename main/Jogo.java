@@ -6,27 +6,15 @@ public class Jogo {
 
 	private ArrayList<Jogador> jogadores = new ArrayList<Jogador>();
 	private Banca banca;
-	private RepositorioCartas rep;
-	public static final int pontuacaoMaxima = 21;
-	public static final int apostaMinima = 25;
+	
+	
 
-	public Jogo(int q, Banca b) {
-		this.banca = b;
-
-		for (int i = 0; i < q; i++) { // instancia quantidade de jogadores pedida
-			Exibicao.nomeJogador(i);
-			String entrada = new Scanner(System.in).nextLine();
-			jogadores.add(new Jogador(entrada));
-		}
-	}
 	
 	
 	
 	
-	public void instanciarNovoBaralho() {
-		this.rep = new RepositorioCartas();
-		this.banca.embaralhar(this.rep.getRepositorio());
-	}
+	
+	
 	
 	public void blackJack() {
 		while(this.jogadores.size() > 0) {
