@@ -1,5 +1,8 @@
 package main;
 
+import estadosJogador.BlackJack;
+import estadosJogador.Estouro;
+import estadosJogador.Jogavel;
 import estadosJogador.PlayerState;
 
 public class BancaEsperando implements PlayerState {
@@ -12,19 +15,19 @@ public class BancaEsperando implements PlayerState {
 
 	@Override
 	public void jogavel(Participante p) {
-		// TODO Auto-generated method stub
+		p.setEstadoAtual(new Jogavel());
 		
 	}
 
 	@Override
 	public void estourada(Participante p) {
-		// TODO Auto-generated method stub
+		p.setEstadoAtual(new Estouro());
 		
 	}
 
 	@Override
 	public void blackjack(Participante p) {
-		// TODO Auto-generated method stub
+		p.setEstadoAtual(new BlackJack());
 		
 	}
 
@@ -52,6 +55,8 @@ public class BancaEsperando implements PlayerState {
 			b.receberCarta();
 			modificada(b.getMao(), p);
 			b.getEstado().play(b,b);
+		} else {
+			parada(b);
 		}
 		
 	}
