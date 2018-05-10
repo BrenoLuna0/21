@@ -10,19 +10,19 @@ public class Mao {
 	private ArrayList<Carta> cartasMao;
 	private static final int BLACKJACK = 21;
 	private HandListener holder;
-	private Jogador jogador;
+	private Participante participante;
 	
 	public Mao(Jogador j) {
 		this.cartasMao = new ArrayList<Carta>();
-		this.jogador = j;
+		this.participante = j;
 		
 		setHolder(
 				new HandListener() {
-					public void jogavel(Jogador j) {}
-					public void estourada(Jogador j) {}
-					public void blackjack(Jogador j) {}
-					public void parada(Jogador j) {}
-					public void modificada(Mao m, Jogador j) {
+					public void jogavel(Participante p) {}
+					public void estourada(Participante p) {}
+					public void blackjack(Participante p) {}
+					public void parada(Participante p) {}
+					public void modificada(Mao m, Participante p) {
 						new Espera().modificada(m, j);
 					}
 				}
@@ -30,7 +30,8 @@ public class Mao {
 	}
 	
 	public Mao(Banca b) {
-		// overide p mão poder ser iniciada p banca
+		this.cartasMao = new ArrayList<Carta>();
+		participante = b;
 	}
 	
 	public void setHolder(HandListener h) {
@@ -39,7 +40,7 @@ public class Mao {
 	
 	public void addCarta(Carta c) {
 		this.cartasMao.add(c);	
-		this.holder.modificada(this,this.jogador);
+		this.holder.modificada(this,participante);
 	}
 	
 	// acesso a pontuação da mão
@@ -58,7 +59,7 @@ public class Mao {
 		return this.cartasMao.get(i);
 	}
 	
-	public ArrayList<Carta> getArrayMao() { // acesso ao array c todas as cartas da mão
+	public ArrayList<Carta> getCartasMao() { // acesso ao array c todas as cartas da mão
 		return this.cartasMao;
 	}
 
@@ -103,7 +104,7 @@ public class Mao {
 	}
 	
 	public void limparMao() {
-		this.getArrayMao().clear();
+		getCartasMao().clear();;
 	}
 
 	public void setValorAposta(int i) {

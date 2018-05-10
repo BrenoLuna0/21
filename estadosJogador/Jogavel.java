@@ -2,6 +2,7 @@ package estadosJogador;
 import main.Banca;
 import main.Jogador;
 import main.Mao;
+import main.Participante;
 
 public class Jogavel implements PlayerState{
 
@@ -15,50 +16,50 @@ public class Jogavel implements PlayerState{
 		return nome;
 	}
 	
-	public void parada(Jogador j) {
-		j.setEstadoAtual(new Parada());
+	public void parada(Participante p) {
+		p.setEstadoAtual(new Parada());
 	}
 	
-	public void jogavel(Jogador j) {
-		j.setEstadoAtual(new Jogavel());
-	}
-
-	
-	public void estourada(Jogador j) {
-		j.setEstadoAtual(new Estouro());
-		
-	}
-	
-	public void blackjack(Jogador j) {
-		j.setEstadoAtual(new BlackJack());
-		
+	public void jogavel(Participante p) {
+		p.setEstadoAtual(new Jogavel());
 	}
 
 	
-	public void modificada(Mao m, Jogador j) {
+	public void estourada(Participante p) {
+		p.setEstadoAtual(new Estouro());
+		
+	}
+	
+	public void blackjack(Participante p) {
+		p.setEstadoAtual(new BlackJack());
+		
+	}
+
+	
+	public void modificada(Mao m, Participante p) {
 		if(m.blackJack()) {
-			blackjack(j);
+			blackjack(p);
 		}
 		else if(m.estouro()) {
-			estourada(j);
+			estourada(p);
 		}
 		else {
-			jogavel(j);
+			jogavel(p);
 		}
 	}
 
 
-	public void play(Banca b, Jogador j) {
+	public void play(Banca b, Participante p) {
 		
 		int entrada = b.escolhaJogador();
 		
 		if(entrada == 1) {
-			b.darCarta(j);
+			b.darCarta(p);
 		} else if (entrada == 2) {
-			parada(j);
+			parada(p);
 		}
-		modificada(j.getMao(0),j);
-		j.getEstado().play(b, j);
+		modificada(p.getMao(),p);
+		p.getEstado().play(b, p);
 	}
 
 

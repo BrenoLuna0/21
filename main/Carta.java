@@ -3,9 +3,9 @@ package main;
 public class Carta {
 	private int valor;
 	private String naipe;
-	private  char valorFace;
+	private  String valorFace;
 	
-	public Carta(int valor, String naipe, char valorFace) { 
+	public Carta(int valor, String naipe, String valorFace) { 
 		this.valor = valor;
 		this.naipe = naipe;
 		this.valorFace = valorFace;
@@ -20,7 +20,7 @@ public class Carta {
 		this.naipe = naipe;
 	}
 	
-	public void setValorFace(char c) {
+	public void setValorFace(String c) {
 		this.valorFace = c;
 	}
 
@@ -32,7 +32,7 @@ public class Carta {
 		return this.naipe;
 	}
 	
-	public char getValorFace(){
+	public String getValorFace(){
 		return this.valorFace;
 	}
 

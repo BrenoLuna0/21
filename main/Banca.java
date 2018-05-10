@@ -13,7 +13,11 @@ public class Banca extends Participante {
 	
 	private ArrayList<Jogador> jogadores = new ArrayList<Jogador>();
 	private RepositorioCartas rep;
-	private Mao maob = new Mao(this);
+	private Mao maob;
+	
+	public Banca() {
+		maob = new Mao(this);
+	}
 	
 	public void instanciarJogadores(int q) {
 		for (int i = 0; i < q; i++) { // instancia quantidade de jogadores pedida
@@ -26,6 +30,7 @@ public class Banca extends Participante {
 	public void visualizarjogadores() { // depuração
 		for (int i = 0; i < jogadores.size(); i++) {
 			jogadores.get(i).visualizarJogador();
+			jogadores.get(i).visualizarMao();
 		}
 	}
 
@@ -67,9 +72,9 @@ public class Banca extends Participante {
 		}
 	}
 	
-	public void darCarta(Jogador j) {
-		j.receberCarta(this.rep.getRepositorio().get(0)); // da a carta p o jogador passando cmo parametro apenas a carta
-		Exibicao.recebimentoCarta(j,this.rep.getRepositorio().get(0));
+	public void darCarta(Participante p) {
+		p.receberCarta(this.rep.getRepositorio().get(0)); // da a carta p o jogador passando cmo parametro apenas a carta
+		Exibicao.recebimentoCarta(p,this.rep.getRepositorio().get(0));
 		this.rep.getRepositorio().remove(0); // remove a carta entregue do repositorio
 	}
 	
@@ -95,6 +100,22 @@ public class Banca extends Participante {
 			s.close();
 		}
 		return entrada;
+	}
+	
+	public void distribuirCartas() {
+		
+		for (int i = 0; i < this.jogadores.size(); i++) { // distribui primeira carta p todos os jogadores
+			this.darCarta(this.jogadores.get(i));
+		}
+
+		//this.receberCarta(this.rep.getRepositorio()); // dá a primeira carta p banca
+
+		for (int i = 0; i < this.jogadores.size(); i++) { // distribui a segunda carta p todos os jogadores
+			this.darCarta(this.jogadores.get(i));
+		}
+
+		//this.receberCarta(this.rep.getRepositorio()); // dá a segunda carta p banca
+		
 	}
 	
 	
@@ -148,21 +169,7 @@ public class Banca extends Participante {
 	}
 
 
-	public void distribuirCartas() {
-		
-		for (int i = 0; i < this.jogadores.size(); i++) { // distribui primeira carta p todos os jogadores
-			this.darCarta(this.jogadores.get(i));
-		}
-
-		this.receberCarta(this.rep.getRepositorio()); // dá a primeira carta p banca
-
-		for (int i = 0; i < this.jogadores.size(); i++) { // distribui a segunda carta p todos os jogadores
-			this.darCarta(this.jogadores.get(i));
-		}
-
-		this.receberCarta(this.rep.getRepositorio()); // dá a segunda carta p banca
-		
-	}
+	
 	
 	public void jogada(ArrayList<Jogador> jogadores, RepositorioCartas rep,int pontuacaoMaxima){
 		Exibicao.rodadaBanca();

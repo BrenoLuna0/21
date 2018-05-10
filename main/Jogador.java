@@ -7,46 +7,24 @@ import estadosJogador.PlayerListener;
 import estadosJogador.PlayerState;
 
 public class Jogador extends Participante {
-	
-	private String nome;
-	private int dinheiro;
-	private PlayerState estadoAtual;
-	private PlayerListener listener;
-	
-	protected Mao mao = new Mao(this);
-	
+
 	public Jogador(String nome) {
 		this.nome = nome;
-		this.setDinheiro(1000);
 		this.setEstadoAtual(new Espera());
+		mao = new Mao(this);
 	}
-
-	
-	public void setEstadoAtual(PlayerState s) {
-		this.estadoAtual = s;
-	}
-	
-	public PlayerState getEstado(){
-		return this.estadoAtual;
-	}
-	
-	
-	public void receberCarta(Carta c) {
-		this.getArrayMao().get(0).addCarta(c);
-	}
-	
 	
 	public void visualizarJogador() { // depuração
-		System.out.println("Nome: " + this.nome);
+		System.out.println("Nome: " + nome);
 		System.out.println("Estado Atual: " + this.getEstado().getNome());
 	}
 	
-	public void exibirMao() {
-		for(int i = 0; i < mao.size(); i++) {
-			for(int j = 0; i < mao.get(i).getArrayMao(); i++) {
-				
-			}
+	public void visualizarMao() { // depuração
+		System.out.println("Mao do "+ nome);
+		for(int i = 0; i < mao.getCartasMao().size(); i++) {
+				System.out.println(mao.getCartaMao(i).getValorFace() + " de " + mao.getCartaMao(i).getNaipe());
 		}
+		System.out.println("======================");
 	}
 	
 	
@@ -91,9 +69,7 @@ public class Jogador extends Participante {
 		}
 	}
 
-	public String getNome() {
-		return this.nome;
-	}
+	
 	
 	public void jogada(Banca banca,RepositorioCartas rep){
 		Scanner s = new Scanner(System.in);

@@ -6,9 +6,30 @@ import estadosJogador.PlayerState;
 
 public abstract class Participante {
 
+	private PlayerState estadoAtual;
+	private PlayerListener listener;
+	protected Mao mao;
+	protected String nome;
 	
+	public void setEstadoAtual(PlayerState s) {
+		this.estadoAtual = s;
+	}
 	
+	public PlayerState getEstado(){
+		return this.estadoAtual;
+	}
 	
+	public Mao getMao() {
+		return mao;
+	}
+	
+	public String getNome() {
+		return this.nome;
+	}
+	
+	public void receberCarta(Carta c) {
+		mao.addCarta(c);
+	}
 	
 	// metodos antigos q precisam ser revisados
 	//.
@@ -19,7 +40,7 @@ public abstract class Participante {
 	//.
 	//.
 
-	public void retiraDinheiro(int i) {
+	/*public void retiraDinheiro(int i) {
 		if (getDinheiro() > 0) {
 			this.dinheiro -= i;
 		}
@@ -61,6 +82,6 @@ public abstract class Participante {
 
 	public void setDinheiro(int dinheiro) {
 		this.dinheiro = dinheiro;
-	}
+	}*/
 
 }

@@ -3,6 +3,7 @@ package estadosJogador;
 import main.Banca;
 import main.Jogador;
 import main.Mao;
+import main.Participante;
 
 public class Espera implements PlayerState {
 
@@ -16,34 +17,34 @@ public class Espera implements PlayerState {
 		return nome;
 	}
 
-	public void jogavel(Jogador j) {
-		j.setEstadoAtual(new Jogavel());
+	public void jogavel(Participante p) {
+		p.setEstadoAtual(new Jogavel());
 	}
 
-	public void estourada(Jogador j) {
-		j.setEstadoAtual(new Estouro());
+	public void estourada(Participante p) {
+		p.setEstadoAtual(new Estouro());
 	}
 
-	public void blackjack(Jogador j) {
-		j.setEstadoAtual(new BlackJack());
+	public void blackjack(Participante p) {
+		p.setEstadoAtual(new BlackJack());
 	}
 
-	public void modificada(Mao m, Jogador j) {
+	public void modificada(Mao m, Participante p) {
 		if (m.blackJack()) {
-			blackjack(j);
+			blackjack(p);
 		} else if (m.estouro()) {
-			estourada(j);
+			estourada(p);
 		} else {
-			jogavel(j);
+			jogavel(p);
 		}
 	}
 
-	public void play(Banca b, Jogador j) {
-		modificada(j.getArrayMao().get(0), j);
-		j.getEstado().play(b, j);
+	public void play(Banca b, Participante p) {
+		modificada(p.getMao(), p);
+		p.getEstado().play(b, p);
 	}
 
-	public void parada(Jogador j) {
+	public void parada(Participante p) {
 	}
 
 }

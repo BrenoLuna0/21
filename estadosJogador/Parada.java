@@ -2,6 +2,7 @@ package estadosJogador;
 import main.Banca;
 import main.Jogador;
 import main.Mao;
+import main.Participante;
 
 public class Parada implements PlayerState{
 
@@ -15,25 +16,26 @@ public class Parada implements PlayerState{
 		return nome;
 	}
 	
-	public void parada(Jogador j) {}
+	public void parada(Participante p) {}
 	
-	public void jogavel(Jogador j) {}
+	public void jogavel(Participante p) {}
 
 
-	public void estourada(Jogador j) {}
+	public void estourada(Participante p) {}
 
 
-	public void blackjack(Jogador j) {}
+	public void blackjack(Participante p) {}
 
 
-	public void modificada(Mao m, Jogador j) {}
+	public void modificada(Mao m, Participante p) {}
 
 
-	public void verificar(Mao m, Jogador j) {}
+	public void verificar(Mao m, Participante p) {}
 
 
-	public void play(Banca b, Jogador j) {
+	public void play(Banca b, Participante p) {
 		return;
 	}
+
 
 }

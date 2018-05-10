@@ -124,8 +124,8 @@ public class Exibicao {
 		System.out.println("Voce não pode mais receber cartas");
 	}
 	
-	public static void recebimentoCarta(Jogador j, Carta c) {
-		System.out.println(j.getNome() + " recebeu um " + c.getValor() +" de "+ c.getNaipe());
+	public static void recebimentoCarta(Participante p, Carta c) {
+		System.out.println(p.getNome() + " recebeu um " + c.getValor() +" de "+ c.getNaipe());
 	}
 	
 	public static void recebimentoCarta(Carta c) {

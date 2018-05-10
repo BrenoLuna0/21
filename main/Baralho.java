@@ -1,7 +1,7 @@
 package main;
 public class Baralho {
 	private Carta[] baralho = new Carta[52];
-	private final static char[] faces = Utilidade.delegarfaces();
+	private final static String[] faces = Utilidade.delegarfaces();
 	
 	public Baralho() {
 			
