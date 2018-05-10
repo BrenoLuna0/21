@@ -29,7 +29,7 @@ public class Banca extends Participante {
 	
 	public void visualizarjogadores() { // depuração
 		for (int i = 0; i < jogadores.size(); i++) {
-			jogadores.get(i).visualizarJogador();
+			jogadores.get(i).visualizarInfo();
 			jogadores.get(i).visualizarMao();
 		}
 	}
@@ -64,10 +64,13 @@ public class Banca extends Participante {
 	}
 	
 	public void rodada() {
-		this.distribuirCartas();
+		//this.distribuirCartas();
 
 		Exibicao.inicio();
+		
 		for (int i = 0; i < jogadores.size(); i++) {
+			Exibicao.inicioJogada(jogadores.get(i));
+			Exibicao.opcoesJogada(jogadores.get(i));
 			jogadores.get(i).getEstado().play(this,jogadores.get(i));// realiza a jogada de todos os jogadores
 		}
 	}
@@ -90,15 +93,11 @@ public class Banca extends Participante {
 		Scanner s = new Scanner(System.in);
 		int entrada = s.nextInt();
 		
-		try {
-			while (entrada < 1 || entrada > 2) { // valida a entrada do jogador
-				entrada = s.nextInt();
-				return entrada;
-			}
+		while (entrada < 1 || entrada > 2) { // valida a entrada do jogador
+			entrada = s.nextInt();
+			return entrada;
 		}
-		finally {
-			s.close();
-		}
+		
 		return entrada;
 	}
 	
