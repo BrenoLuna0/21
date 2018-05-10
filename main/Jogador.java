@@ -62,7 +62,7 @@ public class Jogador extends Participante {
 
 	
 	
-	public void jogada(Banca banca,RepositorioCartas rep){
+	/*public void jogada(Banca banca,RepositorioCartas rep){
 		Scanner s = new Scanner(System.in);
 		int entrada;
 		
@@ -153,5 +153,5 @@ public class Jogador extends Participante {
 				}
 			}
 		}
-	}
+	}*/
 }

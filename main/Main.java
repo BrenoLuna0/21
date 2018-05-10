@@ -15,7 +15,7 @@ public class Main {
 		
 		b.visualizarjogadores();
 		
-		b.rodada();
+		b.rodada(); //ok
 			
 		
 	}

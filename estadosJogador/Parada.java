@@ -34,7 +34,7 @@ public class Parada implements PlayerState{
 
 
 	public void play(Banca b, Participante p) {
-		return;
+		b.esperando(p);
 	}
 
 

@@ -1,14 +1,18 @@
-package main;
-
+package EstadosBanca;
 import estadosJogador.PlayerState;
+import main.Banca;
+import main.Exibicao;
+import main.Mao;
+import main.Participante;
 
-public class BancaParada implements PlayerState {
+public  class BancaBlackJack implements PlayerState {
 	
 	private String nome;
 	
-	public BancaParada() {
-		this.nome = "Banca parada";
+	public BancaBlackJack() {
+		this.nome = "Banca BlackJack";
 	}
+
 
 	@Override
 	public void jogavel(Participante p) {
@@ -44,27 +48,27 @@ public class BancaParada implements PlayerState {
 	public void play(Banca b, Participante p) {
 		
 		for(int i = 0; i < b.getEsperando().size(); i++) {
-			if(b.getEsperando().get(i).getMao().igualA(b.getMao())) {
-				b.getEsperando().get(i);//.empatou();
-			}else if(b.getEsperando().get(i).getMao().maiorQ(b.getMao())) {
-				b.getEsperando().get(i);//.ganhou
-			} else {
-				b.getEsperando().get(i);//.perdeu
-			}
-		}
-		
-		for(int i = 0; i < b.getBlackJack().size(); i++) {
-			b.getBlackJack().get(i);//.ganhou
+			
+			Exibicao.msgDerrota3(b.getEsperando().get(i), i);
+			
 		}
 		
 		for(int i = 0; i < b.getEstourados().size(); i++) {
-			b.getEstourados().get(i);//.perdeu
+			
+			Exibicao.msgDerrota1(b.getEstourados().get(i), i);
 		}
+		
+		for(int i = 0; i < b.getBlackJack().size(); i++) {
+			
+			Exibicao.msgEmpate2(b.getBlackJack().get(i));
+			
+		}
+		
 	}
 
 	@Override
 	public String getNome() {
 		return this.nome;
 	}
-
+	
 }

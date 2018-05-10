@@ -1,9 +1,12 @@
-package main;
+package EstadosBanca;
 
 import estadosJogador.BlackJack;
 import estadosJogador.Estouro;
 import estadosJogador.Jogavel;
 import estadosJogador.PlayerState;
+import main.Banca;
+import main.Mao;
+import main.Participante;
 
 public class BancaEsperando implements PlayerState {
 	
@@ -45,7 +48,7 @@ public class BancaEsperando implements PlayerState {
 
 	@Override
 	public void parada(Participante p) {
-		// TODO Auto-generated method stub
+		p.setEstadoAtual(new BancaParada());
 		
 	}
 
@@ -54,10 +57,11 @@ public class BancaEsperando implements PlayerState {
 		if(b.getMao().getPontos() < 17) {
 			b.receberCarta();
 			modificada(b.getMao(), p);
-			b.getEstado().play(b,b);
 		} else {
 			parada(b);
 		}
+		
+		b.getEstado().play(b,b);
 		
 	}
 

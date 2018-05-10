@@ -43,6 +43,10 @@ public class Mao {
 		this.holder.modificada(this,participante);
 	}
 	
+	public void addCarta(Carta c, Banca b) {
+		this.cartasMao.add(c);
+	}
+	
 	// acesso a pontuação da mão
 	public int getPontos() {
 		int pontos = 0;

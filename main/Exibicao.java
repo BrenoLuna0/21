@@ -75,44 +75,48 @@ public class Exibicao {
 		System.out.println(j.getNome() + " Escolha sua jogada:");
 	}
 	
-	public static void msgVitoria1(Jogador j, int i) { // 
+	public static void msgVitoria1(Participante j, int i) { // 
 		System.out.println("A banca estourou 21 pontos!");
 		System.out.println(j.getNome() + " você venceu");
 		//System.out.println(j.getNome() + " recebe R$" + 2 * j.getMao(i).getValorAposta());
 	}
 	
-	public static void msgVitoria2(Jogador j, int i) { // 
+	public static void msgVitoria2(Participante j, int i) { // 
 		System.out.println(j.getNome() +" tem mais pontos!");
 		System.out.println(j.getNome() + " você venceu");
 		//System.out.println(j.getNome() + " recebe R$" + 2 * j.getMao(i).getValorAposta());
 	}
 	
-	public static void msgVitoria3(Jogador j, int i) { // 
+	public static void msgVitoria3(Participante j, int i) { // 
 		System.out.println(j.getNome() +" fez um vinte e um!!");
 		System.out.println(j.getNome() + " você venceu");
 		//System.out.println(j.getNome() + " recebe R$" + ((3 * j.getMao(i).getValorAposta()) / 2));
 	}
 	
-	public static void msgDerrota1(Jogador j, int i) { // 
+	public static void msgDerrota1(Participante j, int i) { // 
 		System.out.println(j.getNome() + " estourou 21 pontos!");
 		System.out.println(j.getNome() + " você perdeu");
 		//System.out.println("A banca recebe R$" + j.getMao(i).getValorAposta());
 	}
 	
-	public static void msgDerrota2(Jogador j, int i) { // 
+	public static void msgDerrota2(Participante j, int i) { // 
 		System.out.println("A banca tem mais pontos!");
 		System.out.println(j.getNome() + " você perdeu");
 		//System.out.println("A banca recebe R$" + j.getMao(i).getValorAposta());
 	}
 	
-	public static void msgDerrota3(Jogador j, int i) { // 
+	public static void msgDerrota3(Participante j, int i) { // 
 		System.out.println("A banca fez um vinte e um!!");
 		System.out.println(j.getNome() + " você perdeu");
 		//System.out.println(" A banca recebe R$" + j.getMao(i).getValorAposta());
 	}
 	
-	public static void msgEmpate(Jogador j) {
+	public static void msgEmpate(Participante j) {
 		System.out.println(j.getNome() +" e a Banca estouraram 21, o jogo empatou.");
+	}
+	
+	public static void msgEmpate2(Participante j) {
+		System.out.println(j.getNome() +" e a Banca tem a mesma pontuação.");
 	}
 	
 	public static void erroReceberCarta() {

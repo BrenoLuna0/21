@@ -1,5 +1,9 @@
-package main;
+package EstadosBanca;
 import estadosJogador.PlayerState;
+import main.Banca;
+import main.Exibicao;
+import main.Mao;
+import main.Participante;
 
 public class BancaEstourada implements PlayerState {
 	private String nome;
@@ -44,15 +48,18 @@ public class BancaEstourada implements PlayerState {
 	public void play(Banca b, Participante p) {
 		
 		for(int i = 0; i < b.getEstourados().size(); i++){
-			b.getEstourados().get(i);//.perdeu(); TEM Q IMPLEMENTAR ISSO DAQUI RÁPIDO
+			
+			Exibicao.msgEmpate(b.getEstourados().get(i));
 		}
 		
 		for(int i = 0; i < b.getBlackJack().size(); i ++){
-			b.getBlackJack().get(i);//.ganhou(); TEM Q IMPLEMENTAR ISSO DAQUI RÁPIDO
+			
+			Exibicao.msgVitoria1(b.getBlackJack().get(i), i);
 		}
 		
 		for(int i = 0; i < b.getEsperando().size(); i++){
-			b.getEsperando().get(i);//.ganhou(); TEM Q IMPLEMENTAR ISSO MAIS Q URGENTE
+			
+			Exibicao.msgVitoria1(b.getEsperando().get(i), i);
 		}
 	}
 

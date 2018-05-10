@@ -2,6 +2,8 @@ package main;
 import java.util.ArrayList;
 import java.util.Scanner;
 
+import EstadosBanca.BancaEsperando;
+
 public class Banca extends Participante {
 	
 	public static final int pontuacaoMaxima = 21;
@@ -13,10 +15,10 @@ public class Banca extends Participante {
 	
 	private ArrayList<Jogador> jogadores = new ArrayList<Jogador>();
 	private RepositorioCartas rep;
-	private Mao maob;
 	
 	public Banca() {
-		maob = new Mao(this);
+		mao = new Mao(this);
+		super.setEstadoAtual(new BancaEsperando());
 	}
 	
 	public void instanciarJogadores(int q) {
@@ -73,6 +75,8 @@ public class Banca extends Participante {
 			Exibicao.opcoesJogada(jogadores.get(i));
 			jogadores.get(i).getEstado().play(this,jogadores.get(i));// realiza a jogada de todos os jogadores
 		}
+		
+		super.getEstado().play(this, this);
 	}
 	
 	public void darCarta(Participante p) {
@@ -107,13 +111,13 @@ public class Banca extends Participante {
 			this.darCarta(this.jogadores.get(i));
 		}
 
-		//this.receberCarta(this.rep.getRepositorio()); // dá a primeira carta p banca
+		this.receberCarta(); // dá a primeira carta p banca
 
 		for (int i = 0; i < this.jogadores.size(); i++) { // distribui a segunda carta p todos os jogadores
 			this.darCarta(this.jogadores.get(i));
 		}
 
-		//this.receberCarta(this.rep.getRepositorio()); // dá a segunda carta p banca
+		this.receberCarta(); // dá a segunda carta p banca
 		
 	}
 	
@@ -150,46 +154,17 @@ public class Banca extends Participante {
 	
 	
 	public void receberCarta() {
-		this.maob.addCarta(rep.getRepositorio().get(0));
+		super.mao.addCarta(rep.getRepositorio().get(0), this);
 		//Exibicao.recebimentoCarta(c.get(0));
-		rep.getRepositorio().remove(0);
+		//rep.getRepositorio().remove(0);
 	}
 	
-	public Mao getMao() { // retorna uma mão especifica p fazer a jogada 
+	/*public Mao getMao() { // retorna uma mão especifica p fazer a jogada 
 			return this.maob; 
-	}
+	}*/
 	
-	public void removerMaos(ArrayList<Jogador> j) {
-		for(int i = 0; i < j.size(); i++) {  // percorre todos os jogadores
-			for(int a = 0 ; a < j.get(i).getArrayMao().size(); a++) { // percorre todas as mãos dos jogadores
-				j.get(i).getArrayMao().remove(a); // remove todas as mãos para continuar a proxima rodada
-			}
-		}
-	}
 
 
-	
-	
-	public void jogada(ArrayList<Jogador> jogadores, RepositorioCartas rep,int pontuacaoMaxima){
-		Exibicao.rodadaBanca();
-		Exibicao.mostrarTodasCartasBanca(this);
-		int jogosGanhos = 0;
-		
-		for(int i = 0; i < jogadores.size(); i++) {
-			if(this.getMao().getPontos() > jogadores.get(i).getMao(0).getPontos() || jogadores.get(i).getMao(0).getPontos() > pontuacaoMaxima) {
-				jogosGanhos += 1;
-			}
-		}
-		
-		if(jogosGanhos > (jogadores.size())/2) { // se a banca estiver vencendo da maioria dos jogadores
-			return; //nao faz nada
-		}else {
-			while(this.getMao().getPontos() < 16) { // senão ela pega mais cartas
-				this.receberCarta(rep.getRepositorio());		
-			}
-			return;
-		}
-	}
 	
 
 
