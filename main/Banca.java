@@ -150,10 +150,10 @@ public class Banca extends Participante {
 	}
 	
 	
-	public void receberCarta(ArrayList<Carta> c) {
-		this.maob.addCarta(c.get(0));
-		Exibicao.recebimentoCarta(c.get(0));
-		c.remove(0);
+	public void receberCarta() {
+		this.maob.addCarta(rep.getRepositorio().get(0));
+		//Exibicao.recebimentoCarta(c.get(0));
+		rep.getRepositorio().remove(0);
 	}
 	
 	public Mao getMao() { // retorna uma mão especifica p fazer a jogada 

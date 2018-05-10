@@ -2,6 +2,11 @@ package main;
 import estadosJogador.PlayerState;
 
 public class BancaEstourada implements PlayerState {
+	private String nome;
+	
+	public BancaEstourada() {
+		this.nome = "Banca Estourada";
+	}
 
 	@Override
 	public void jogavel(Participante p) {
@@ -27,11 +32,13 @@ public class BancaEstourada implements PlayerState {
 		
 	}
 
-	@Override
-	public void verificar(Mao m, Participante p) {
+	/*@Override
+	public void verificar(Mao m, Jogador j) {
 		// TODO Auto-generated method stub
 		
-	}
+	}*/
+	
+	
 
 	@Override
 	public void play(Banca b, Participante p) {
@@ -47,6 +54,17 @@ public class BancaEstourada implements PlayerState {
 		for(int i = 0; i < b.getEsperando().size(); i++){
 			b.getEsperando().get(i);//.ganhou(); TEM Q IMPLEMENTAR ISSO MAIS Q URGENTE
 		}
+	}
+
+	@Override
+	public void parada(Participante p) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public String getNome() {
+		return this.nome;
 	}
 
 }
