@@ -2,6 +2,7 @@ package main;
 import java.util.ArrayList;
 
 public class RepositorioCartas {
+	
 	private Baralho baralho1 = new Baralho();
 	private Baralho baralho2 = new Baralho();
 	private Baralho baralho3 = new Baralho();
@@ -25,6 +26,8 @@ public class RepositorioCartas {
 		for(int i = 0; i < 52; i++) {
 			pilha.add(baralho4.getCarta(i));
 		}
+		
+		
 		
 	}
 

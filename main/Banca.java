@@ -3,6 +3,8 @@ import java.util.ArrayList;
 import java.util.Scanner;
 
 import EstadosBanca.BancaEsperando;
+import EstadosBanca.BancaModificada;
+import estadosJogador.Parada;
 
 public class Banca extends Participante {
 	
@@ -39,6 +41,7 @@ public class Banca extends Participante {
 	public void instanciarNovoBaralho() {
 		this.rep = new RepositorioCartas();
 		embaralhar(this.rep.getRepositorio());
+		Utilidade.changeAce(this.rep.getRepositorio());
 	}
 	
 	public void estourado(Participante p) {
@@ -67,17 +70,35 @@ public class Banca extends Participante {
 	
 	public void rodada() {
 		//this.distribuirCartas();
-		
-		Exibicao.inicio();
-		
-		
-		for (int i = 0; i < jogadores.size(); i++) {
-			Exibicao.inicioJogada(jogadores.get(i));
-			Exibicao.opcoesJogada(jogadores.get(i));
-			jogadores.get(i).getEstado().play(this,jogadores.get(i));// realiza a jogada de todos os jogadores
+		if(this.getEstado().getNome() == "Banca BlackJack"){
+			
+			for(int i = 0; i < jogadores.size();i++){
+				if(jogadores.get(i).getEstado().getNome() == "Jogavel"){
+					jogadores.get(i).setEstadoAtual(new Parada());
+				}
+				
+				jogadores.get(i).getEstado().play(this, jogadores.get(i));
+			}
+			
+			getEstado().play(this, this);
+			
+			
+		} else {
+			
+			Exibicao.inicio();
+			
+			
+			for (int i = 0; i < jogadores.size(); i++) {
+				Exibicao.inicioJogada(jogadores.get(i));
+				Exibicao.opcoesJogada(jogadores.get(i));
+				jogadores.get(i).getEstado().play(this,jogadores.get(i));// realiza a jogada de todos os jogadores
+			}
+			
+			getEstado().play(this, this);
+			
 		}
 		
-		super.getEstado().play(this, this);
+		
 	}
 	
 	public void darCarta(Participante p) {
@@ -119,6 +140,8 @@ public class Banca extends Participante {
 		}
 
 		this.receberCarta(); // dá a segunda carta p banca
+		super.setEstadoAtual(new BancaModificada());
+		super.getEstado().play(this, this);
 		
 	}
 	
@@ -156,7 +179,7 @@ public class Banca extends Participante {
 	public void receberCarta() {
 		super.mao.addCarta(rep.getRepositorio().get(0), this);
 		//Exibicao.recebimentoCarta(c.get(0));
-		//rep.getRepositorio().remove(0);
+		rep.getRepositorio().remove(0);
 	}
 	
 	/*public Mao getMao() { // retorna uma mão especifica p fazer a jogada 

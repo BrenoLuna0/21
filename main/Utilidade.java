@@ -31,6 +31,15 @@ public class Utilidade {
 		return c;
 		
 	}
+	
+	public static void changeAce (ArrayList<Carta> c) {
+		for(int i = 0;i < c.size(); i++) {
+			if(c.get(i).getValorFace() == "AS") {
+				c.get(i).setValor(11);
+			}
+		}
+		
+	}
 
 }
 

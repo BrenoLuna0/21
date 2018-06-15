@@ -4,13 +4,17 @@ public class Carta {
 	private int valor;
 	private String naipe;
 	private  String valorFace;
+	private boolean visivel;
 	
 	public Carta(int valor, String naipe, String valorFace) { 
 		this.valor = valor;
 		this.naipe = naipe;
 		this.valorFace = valorFace;
+		this.visivel = false;
 	}
-	
+	protected boolean faceVisivel() {
+		return visivel;
+	}
 	
 	public void setValor(int valor) {
 		this.valor = valor;

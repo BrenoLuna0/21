@@ -51,8 +51,16 @@ public class Mao {
 	// acesso a pontuação da mão
 	public int getPontos() {
 		int pontos = 0;
+		int aces = 0;
 		for(int i = 0; i < cartasMao.size(); i++) {
+			if(cartasMao.get(i).getValorFace() == "AS") {
+				aces++;
+			}
 			pontos += cartasMao.get(i).getValor();
+		}
+		while(pontos > 21 && aces > 0) {
+			pontos = pontos -10;
+			aces = aces-1;
 		}
 		
 		return pontos;

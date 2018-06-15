@@ -31,6 +31,22 @@ public class Jogador extends Participante {
 		mao.setValorAposta(aposta);
 	}
 	
+	public void apostar25() {
+		dinheiro = dinheiro - 25;
+		mao.setValorAposta(25);
+	}
+	
+	public void apostar50() {
+		dinheiro = dinheiro - 50;
+		mao.setValorAposta(50);
+	}
+	
+	public void apostar75() {
+		dinheiro = dinheiro - 75;
+		mao.setValorAposta(75);
+	}
+	
+	
 	
 	
 	
