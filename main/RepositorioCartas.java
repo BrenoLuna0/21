@@ -1,16 +1,24 @@
 package main;
 import java.util.ArrayList;
 
+import GUI.VBaralho;
+
 public class RepositorioCartas {
 	
-	private Baralho baralho1 = new Baralho();
-	private Baralho baralho2 = new Baralho();
-	private Baralho baralho3 = new Baralho();
-	private Baralho baralho4 = new Baralho();
+	private VBaralho baralho1;
+	private VBaralho baralho2;
+	private VBaralho baralho3;
+	private VBaralho baralho4;
 	
 	private ArrayList<Carta> pilha = new ArrayList<Carta>();
 	
 	public RepositorioCartas() {
+		baralho1 = new VBaralho();
+		baralho2 = new VBaralho();
+		baralho3 = new VBaralho();
+		baralho4 = new VBaralho();
+		
+		
 		for(int i = 0; i < 52; i++) {
 			pilha.add(baralho1.getCarta(i));
 		}

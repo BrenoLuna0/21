@@ -53,7 +53,7 @@ public class Mao {
 		int pontos = 0;
 		int aces = 0;
 		for(int i = 0; i < cartasMao.size(); i++) {
-			if(cartasMao.get(i).getValorFace() == "AS") {
+			if(cartasMao.get(i).getValor() == 11) {
 				aces++;
 			}
 			pontos += cartasMao.get(i).getValor();

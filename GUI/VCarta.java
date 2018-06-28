@@ -14,21 +14,30 @@ public class VCarta extends Carta implements Mostravel{
 	private CartaVisivel view;
 	
 	
+	/**
+	 * @wbp.parser.entryPoint
+	 */
 	public VCarta(int valor, String naipe, String valorFace,String img) {
 		super(valor, naipe, valorFace);
 		imagem = img;
-		view = new CartaVisivel(getImagem());
+		view = new CartaVisivel(img);
 	}
 	
+	/**
+	 * @wbp.parser.entryPoint
+	 */
 	public String getImagem(){
 		if(faceVisivel()){
 			return imagem;
 		}
 		else {
-			return "imagens/ec.bmp";
+			return "imagens/ec.png";
 		}
 	}
 	
+	/**
+	 * @wbp.parser.entryPoint
+	 */
 	@Override
 	public JComponent view() {
 		return view;
