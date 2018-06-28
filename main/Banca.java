@@ -4,6 +4,10 @@ import java.util.Scanner;
 
 import EstadosBanca.BancaEsperando;
 import EstadosBanca.BancaModificada;
+import GUI.GUIJogador;
+import GUI.VCarta;
+import GUI.VRepositorio;
+import GUI.ViewJogador;
 import estadosJogador.Parada;
 
 public class Banca extends Participante {
@@ -15,19 +19,29 @@ public class Banca extends Participante {
 	private ArrayList<Participante>blackJack = new ArrayList<Participante>();
 	private ArrayList<Participante>esperando = new ArrayList<Participante>();
 	
-	private ArrayList<Jogador> jogadores = new ArrayList<Jogador>();
-	private RepositorioCartas rep;
+	private ArrayList<GUIJogador> jogadores = new ArrayList<GUIJogador>();
+	private ArrayList<ViewJogador>viewJogadores = new ArrayList<ViewJogador>();
+	private VRepositorio rep;
 	
 	public Banca() {
 		mao = new Mao(this);
 		super.setEstadoAtual(new BancaEsperando());
 	}
 	
+	public GUIJogador getJogador(int i) {
+		return jogadores.get(i);
+	}
+	
 	public void instanciarJogadores(int q) {
 		for (int i = 0; i < q; i++) { // instancia quantidade de jogadores pedida
 			Exibicao.nomeJogador(i);
 			String entrada = new Scanner(System.in).nextLine();
-			jogadores.add(new Jogador(entrada));
+			
+			GUIJogador jogador = new GUIJogador(entrada);
+			jogadores.add(jogador);
+			
+			ViewJogador view = new ViewJogador(jogador);
+			viewJogadores.add(view);
 		}
 	}
 	
@@ -39,7 +53,7 @@ public class Banca extends Participante {
 	}
 
 	public void instanciarNovoBaralho() {
-		this.rep = new RepositorioCartas();
+		this.rep = new VRepositorio();
 		embaralhar(this.rep.getRepositorio());
 		Utilidade.changeAce(this.rep.getRepositorio());
 	}
@@ -107,11 +121,11 @@ public class Banca extends Participante {
 		this.rep.getRepositorio().remove(0); // remove a carta entregue do repositorio
 	}
 	
-	public ArrayList<Carta> getRep() {
+	public ArrayList<VCarta> getRep() {
 		return this.rep.getRepositorio();
 	}
 	
-	public RepositorioCartas getRepositorio() { // depuração
+	public VRepositorio getRepositorio() { // depuração
 		return this.rep;
 	}
 	
@@ -170,7 +184,7 @@ public class Banca extends Participante {
 	}
 
 	
-	public ArrayList<Carta> embaralhar(ArrayList<Carta> c) {
+	public ArrayList<VCarta> embaralhar(ArrayList<VCarta> c) {
 		Utilidade.misturar(c);
 		return c;
 	}

@@ -11,9 +11,9 @@ public class OptionViewController implements ActionListener, PlayerListener {
 	
 	private GUIJogador modelo;
 	private OptionView view;
-	private Banca banca;
+	private VBanca banca;
 	
-	public OptionViewController(GUIJogador modelo, Banca banca, OptionView view) {
+	public OptionViewController(GUIJogador modelo, VBanca banca, OptionView view) {
 		
 		this.modelo = modelo;
 		//modelo.addListener(this);

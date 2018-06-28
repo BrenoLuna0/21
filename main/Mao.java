@@ -2,19 +2,21 @@ package main;
 	
 import java.util.ArrayList;
 
+import GUI.VBanca;
+import GUI.VCarta;
 import estadosJogador.Espera;
 import estadosJogador.HandListener;
 
 public class Mao {
 	
-	private ArrayList<Carta> cartasMao;
+	private ArrayList<VCarta> cartasMao;
 	private static final int BLACKJACK = 21;
 	private HandListener holder;
 	private Participante participante;
 	private int aposta;
 	
 	public Mao(Jogador j) {
-		this.cartasMao = new ArrayList<Carta>();
+		this.cartasMao = new ArrayList<VCarta>();
 		this.participante = j;
 		
 		setHolder(
@@ -31,7 +33,7 @@ public class Mao {
 	}
 	
 	public Mao(Banca b) {
-		this.cartasMao = new ArrayList<Carta>();
+		this.cartasMao = new ArrayList<VCarta>();
 		participante = b;
 	}
 	
@@ -39,12 +41,12 @@ public class Mao {
 		this.holder = h;
 	}
 	
-	public void addCarta(Carta c) {
+	public void addCarta(VCarta c) {
 		this.cartasMao.add(c);	
 		this.holder.modificada(this,participante);
 	}
 	
-	public void addCarta(Carta c, Banca b) {
+	public void addCarta(VCarta c, Banca b) {
 		this.cartasMao.add(c);
 	}
 	
@@ -68,11 +70,11 @@ public class Mao {
 	
 	// acesso às cartas da mão
 	
-	public Carta getCartaMao(int i) { //  acesso a uma carta especifica
+	public VCarta getCartaMao(int i) { //  acesso a uma carta especifica
 		return this.cartasMao.get(i);
 	}
 	
-	public ArrayList<Carta> getCartasMao() { // acesso ao array c todas as cartas da mão
+	public ArrayList<VCarta> getCartasMao() { // acesso ao array c todas as cartas da mão
 		return this.cartasMao;
 	}
 

@@ -1,6 +1,7 @@
 package main;
 import java.util.ArrayList;
 
+import GUI.VCarta;
 import estadosJogador.PlayerListener;
 import estadosJogador.PlayerState;
 
@@ -28,7 +29,7 @@ public abstract class Participante {
 		return this.nome;
 	}
 	
-	public void receberCarta(Carta c) {
+	public void receberCarta(VCarta c) {
 		mao.addCarta(c);
 	}
 	

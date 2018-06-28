@@ -2,9 +2,11 @@ package main;
 import java.util.ArrayList;
 import java.util.Collections;
 
+import GUI.VCarta;
+
 public class Utilidade {
 	
-	public static void misturar(ArrayList<Carta> c) {
+	public static void misturar(ArrayList<VCarta> c) {
 		Collections.shuffle(c);
 		Collections.shuffle(c);
 		Collections.shuffle(c);
@@ -32,7 +34,7 @@ public class Utilidade {
 		
 	}
 	
-	public static void changeAce (ArrayList<Carta> c) {
+	public static void changeAce (ArrayList<VCarta> c) {
 		for(int i = 0;i < c.size(); i++) {
 			if(c.get(i).getValorFace() == "AS") {
 				c.get(i).setValor(11);

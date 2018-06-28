@@ -28,12 +28,12 @@ public class VMao extends Mao implements Mostravel {
 		return view;
 	}
 	
-	public void addCarta(Carta c) {
+	public void addCarta(VCarta c) {
 		super.addCarta(c);
 		view.modificado();
 	}
 	
-	public void addCarta(Carta c, Banca b) {
+	public void addCarta(VCarta c, VBanca b) {
 		super.addCarta(c, b);
 		view.modificado();
 	}

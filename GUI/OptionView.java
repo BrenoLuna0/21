@@ -29,12 +29,12 @@ public class OptionView extends JPanel{
 	private JButton ddown = new JButton("$Double Down");
 	
 	
-	private Banca banca;
+	private VBanca banca;
 	private GUIJogador jogador;
 	
 	private static final Color FOREST_GREEN = new Color(35,142,35);
 
-	public OptionView(GUIJogador jogador, Banca banca) {
+	public OptionView(GUIJogador jogador, VBanca banca) {
 		super(new BorderLayout());
 		this.jogador = jogador;
 		this.banca = banca;

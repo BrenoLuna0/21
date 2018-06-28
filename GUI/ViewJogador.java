@@ -20,7 +20,7 @@ public class ViewJogador extends JPanel implements PlayerListener{
 	
 	public ViewJogador(Jogador j) {
 		super(new BorderLayout());
-		
+		buildUI(j);
 	}
 	
 	public void jogadorModificado(Jogador j){
@@ -29,8 +29,9 @@ public class ViewJogador extends JPanel implements PlayerListener{
 		Mao mao = j.getMao();
 		
 		for(int i = 0; i<mao.getCartasMao().size();i++) {
-			JLabel carta = new ViewCartas( (VCarta) mao.getCartaMao(i));
+			JLabel carta = new ViewCartas(mao.getCartaMao(i));
 			cartas.add(carta);
+			cartas.setVisible(true);
 		}
 		revalidate();
 		repaint();

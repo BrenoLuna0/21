@@ -25,11 +25,10 @@ public class VCarta extends Carta implements Mostravel{
 			return imagem;
 		}
 		else {
-			return "imagens/ec.bmp";
+			return "/imagens/ec.jpg";
 		}
 	}
 	
-	@Override
 	public JComponent view() {
 		return view;
 	}
@@ -43,7 +42,7 @@ public class VCarta extends Carta implements Mostravel{
 		}
 		
 		private void setImagem(String imagem) {
-			java.net.URL url = this.getClass().getResource(imagem);
+			String url = imagem;
 			ImageIcon icone = new ImageIcon(url);
 			setIcon(icone);
 		}
