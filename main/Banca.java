@@ -23,6 +23,8 @@ public class Banca extends Participante {
 	private ArrayList<ViewJogador>viewJogadores = new ArrayList<ViewJogador>();
 	private VRepositorio rep;
 	
+	
+	
 	public Banca() {
 		mao = new Mao(this);
 		super.setEstadoAtual(new BancaEsperando());

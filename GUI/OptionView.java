@@ -34,11 +34,11 @@ public class OptionView extends JPanel{
 	
 	private static final Color FOREST_GREEN = new Color(35,142,35);
 
-	public OptionView(GUIJogador jogador, VBanca banca) {
+	public OptionView(GUIJogador jogador, VBanca banca,ViewJogador vj) {
 		super(new BorderLayout());
 		this.jogador = jogador;
 		this.banca = banca;
-		attachController(makeController());
+		attachController(makeController(vj));
 		buildGUI();
 	}
 	
@@ -70,8 +70,8 @@ public class OptionView extends JPanel{
 		sair.setEnabled(b);
 	}
 	
-	protected OptionViewController makeController() {
-		return new OptionViewController(jogador,banca,this);
+	protected OptionViewController makeController(ViewJogador vj) {
+		return new OptionViewController(jogador,banca,this,vj);
 	}
 
 	private void buildGUI() {
@@ -95,8 +95,8 @@ public class OptionView extends JPanel{
 		game_controls.add(sair);
 		game_controls.add(jogar);
 		game_controls.add(esperar);
-		enableBettingControls(false);
-		enablePlayerControls(false);
+		enableBettingControls(true);
+		enablePlayerControls(true);
 		enableDoubleDown(false);
 	}
 

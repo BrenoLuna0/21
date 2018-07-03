@@ -11,6 +11,7 @@ import javax.swing.border.TitledBorder;
 import estadosJogador.PlayerListener;
 import main.Jogador;
 import main.Mao;
+import main.Participante;
 
 public class ViewJogador extends JPanel implements PlayerListener{
 	
@@ -18,12 +19,13 @@ public class ViewJogador extends JPanel implements PlayerListener{
 	private TitledBorder border;
 	private JPanel cartas = new JPanel(new FlowLayout(FlowLayout.LEFT));
 	
-	public ViewJogador(Jogador j) {
+	public ViewJogador(Participante j) {
 		super(new BorderLayout());
 		buildUI(j);
+		j.addListener(this);
 	}
 	
-	public void jogadorModificado(Jogador j){
+	public void jogadorModificado(Participante j){
 		border.setTitle(j.getNome());
 		cartas.removeAll();
 		Mao mao = j.getMao();
@@ -38,42 +40,42 @@ public class ViewJogador extends JPanel implements PlayerListener{
 	}
 
 	
-	public void jogadorEstourou(Jogador j) {
-		border.setTitle(j.getNome() + "Estourou!");
+	public void jogadorEstourou(Participante p) {
+		border.setTitle(p.getNome() + "Estourou!");
 		cartas.repaint();
 	}
 
 	
-	public void jogadorBlackJack(Jogador j) {
+	public void jogadorBlackJack(Participante j) {
 		border.setTitle(j.getNome() + "BlackJack!");
 		cartas.repaint();
 	}
 
 	
-	public void jogadorEsperando(Jogador j) {
+	public void jogadorEsperando(Participante j) {
 		border.setTitle(j.getNome() + "Esperando");
 		cartas.repaint();
 	}
 
 	
-	public void jogadorGanhou(Jogador j) {
+	public void jogadorGanhou(Participante j) {
 		border.setTitle(j.getNome() + "Venceu!");
 		cartas.repaint();
 	}
 
 	
-	public void jogadorPerdeu(Jogador j) {
+	public void jogadorPerdeu(Participante j) {
 		border.setTitle(j.getNome() + "Perdeu");
 		cartas.repaint();
 	}
 
 	
-	public void jogadorParou(Jogador j) {
+	public void jogadorParou(Participante j) {
 		border.setTitle(j.getNome() + "Parou");
 		cartas.repaint();
 	}
 	
-	private void buildUI(Jogador j) {
+	private void buildUI(Participante j) {
 		add(cartas,BorderLayout.NORTH);
 		border = new TitledBorder(j.getNome());
 		cartas.setBorder(border);

@@ -4,26 +4,29 @@ import java.awt.Color;
 import java.awt.FlowLayout;
 
 import javax.swing.JComponent;
+import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.TitledBorder;
 
 import estadosJogador.PlayerListener;
 import main.Banca;
 import main.Jogador;
+import main.Participante;
 
 public class VBanca extends Banca implements Mostravel {
+	
+	public VisaoBanca view;
 	
 	public VBanca() {
 		super();
 	}
 	
-	public VisaoBanca view;
-
+	
 	@Override
 	public JComponent view() {
 		if(view == null) {
 			view = new VisaoBanca((VMao) getMao());
-			//addListener(view);
+			addOptionListener(view);
 		}
 		return view;
 	}
@@ -44,7 +47,7 @@ public class VBanca extends Banca implements Mostravel {
 		}
 
 		@Override
-		public void jogadorModificado(Jogador j) {
+		public void jogadorModificado(Participante j) {
 			
 			String nome = VBanca.this.getNome();
 			borda.setTitle(nome);
@@ -52,7 +55,7 @@ public class VBanca extends Banca implements Mostravel {
 		}
 
 		@Override
-		public void jogadorEstourou(Jogador j) {
+		public void jogadorEstourou(Participante j) {
 			
 			String nome = VBanca.this.getNome();
 			borda.setTitle(nome+ " Estourado");
@@ -60,7 +63,7 @@ public class VBanca extends Banca implements Mostravel {
 		}
 
 		@Override
-		public void jogadorBlackJack(Jogador j) {
+		public void jogadorBlackJack(Participante j) {
 			
 			String nome = VBanca.this.getNome();
 			borda.setTitle(nome + " BlackJack");
@@ -69,7 +72,7 @@ public class VBanca extends Banca implements Mostravel {
 		}
 
 		@Override
-		public void jogadorEsperando(Jogador j) {
+		public void jogadorEsperando(Participante j) {
 			
 			String nome = VBanca.this.getNome();
 			borda.setTitle(nome + " Esperando");
@@ -78,7 +81,7 @@ public class VBanca extends Banca implements Mostravel {
 		}
 
 		@Override
-		public void jogadorGanhou(Jogador j) {
+		public void jogadorGanhou(Participante j) {
 			
 			String nome = VBanca.this.getNome();
 			borda.setTitle(nome + " Venceu");
@@ -87,7 +90,7 @@ public class VBanca extends Banca implements Mostravel {
 		}
 
 		@Override
-		public void jogadorPerdeu(Jogador j) {
+		public void jogadorPerdeu(Participante j) {
 			
 			String nome = VBanca.this.getNome();
 			borda.setTitle(nome + " Perdeu");
@@ -96,7 +99,7 @@ public class VBanca extends Banca implements Mostravel {
 		}
 
 		@Override
-		public void jogadorParou(Jogador j) {
+		public void jogadorParou(Participante j) {
 			
 			String nome = VBanca.this.getNome();
 			borda.setTitle(nome + " Parado");

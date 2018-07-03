@@ -10,7 +10,7 @@ public class Carta {
 		this.valor = valor;
 		this.naipe = naipe;
 		this.valorFace = valorFace;
-		this.visivel = false;
+		this.visivel = true;
 	}
 	protected boolean faceVisivel() {
 		return visivel;

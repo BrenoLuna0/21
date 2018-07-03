@@ -6,20 +6,24 @@ import java.awt.event.ActionListener;
 import estadosJogador.PlayerListener;
 import main.Banca;
 import main.Jogador;
+import main.Participante;
 
 public class OptionViewController implements ActionListener, PlayerListener {
 	
 	private GUIJogador modelo;
+	private ViewJogador viewJogador;
 	private OptionView view;
 	private VBanca banca;
 	
-	public OptionViewController(GUIJogador modelo, VBanca banca, OptionView view) {
+	public OptionViewController(GUIJogador modelo, VBanca banca, OptionView view,ViewJogador vj) {
 		
 		this.modelo = modelo;
-		//modelo.addListener(this);
+		viewJogador = vj;
+		modelo.addOptionListener(this);
 		this.banca = banca;
 		this.view = view;
 		view.enablePlayerControls(false);
+		
 	}
 	
 	@Override
@@ -31,6 +35,7 @@ public class OptionViewController implements ActionListener, PlayerListener {
 		} else if(evento.getActionCommand().equals(OptionView.JOGAR)) {
 			view.enableDoubleDown(false);
 			modelo.pegarCarta(banca);
+			viewJogador.jogadorModificado(modelo);
 			
 		} else if(evento.getActionCommand().equals(OptionView.ESPERAR)) {
 			view.enableDoubleDown(false);
@@ -64,13 +69,9 @@ public class OptionViewController implements ActionListener, PlayerListener {
 		
 	}
 
-	@Override
-	public void jogadorModificado(Jogador j) {
-		
-	}
 
 	@Override
-	public void jogadorEstourou(Jogador j) {
+	public void jogadorEstourou(Participante j) {
 		view.enablePlayerControls(false);
 		view.enableDoubleDown(false);
 		view.enableGameControls(true);
@@ -78,7 +79,7 @@ public class OptionViewController implements ActionListener, PlayerListener {
 	}
 
 	@Override
-	public void jogadorBlackJack(Jogador j) {
+	public void jogadorBlackJack(Participante j) {
 		view.enablePlayerControls(false);
 		view.enableDoubleDown(false);
 		view.enableGameControls(true);
@@ -86,21 +87,21 @@ public class OptionViewController implements ActionListener, PlayerListener {
 	}
 
 	@Override
-	public void jogadorEsperando(Jogador j) {
+	public void jogadorEsperando(Participante j) {
 		view.enableGameControls(true);
 		view.enablePlayerControls(false);
 		
 	}
 
 	@Override
-	public void jogadorGanhou(Jogador j) {
+	public void jogadorGanhou(Participante j) {
 		view.enablePlayerControls(false);
 		view.enableGameControls(true);
 		
 	}
 
 	@Override
-	public void jogadorPerdeu(Jogador j) {
+	public void jogadorPerdeu(Participante j) {
 		view.enablePlayerControls(false);
 		view.enableDoubleDown(false);
 		view.enableGameControls(true);
@@ -108,10 +109,16 @@ public class OptionViewController implements ActionListener, PlayerListener {
 	}
 
 	@Override
-	public void jogadorParou(Jogador j) {
+	public void jogadorParou(Participante j) {
 		view.enablePlayerControls(false);
 		view.enableGameControls(true);
 		
+	}
+
+	@Override
+	public void jogadorModificado(Participante j) {
+		view.enablePlayerControls(true);
+		view.enableGameControls(true);
 	}
 
 	

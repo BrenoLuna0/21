@@ -19,10 +19,10 @@ public class VBaralho {
 		baralho[6] = new VCarta(7,"Paus","7","/imagens/c07.png");
 		baralho[7] = new VCarta(8,"Paus","8","/imagens/c08.png");
 		baralho[8] = new VCarta(9,"Paus","9","/imagens/c09.png");
-		baralho[9] = new VCarta(10,"Paus","10","/imagens/c10.png");
-		baralho[10] = new VCarta(11,"Paus","J","/imagens/c11.png");
-		baralho[11] = new VCarta(12,"Paus","Q","/imagens/c12.png");
-		baralho[12] = new VCarta(13,"Paus","K","/imagens/c13.png");
+		baralho[9] = new VCarta(10,"Paus","10","/imagens/c010.png");
+		baralho[10] = new VCarta(10,"Paus","J","/imagens/c011.png");
+		baralho[11] = new VCarta(10,"Paus","Q","/imagens/c012.png");
+		baralho[12] = new VCarta(10,"Paus","K","/imagens/c013.png");
 		
 		baralho[13] = new VCarta(1,"Ouro","A","/imagens/d01.png");
 		baralho[14] = new VCarta(2,"Ouro","2","/imagens/d02.png");
@@ -33,10 +33,10 @@ public class VBaralho {
 		baralho[19] = new VCarta(7,"Ouro","7","/imagens/d07.png");
 		baralho[20] = new VCarta(8,"Ouro","8","/imagens/d08.png");
 		baralho[21] = new VCarta(9,"Ouro","9","/imagens/d09.png");
-		baralho[22] = new VCarta(10,"Ouro","10","/imagens/d10.png");
-		baralho[23] = new VCarta(11,"Ouro","J","/imagens/d11.png");
-		baralho[24] = new VCarta(12,"Ouro","Q","/imagens/d12.png");
-		baralho[25] = new VCarta(13,"Ouro","K","/imagens/d13.png");
+		baralho[22] = new VCarta(10,"Ouro","10","/imagens/d010.png");
+		baralho[23] = new VCarta(10,"Ouro","J","/imagens/d011.png");
+		baralho[24] = new VCarta(10,"Ouro","Q","/imagens/d012.png");
+		baralho[25] = new VCarta(10,"Ouro","K","/imagens/d013.png");
 		
 		baralho[26] = new VCarta(1,"Copas","A","/imagens/h01.png");
 		baralho[27] = new VCarta(2,"Copas","2","/imagens/h02.png");
@@ -47,10 +47,10 @@ public class VBaralho {
 		baralho[32] = new VCarta(7,"Copas","7","/imagens/h07.png");
 		baralho[33] = new VCarta(8,"Copas","8","/imagens/h08.png");
 		baralho[34] = new VCarta(9,"Copas","9","/imagens/h09.png");
-		baralho[35] = new VCarta(10,"Copas","10","/imagens/h10.png");
-		baralho[36] = new VCarta(11,"Copas","J","/imagens/h11.png");
-		baralho[37] = new VCarta(12,"Copas","Q","/imagens/h12.png");
-		baralho[38] = new VCarta(13,"Copas","K","/imagens/h13.png");
+		baralho[35] = new VCarta(10,"Copas","10","/imagens/h010.png");
+		baralho[36] = new VCarta(10,"Copas","J","/imagens/h011.png");
+		baralho[37] = new VCarta(10,"Copas","Q","/imagens/h012.png");
+		baralho[38] = new VCarta(10,"Copas","K","/imagens/h013.png");
 		
 		baralho[39] = new VCarta(1,"Espadas","A","/imagens/s01.png");
 		baralho[40] = new VCarta(2,"Espadas","2","/imagens/s02.png");
@@ -61,10 +61,10 @@ public class VBaralho {
 		baralho[45] = new VCarta(7,"Espadas","7","/imagens/s07.png");
 		baralho[46] = new VCarta(8,"Espadas","8","/imagens/s08.png");
 		baralho[47] = new VCarta(9,"Espadas","9","/imagens/s09.png");
-		baralho[48] = new VCarta(10,"Espadas","10","/imagens/s10.png");
-		baralho[49] = new VCarta(11,"Espadas","J","/imagens/s11.png");
-		baralho[50] = new VCarta(12,"Espadas","Q","/imagens/s12.png");
-		baralho[51] = new VCarta(13,"Espadas","K","/imagens/s13.png");
+		baralho[48] = new VCarta(10,"Espadas","10","/imagens/s010.png");
+		baralho[49] = new VCarta(10,"Espadas","J","/imagens/s011.png");
+		baralho[50] = new VCarta(10,"Espadas","Q","/imagens/s012.png");
+		baralho[51] = new VCarta(10,"Espadas","K","/imagens/s013.png");
 		
 	}
 
