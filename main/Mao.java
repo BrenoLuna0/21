@@ -44,6 +44,7 @@ public class Mao {
 	public void addCarta(VCarta c) {
 		this.cartasMao.add(c);	
 		this.holder.modificada(this,participante);
+		
 	}
 	
 	public void addCarta(VCarta c, Banca b) {

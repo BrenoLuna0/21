@@ -1,5 +1,8 @@
 package EstadosBanca;
 
+import GUI.VBanca;
+import estadosJogador.Ganhou;
+import estadosJogador.Perdeu;
 import estadosJogador.PlayerState;
 import main.Banca;
 import main.Exibicao;
@@ -11,7 +14,7 @@ public class BancaParada implements PlayerState {
 	private String nome;
 	
 	public BancaParada() {
-		this.nome = "Banca parada";
+		this.nome = "Parada";
 	}
 
 	@Override
@@ -45,7 +48,7 @@ public class BancaParada implements PlayerState {
 	}
 
 	@Override
-	public void play(Banca b, Participante p) {
+	public void play(VBanca b, Participante p) {
 		
 		for(int i = 0; i < b.getEsperando().size(); i++) {
 			if(b.getEsperando().get(i).getMao().igualA(b.getMao())) { // se o jogador e a banca tiverem a mesma pontuação

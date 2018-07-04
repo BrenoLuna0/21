@@ -206,6 +206,19 @@ public class Exibicao {
 		System.out.println(p.getNome()+" fez 21 pontos!");		
 	}
 	
+	public static void infoDivisivel(Participante p){
+		System.out.println(p.getNome() + " pode dividir seu par de cartas");
+	}
+	
+	public static void opcoesJogada2(Participante p) {
+		System.out.println(p.getNome()+" escolha:");
+		System.out.println(" 1 - Receber Carta");	
+		System.out.println(" 2 - Parar");	
+		System.out.println(" 3 - Dividir par");
+	}
+	
+	
+	
 	
 	
 	

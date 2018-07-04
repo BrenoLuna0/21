@@ -20,6 +20,7 @@ public class OptionViewController implements ActionListener, PlayerListener {
 		this.modelo = modelo;
 		viewJogador = vj;
 		modelo.addOptionListener(this);
+		banca.addOptionListener(this);
 		this.banca = banca;
 		this.view = view;
 		view.enablePlayerControls(false);
@@ -39,7 +40,10 @@ public class OptionViewController implements ActionListener, PlayerListener {
 			
 		} else if(evento.getActionCommand().equals(OptionView.ESPERAR)) {
 			view.enableDoubleDown(false);
-			modelo.esperar();
+			view.enablePlayerControls(false);
+			view.enableGameControls(true);
+			
+			modelo.esperar(banca);
 			
 		} else if(evento.getActionCommand().equals(OptionView.NOVO_JOGO)) {
 			view.enableDoubleDown(false);
@@ -75,7 +79,10 @@ public class OptionViewController implements ActionListener, PlayerListener {
 		view.enablePlayerControls(false);
 		view.enableDoubleDown(false);
 		view.enableGameControls(true);
-		
+		banca.estourado(j);
+		banca.getEstado().play(banca, banca);
+		banca.getMao().getCartaMao(1).setVisivel(true);
+		banca.getEstado().play(banca, modelo);
 	}
 
 	@Override
@@ -83,6 +90,9 @@ public class OptionViewController implements ActionListener, PlayerListener {
 		view.enablePlayerControls(false);
 		view.enableDoubleDown(false);
 		view.enableGameControls(true);
+		banca.blackJack(j);
+		banca.getEstado().play(banca, banca);
+		banca.getMao().getCartaMao(1).setVisivel(true);
 		
 	}
 
@@ -90,28 +100,28 @@ public class OptionViewController implements ActionListener, PlayerListener {
 	public void jogadorEsperando(Participante j) {
 		view.enableGameControls(true);
 		view.enablePlayerControls(false);
-		
 	}
 
 	@Override
 	public void jogadorGanhou(Participante j) {
 		view.enablePlayerControls(false);
-		view.enableGameControls(true);
-		
+		view.enableGameControls(true);		
 	}
 
 	@Override
 	public void jogadorPerdeu(Participante j) {
 		view.enablePlayerControls(false);
 		view.enableDoubleDown(false);
-		view.enableGameControls(true);
-		
+		view.enableGameControls(true);		
 	}
 
 	@Override
 	public void jogadorParou(Participante j) {
 		view.enablePlayerControls(false);
 		view.enableGameControls(true);
+		banca.esperando(j);
+		banca.getEstado().play(banca, banca);
+		banca.getMao().getCartaMao(1).setVisivel(true);
 		
 	}
 

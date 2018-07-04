@@ -1,4 +1,5 @@
 package estadosJogador;
+import GUI.VBanca;
 import main.Banca;
 import main.Exibicao;
 import main.Jogador;
@@ -54,7 +55,7 @@ public class Jogavel implements PlayerState{
 	}
 
 
-	public void play(Banca b, Participante p) {
+	public void play(VBanca b, Participante p) {
 		
 		int entrada = b.escolhaJogador();
 		Exibicao.opcoesJogada(p);

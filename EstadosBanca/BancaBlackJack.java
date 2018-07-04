@@ -1,4 +1,6 @@
 package EstadosBanca;
+import GUI.VBanca;
+import estadosJogador.Perdeu;
 import estadosJogador.PlayerState;
 import main.Banca;
 import main.Exibicao;
@@ -10,7 +12,7 @@ public  class BancaBlackJack implements PlayerState {
 	private String nome;
 	
 	public BancaBlackJack() {
-		this.nome = "Banca BlackJack";
+		this.nome = "BlackJack";
 	}
 
 
@@ -45,7 +47,7 @@ public  class BancaBlackJack implements PlayerState {
 	}
 
 	@Override
-	public void play(Banca b, Participante p) {
+	public void play(VBanca b, Participante p) {
 		
 		for(int i = 0; i < b.getEsperando().size(); i++) {
 			

@@ -2,49 +2,58 @@ package main;
 import java.util.ArrayList;
 
 import GUI.VCarta;
+import GUI.VMao;
 import estadosJogador.PlayerListener;
 import estadosJogador.PlayerState;
 
 public abstract class Participante {
 
 	private PlayerState estadoAtual;
-	private PlayerListener Optionlistener;
-	private PlayerListener listener;
-	protected Mao mao;
+	private PlayerListener OptionControllerlistener;
+	private PlayerListener viewListener;
+	protected VMao mao;
 	protected String nome;
 	protected double dinheiro;
 	
 	public void addOptionListener(PlayerListener l) {
-		Optionlistener = l;
+		OptionControllerlistener = l;
 	}
 	
 	public void addListener(PlayerListener l) {
-		listener = l;
+		viewListener = l;
 	}
 	
 	public void setEstadoAtual(PlayerState s) {
 		this.estadoAtual = s;
-		if(Optionlistener != null) {
+		if(OptionControllerlistener != null) {
 			switch(estadoAtual.getNome()) {
 			
 				case "Estouro":
-					Optionlistener.jogadorEstourou(this);
-					listener.jogadorEstourou(this);
+					OptionControllerlistener.jogadorEstourou(this);
+					viewListener.jogadorEstourou(this);
 					break;
 				case "BlackJack":
-					Optionlistener.jogadorBlackJack(this);
-					listener.jogadorBlackJack(this);
+					OptionControllerlistener.jogadorBlackJack(this);
+					viewListener.jogadorBlackJack(this);
 					break;
 				case "Espera":
-					Optionlistener.jogadorEsperando(this);
-					listener.jogadorEsperando(this);
+					OptionControllerlistener.jogadorEsperando(this);
+					viewListener.jogadorEsperando(this);
 				case "Jogavel":
-					Optionlistener.jogadorModificado(this);
-					listener.jogadorModificado(this);
+					OptionControllerlistener.jogadorModificado(this);
+					viewListener.jogadorModificado(this);
 					break;
 				case "Parada":
-					Optionlistener.jogadorParou(this);
-					listener.jogadorParou(this);
+					OptionControllerlistener.jogadorParou(this);
+					viewListener.jogadorParou(this);
+					break;
+				case "Ganhou":
+					OptionControllerlistener.jogadorGanhou(this);
+					viewListener.jogadorGanhou(this);
+					break;
+				case "Perdeu":
+					OptionControllerlistener.jogadorPerdeu(this);
+					viewListener.jogadorPerdeu(this);
 					break;
 			
 			}

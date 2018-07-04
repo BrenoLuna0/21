@@ -16,6 +16,10 @@ public class Carta {
 		return visivel;
 	}
 	
+	public void setVisivel(boolean b){
+		visivel = b;
+	}
+	
 	public void setValor(int valor) {
 		this.valor = valor;
 	}

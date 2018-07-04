@@ -1,6 +1,7 @@
 package GUI;
 
 import estadosJogador.Jogavel;
+import estadosJogador.Parada;
 import main.Banca;
 import main.Jogador;
 
@@ -14,8 +15,8 @@ public class GUIJogador extends Jogador {
 		b.darCarta(this);
 	}
 	
-	public void esperar() {
-		setEstadoAtual(new Jogavel());
+	public void esperar(VBanca b) {
+		setEstadoAtual(new Parada());
 	}
 
 }

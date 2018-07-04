@@ -5,12 +5,12 @@ import main.Jogador;
 import main.Mao;
 import main.Participante;
 
-public class Estouro implements PlayerState{
+public class Ganhou implements PlayerState{
 	
 	private String nome;
 	
-	public Estouro(){
-		this.nome = "Estouro";
+	public Ganhou(){
+		this.nome = "Ganhou";
 	}
 	
 	public String getNome() {
@@ -34,10 +34,9 @@ public class Estouro implements PlayerState{
 	public void verificar(Mao m, Participante p) {}
 
 
-	public void play(VBanca b, Participante p) {
-		b.estourado(p);
-	}
+	public void play(VBanca b, Participante p) {}
 	
 
 
 }
+

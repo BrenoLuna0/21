@@ -1,4 +1,5 @@
 package estadosJogador;
+import GUI.VBanca;
 import main.Banca;
 import main.Jogador;
 import main.Mao;
@@ -31,9 +32,7 @@ public class Parada implements PlayerState{
 
 
 	public void verificar(Mao m, Participante p) {}
-
-
-	public void play(Banca b, Participante p) {
+	public void play(VBanca b, Participante p) {
 		b.esperando(p);
 	}
 

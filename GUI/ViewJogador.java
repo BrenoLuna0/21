@@ -26,7 +26,6 @@ public class ViewJogador extends JPanel implements PlayerListener{
 	}
 	
 	public void jogadorModificado(Participante j){
-		border.setTitle(j.getNome());
 		cartas.removeAll();
 		Mao mao = j.getMao();
 		
@@ -41,37 +40,37 @@ public class ViewJogador extends JPanel implements PlayerListener{
 
 	
 	public void jogadorEstourou(Participante p) {
-		border.setTitle(p.getNome() + "Estourou!");
+		border.setTitle(p.getNome() + " Estourou!");
 		cartas.repaint();
 	}
 
 	
 	public void jogadorBlackJack(Participante j) {
-		border.setTitle(j.getNome() + "BlackJack!");
+		border.setTitle(j.getNome() + " BlackJack!");
 		cartas.repaint();
 	}
 
 	
 	public void jogadorEsperando(Participante j) {
-		border.setTitle(j.getNome() + "Esperando");
+		border.setTitle(j.getNome() + " Esperando");
 		cartas.repaint();
 	}
 
 	
 	public void jogadorGanhou(Participante j) {
-		border.setTitle(j.getNome() + "Venceu!");
+		border.setTitle(j.getNome() + " Venceu!");
 		cartas.repaint();
 	}
 
 	
 	public void jogadorPerdeu(Participante j) {
-		border.setTitle(j.getNome() + "Perdeu");
+		border.setTitle(j.getNome() + " Perdeu");
 		cartas.repaint();
 	}
 
 	
 	public void jogadorParou(Participante j) {
-		border.setTitle(j.getNome() + "Parou");
+		border.setTitle(j.getNome() + " Parou");
 		cartas.repaint();
 	}
 	

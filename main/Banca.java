@@ -5,10 +5,17 @@ import java.util.Scanner;
 import EstadosBanca.BancaEsperando;
 import EstadosBanca.BancaModificada;
 import GUI.GUIJogador;
+import GUI.VBanca;
 import GUI.VCarta;
+import GUI.VMao;
 import GUI.VRepositorio;
 import GUI.ViewJogador;
+import estadosJogador.Aposta;
+import estadosJogador.BlackJack;
+import estadosJogador.Ganhou;
+import estadosJogador.Jogavel;
 import estadosJogador.Parada;
+import estadosJogador.Perdeu;
 
 public class Banca extends Participante {
 	
@@ -19,15 +26,17 @@ public class Banca extends Participante {
 	private ArrayList<Participante>blackJack = new ArrayList<Participante>();
 	private ArrayList<Participante>esperando = new ArrayList<Participante>();
 	
-	private ArrayList<GUIJogador> jogadores = new ArrayList<GUIJogador>();
-	private ArrayList<ViewJogador>viewJogadores = new ArrayList<ViewJogador>();
+	public ArrayList<GUIJogador> jogadores = new ArrayList<GUIJogador>();
+	public ArrayList<ViewJogador>viewJogadores = new ArrayList<ViewJogador>();
 	private VRepositorio rep;
 	
 	
 	
+	
 	public Banca() {
-		mao = new Mao(this);
+		mao = new VMao(this);
 		super.setEstadoAtual(new BancaEsperando());
+		nome = "Banca";
 	}
 	
 	public GUIJogador getJogador(int i) {
@@ -40,6 +49,7 @@ public class Banca extends Participante {
 			String entrada = new Scanner(System.in).nextLine();
 			
 			GUIJogador jogador = new GUIJogador(entrada);
+			jogador.setEstadoAtual(new Aposta());
 			jogadores.add(jogador);
 			
 			ViewJogador view = new ViewJogador(jogador);
@@ -61,7 +71,7 @@ public class Banca extends Participante {
 	}
 	
 	public void estourado(Participante p) {
-		this.estourados.add(p);	
+		this.estourados.add(p);
 	}
 	
 	public void blackJack(Participante p) {
@@ -85,7 +95,6 @@ public class Banca extends Participante {
 	}
 	
 	public void rodada() {
-		//this.distribuirCartas();
 		if(this.getEstado().getNome() == "Banca BlackJack"){
 			
 			for(int i = 0; i < jogadores.size();i++){
@@ -93,10 +102,10 @@ public class Banca extends Participante {
 					jogadores.get(i).setEstadoAtual(new Parada());
 				}
 				
-				jogadores.get(i).getEstado().play(this, jogadores.get(i));
+				jogadores.get(i).getEstado().play((VBanca)this, jogadores.get(i));
 			}
 			
-			getEstado().play(this, this);
+			getEstado().play((VBanca)this, this);
 			
 			
 		} else {
@@ -107,10 +116,10 @@ public class Banca extends Participante {
 			for (int i = 0; i < jogadores.size(); i++) {
 				Exibicao.inicioJogada(jogadores.get(i));
 				Exibicao.opcoesJogada(jogadores.get(i));
-				jogadores.get(i).getEstado().play(this,jogadores.get(i));// realiza a jogada de todos os jogadores
+				jogadores.get(i).getEstado().play((VBanca)this,jogadores.get(i));// realiza a jogada de todos os jogadores
 			}
 			
-			getEstado().play(this, this);
+			getEstado().play((VBanca)this, this);
 			
 		}
 		
@@ -156,18 +165,12 @@ public class Banca extends Participante {
 		}
 
 		this.receberCarta(); // dá a segunda carta p banca
+		mao.getCartaMao(1).setVisivel(false);
 		super.setEstadoAtual(new BancaModificada());
-		super.getEstado().play(this, this);
+		super.getEstado().play((VBanca)this, this);
 		
 	}
 	
-	
-	// metodos antigos q precisam ser revisados
-	//.
-	//.
-	//.
-	//.
-	//.
 	
 	public void empatar(Participante p) {
 		p.atualizarDinheiro(p.getMao().getValorAposta());
@@ -175,14 +178,17 @@ public class Banca extends Participante {
 	
 	public void ganharBlackJack(Participante p) {
 		p.atualizarDinheiro(p.getMao().getValorAposta()*2.5);
+		p.setEstadoAtual(new BlackJack());
 	}
 	
 	public void ganhar(Participante p) {
 		p.atualizarDinheiro(p.getMao().getValorAposta()*2);
+		p.setEstadoAtual(new Ganhou());
 	}
 	
 	public void perder(Participante p) {
 		System.out.println("Seu saldo é de " + p.getDinheiro());
+		p.setEstadoAtual(new Perdeu());
 	}
 
 	
@@ -194,15 +200,8 @@ public class Banca extends Participante {
 	
 	public void receberCarta() {
 		super.mao.addCarta(rep.getRepositorio().get(0), this);
-		//Exibicao.recebimentoCarta(c.get(0));
 		rep.getRepositorio().remove(0);
 	}
-	
-	/*public Mao getMao() { // retorna uma mão especifica p fazer a jogada 
-			return this.maob; 
-	}*/
-	
-
 
 	public void rodadaApostas() {
 		Exibicao.rodadaApostas();
@@ -211,6 +210,12 @@ public class Banca extends Participante {
 			jogadores.get(i).apostar();
 		}
 	}
+	
+	public void setNome(String nome){
+		super.nome = nome;
+	}
+	
+	
 
 
 }

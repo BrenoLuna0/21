@@ -1,45 +1,24 @@
-package main;
-import java.awt.BorderLayout;
-import java.awt.FlowLayout;
-import java.util.Scanner;
-import javax.swing.JFrame;
 
-import GUI.OptionView;
+package main;
+
 import GUI.VBanca;
-import GUI.VCarta;
-import GUI.ViewCartas;
-import GUI.ViewJogador;
+import estadosJogador.Ganhou;
 
 public class Main {
 
 	public static void main(String[] args) {
 		
 		VBanca b = new VBanca();
-		JFrame j = new JFrame();
-		
+	
 		b.instanciarNovoBaralho(); // ok  b.getRepositorio().visualizarBaralho();
 		
 		b.instanciarJogadores(1); // ok  
 		
 		b.distribuirCartas(); // ok	
 		
-
+		b.initView();
 		
-		ViewJogador vj = new ViewJogador(b.getJogador(0));
-		
-		OptionView op = new OptionView(b.getJogador(0),b,vj);
-		
-		
-		op.add(vj);
-		j.add(op);		
-		
-		vj.jogadorModificado(b.getJogador(0));
-		
-		
-		j.setLocationRelativeTo(null);
-        j.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
-        j.setVisible(true);
-			
+		b.rodada();
 		
 	}
 

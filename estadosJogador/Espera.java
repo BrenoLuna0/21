@@ -1,5 +1,6 @@
 package estadosJogador;
 
+import GUI.VBanca;
 import main.Banca;
 import main.Exibicao;
 import main.Jogador;
@@ -43,7 +44,7 @@ public class Espera implements PlayerState {
 		}
 	}
 
-	public void play(Banca b, Participante p) {
+	public void play(VBanca b, Participante p) {
 		modificada(p.getMao(), p);
 		p.getEstado().play(b, p);
 	}

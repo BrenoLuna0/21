@@ -1,5 +1,6 @@
 package EstadosBanca;
 
+import GUI.VBanca;
 import estadosJogador.BlackJack;
 import estadosJogador.Estouro;
 import estadosJogador.Jogavel;
@@ -13,7 +14,7 @@ public class BancaEsperando implements PlayerState {
 	private String nome;
 	
 	public BancaEsperando() {
-		this.nome = "Banca esperando";
+		this.nome = "Espera";
 	}
 
 	@Override
@@ -53,10 +54,14 @@ public class BancaEsperando implements PlayerState {
 	}
 
 	@Override
-	public void play(Banca b, Participante p) {
+	public void play(VBanca b, Participante p) {
 		if(b.getMao().getPontos() < 17) {
 			b.receberCarta();
 			modificada(b.getMao(), p);
+			b.getMao().getCartaMao(1).setVisivel(true);
+			
+			b.view.jogadorModificado(b);
+			
 		} else {
 			parada(b);
 		}

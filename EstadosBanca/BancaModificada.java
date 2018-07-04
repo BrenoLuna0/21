@@ -1,5 +1,6 @@
 package EstadosBanca;
 
+import GUI.VBanca;
 import estadosJogador.PlayerState;
 import main.Banca;
 import main.Mao;
@@ -40,16 +41,11 @@ public class BancaModificada implements PlayerState {
 	}
 
 	@Override
-	public void parada(Participante p) {
-		// TODO Auto-generated method stub
-		
-	}
+	public void parada(Participante p) {}
 
 	@Override
-	public void play(Banca b, Participante p) {
-		modificada(p.getMao(), p);
-		//p.getEstado().play(b, p);
-		
+	public void play(VBanca b, Participante p) {
+		modificada(p.getMao(), p);	
 	}
 
 	@Override

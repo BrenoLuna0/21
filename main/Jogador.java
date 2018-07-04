@@ -2,6 +2,7 @@ package main;
 import java.util.ArrayList;
 import java.util.Scanner;
 
+import GUI.VMao;
 import estadosJogador.Espera;
 import estadosJogador.PlayerListener;
 import estadosJogador.PlayerState;
@@ -11,8 +12,8 @@ public class Jogador extends Participante {
 
 	public Jogador(String nome) {
 		this.nome = nome;
-		this.setEstadoAtual(new Espera());
-		mao = new Mao(this);
+		//this.setEstadoAtual(new Espera());
+		mao = new VMao(this);
 		super.dinheiro = 300;
 	}
 	

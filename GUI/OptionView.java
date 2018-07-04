@@ -96,7 +96,7 @@ public class OptionView extends JPanel{
 		game_controls.add(jogar);
 		game_controls.add(esperar);
 		enableBettingControls(true);
-		enablePlayerControls(true);
+		enablePlayerControls(false);
 		enableDoubleDown(false);
 	}
 

@@ -1,4 +1,6 @@
 package EstadosBanca;
+import GUI.VBanca;
+import estadosJogador.Ganhou;
 import estadosJogador.PlayerState;
 import main.Banca;
 import main.Exibicao;
@@ -9,7 +11,7 @@ public class BancaEstourada implements PlayerState {
 	private String nome;
 	
 	public BancaEstourada() {
-		this.nome = "Banca Estourada";
+		this.nome = "Estouro";
 	}
 
 	@Override
@@ -45,7 +47,7 @@ public class BancaEstourada implements PlayerState {
 	
 
 	@Override
-	public void play(Banca b, Participante p) {
+	public void play(VBanca b, Participante p) {
 		
 		for(int i = 0; i < b.getEstourados().size(); i++){
 			
