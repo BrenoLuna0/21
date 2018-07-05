@@ -51,12 +51,14 @@ public class BancaEsperando implements PlayerState {
 
 	@Override
 	public void play(VBanca b, Participante p) {
+		b.getMao().getCartaMao(1).setVisivel(true);
+		b.view.jogadorModificado(b);
+		
 		if(b.getMao().getPontos() < 17) {
 			b.receberCarta();
 			modificada(b.getMao(), p);
-			b.getMao().getCartaMao(1).setVisivel(true);
 			
-			b.view.jogadorModificado(b);
+			
 			
 		} else {
 			parada(b);
