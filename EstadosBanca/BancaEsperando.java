@@ -1,11 +1,7 @@
 package EstadosBanca;
 
 import GUI.VBanca;
-import estadosJogador.BlackJack;
-import estadosJogador.Estouro;
-import estadosJogador.Jogavel;
 import estadosJogador.PlayerState;
-import main.Banca;
 import main.Mao;
 import main.Participante;
 

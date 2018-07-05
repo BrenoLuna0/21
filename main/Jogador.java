@@ -1,11 +1,7 @@
 package main;
-import java.util.ArrayList;
 import java.util.Scanner;
 
 import GUI.VMao;
-import estadosJogador.Espera;
-import estadosJogador.PlayerListener;
-import estadosJogador.PlayerState;
 
 public class Jogador extends Participante {
 	

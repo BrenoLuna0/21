@@ -1,8 +1,6 @@
 package GUI;
 
 import java.util.ArrayList;
-import main.Carta;
-import main.RepositorioCartas;
 
 public class VRepositorio {
 	private VBaralho vbaralho1 = new VBaralho();

@@ -7,7 +7,6 @@ import javax.swing.JComponent;
 import javax.swing.JPanel;
 
 import main.Banca;
-import main.Carta;
 import main.Jogador;
 import main.Mao;
 

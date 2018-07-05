@@ -1,6 +1,5 @@
 package GUI;
 
-import main.Baralho;
 
 public class VBaralho {
 	private VCarta[] baralho = new VCarta[52];
@@ -10,7 +9,7 @@ public class VBaralho {
 	}
 	
 	private void inicializarBaralho(){
-		baralho[0] = new VCarta(1,"Paus","A","/imagens/c01.png");
+		baralho[0] = new VCarta(11,"Paus","AS","/imagens/c01.png");
 		baralho[1] = new VCarta(2,"Paus","2","/imagens/c02.png");
 		baralho[2] = new VCarta(3,"Paus","3","/imagens/c03.png");
 		baralho[3] = new VCarta(4,"Paus","4","/imagens/c04.png");
@@ -24,7 +23,7 @@ public class VBaralho {
 		baralho[11] = new VCarta(10,"Paus","Q","/imagens/c012.png");
 		baralho[12] = new VCarta(10,"Paus","K","/imagens/c013.png");
 		
-		baralho[13] = new VCarta(1,"Ouro","A","/imagens/d01.png");
+		baralho[13] = new VCarta(11,"Ouro","AS","/imagens/d01.png");
 		baralho[14] = new VCarta(2,"Ouro","2","/imagens/d02.png");
 		baralho[15] = new VCarta(3,"Ouro","3","/imagens/d03.png");
 		baralho[16] = new VCarta(4,"Ouro","4","/imagens/d04.png");
@@ -38,7 +37,7 @@ public class VBaralho {
 		baralho[24] = new VCarta(10,"Ouro","Q","/imagens/d012.png");
 		baralho[25] = new VCarta(10,"Ouro","K","/imagens/d013.png");
 		
-		baralho[26] = new VCarta(1,"Copas","A","/imagens/h01.png");
+		baralho[26] = new VCarta(11,"Copas","AS","/imagens/h01.png");
 		baralho[27] = new VCarta(2,"Copas","2","/imagens/h02.png");
 		baralho[28] = new VCarta(3,"Copas","3","/imagens/h03.png");
 		baralho[29] = new VCarta(4,"Copas","4","/imagens/h04.png");
@@ -52,7 +51,7 @@ public class VBaralho {
 		baralho[37] = new VCarta(10,"Copas","Q","/imagens/h012.png");
 		baralho[38] = new VCarta(10,"Copas","K","/imagens/h013.png");
 		
-		baralho[39] = new VCarta(1,"Espadas","A","/imagens/s01.png");
+		baralho[39] = new VCarta(11,"Espadas","AS","/imagens/s01.png");
 		baralho[40] = new VCarta(2,"Espadas","2","/imagens/s02.png");
 		baralho[41] = new VCarta(3,"Espadas","3","/imagens/s03.png");
 		baralho[42] = new VCarta(4,"Espadas","4","/imagens/s04.png");

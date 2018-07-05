@@ -2,7 +2,6 @@
 package main;
 
 import GUI.VBanca;
-import estadosJogador.Ganhou;
 
 public class Main {
 

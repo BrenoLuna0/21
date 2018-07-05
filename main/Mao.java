@@ -2,7 +2,6 @@ package main;
 	
 import java.util.ArrayList;
 
-import GUI.VBanca;
 import GUI.VCarta;
 import estadosJogador.Espera;
 import estadosJogador.HandListener;

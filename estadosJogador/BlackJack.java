@@ -1,8 +1,6 @@
 package estadosJogador;
 
 import GUI.VBanca;
-import main.Banca;
-import main.Jogador;
 import main.Mao;
 import main.Participante;
 

@@ -1,6 +1,5 @@
 package GUI;
 
-import estadosJogador.Jogavel;
 import estadosJogador.Parada;
 import main.Banca;
 import main.Jogador;

@@ -4,8 +4,6 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 import estadosJogador.PlayerListener;
-import main.Banca;
-import main.Jogador;
 import main.Participante;
 
 public class OptionViewController implements ActionListener, PlayerListener {

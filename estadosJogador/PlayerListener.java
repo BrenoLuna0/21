@@ -1,5 +1,4 @@
 package estadosJogador;
-import main.Jogador;
 import main.Participante;
 
 public interface PlayerListener {

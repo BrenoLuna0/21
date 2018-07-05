@@ -11,9 +11,7 @@ import GUI.VMao;
 import GUI.VRepositorio;
 import GUI.ViewJogador;
 import estadosJogador.Aposta;
-import estadosJogador.BlackJack;
 import estadosJogador.Ganhou;
-import estadosJogador.Jogavel;
 import estadosJogador.Parada;
 import estadosJogador.Perdeu;
 

@@ -9,7 +9,6 @@ import javax.swing.JPanel;
 import javax.swing.border.TitledBorder;
 
 import estadosJogador.PlayerListener;
-import main.Jogador;
 import main.Mao;
 import main.Participante;
 

@@ -1,10 +1,7 @@
 package EstadosBanca;
 
 import GUI.VBanca;
-import estadosJogador.Ganhou;
-import estadosJogador.Perdeu;
 import estadosJogador.PlayerState;
-import main.Banca;
 import main.Exibicao;
 import main.Mao;
 import main.Participante;

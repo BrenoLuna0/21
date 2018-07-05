@@ -1,5 +1,4 @@
 package estadosJogador;
-import main.Jogador;
 import main.Mao;
 import main.Participante;
 

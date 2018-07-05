@@ -1,5 +1,4 @@
 package main;
-import java.util.ArrayList;
 
 import GUI.VCarta;
 import GUI.VMao;
