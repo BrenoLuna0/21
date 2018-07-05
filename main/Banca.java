@@ -19,6 +19,11 @@ import estadosJogador.Perdeu;
 
 public class Banca extends Participante {
 	
+	private boolean ganhar;
+	private boolean perder;
+	private boolean ganharBlackJack;
+	private boolean empatar;
+	
 	public static final int pontuacaoMaxima = 21;
 	public static final int apostaMinima = 25;
 	
@@ -34,6 +39,10 @@ public class Banca extends Participante {
 	
 	
 	public Banca() {
+		ganhar =  true;
+		perder = true;
+		ganharBlackJack = true;
+		empatar = true;
 		mao = new VMao(this);
 		super.setEstadoAtual(new BancaEsperando());
 		nome = "Banca";
@@ -173,22 +182,50 @@ public class Banca extends Participante {
 	
 	
 	public void empatar(Participante p) {
-		p.atualizarDinheiro(p.getMao().getValorAposta());
+		if(empatar = true) {
+			p.atualizarDinheiro(p.getMao().getValorAposta());
+			String novoNome = p.getNome() + " Empatou!";
+			p.nome = novoNome;
+			empatar = false;
+		}
+		
 	}
 	
 	public void ganharBlackJack(Participante p) {
-		p.atualizarDinheiro(p.getMao().getValorAposta()*2.5);
-		p.setEstadoAtual(new BlackJack());
+		if(ganharBlackJack == true) {
+			p.atualizarDinheiro(p.getMao().getValorAposta()*2.5);
+			p.setEstadoAtual(new Ganhou());
+			String novoNome = p.getNome() + " Ganhou!";
+			p.nome = novoNome;
+			ganharBlackJack = false;
+		}else {
+			return;
+		}
+		
 	}
 	
 	public void ganhar(Participante p) {
-		p.atualizarDinheiro(p.getMao().getValorAposta()*2);
-		p.setEstadoAtual(new Ganhou());
+		if(ganhar == true) {
+			p.atualizarDinheiro(p.getMao().getValorAposta()*2);
+			p.setEstadoAtual(new Ganhou());
+			String novoNome = p.getNome() + " Ganhou!";
+			p.nome = novoNome;
+			ganhar = false;
+		}else {
+			return;
+		}
+		
 	}
 	
 	public void perder(Participante p) {
-		System.out.println("Seu saldo é de " + p.getDinheiro());
-		p.setEstadoAtual(new Perdeu());
+		if(perder == true) {
+			System.out.println("Seu saldo é de " + p.getDinheiro());
+			p.setEstadoAtual(new Perdeu());
+			String novoNome = p.getNome() + " Perdeu!";
+			p.nome = novoNome;
+			perder = false;
+		}
+		
 	}
 
 	

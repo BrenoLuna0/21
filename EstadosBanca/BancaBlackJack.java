@@ -51,6 +51,15 @@ public  class BancaBlackJack implements PlayerState {
 		
 		for(int i = 0; i < b.getEsperando().size(); i++) {
 			
+			
+				/*while(b.getEsperando().get(i).getNome() == b.getEsperando().get(i+1).getNome()) {
+					i+=1;
+					if(i == (b.getEsperando().size()+1)) {
+						break;
+					}
+				}*/
+			
+			
 			Exibicao.msgDerrota3(b.getEsperando().get(i), i);
 			b.perder(b.getEsperando().get(i));
 			
@@ -58,11 +67,29 @@ public  class BancaBlackJack implements PlayerState {
 		
 		for(int i = 0; i < b.getEstourados().size(); i++) {
 			
+			
+				/*while(b.getEstourados().get(i).getNome() == b.getEstourados().get(i+1).getNome()) {
+					i+=1;
+					if(i == (b.getEstourados().size()+1)) {
+						break;
+					}
+				}*/
+			
+			
 			Exibicao.msgDerrota1(b.getEstourados().get(i), i);
 			b.perder(b.getEstourados().get(i));
 		}
 		
 		for(int i = 0; i < b.getBlackJack().size(); i++) {
+			
+			
+				/*while(b.getBlackJack().get(i).getNome() == b.getBlackJack().get(i+1).getNome()) {
+					i+=1;
+					if(i == (b.getBlackJack().size()+1)) {
+						break;
+					}
+				}*/
+			
 			
 			Exibicao.msgEmpate2(b.getBlackJack().get(i));
 			b.empatar(b.getBlackJack().get(i));

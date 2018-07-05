@@ -51,17 +51,43 @@ public class BancaEstourada implements PlayerState {
 		
 		for(int i = 0; i < b.getEstourados().size(); i++){
 			
+				/*while(b.getEstourados().get(i).getNome() == b.getEstourados().get(i+1).getNome()) {
+					i+=1;
+					if(i == (b.getEstourados().size()+1)) {
+						break;
+					}
+				}*/
+			
+			
 			Exibicao.msgEmpate(b.getEstourados().get(i));
 			b.empatar(b.getEstourados().get(i));
 		}
 		
 		for(int i = 0; i < b.getBlackJack().size(); i ++){
 			
+			
+				/*while(b.getBlackJack().get(i).getNome() == b.getBlackJack().get(i+1).getNome()) {
+					i+=1;
+					if(i == (b.getBlackJack().size()+1)) {
+						break;
+					}
+				}*/
+			
+			
 			Exibicao.msgVitoria1(b.getBlackJack().get(i), i);
 			b.ganharBlackJack(b.getBlackJack().get(i));
 		}
 		
 		for(int i = 0; i < b.getEsperando().size(); i++){
+			
+			
+				/*while(b.getEsperando().get(i).getNome() == b.getEsperando().get(i+1).getNome()) {
+					i+=1;
+					if(i == (b.getEsperando().size()+1)) {
+						break;
+					}
+				}*/
+			
 			
 			Exibicao.msgVitoria1(b.getEsperando().get(i), i);
 			b.ganhar(b.getEsperando().get(i));

@@ -9,6 +9,7 @@ import java.awt.GridLayout;
 import javax.swing.BoxLayout;
 import javax.swing.JComponent;
 import javax.swing.JFrame;
+import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.border.TitledBorder;
 
@@ -16,11 +17,12 @@ import estadosJogador.Ganhou;
 import estadosJogador.PlayerListener;
 import main.Banca;
 import main.Jogador;
+import main.Mao;
 import main.Participante;
 
 public class VBanca extends Banca implements Mostravel {
 	
-	public VisaoBanca view = (VisaoBanca) view();
+	public ViewJogador view;
 	public OptionView op;
 	public JFrame j;
 	
@@ -30,15 +32,17 @@ public class VBanca extends Banca implements Mostravel {
 	
 	public void initView(){
 		
+		
 		j = new JFrame();
 		
 		j.setTitle("21");
 		
 		op = new OptionView(getJogador(0),this,viewJogadores.get(0));
 		
-		//view = new ViewJogador(this);
+		view = new ViewJogador(this);
 		
-		op.add(viewJogadores.get(0),BorderLayout.EAST);
+		//op.add(viewJogadores.get(0),BorderLayout.LINE_END);
+		op.add(viewJogadores.get(1),BorderLayout.LINE_END);
 		op.add(view,BorderLayout.WEST);
 		
 		
@@ -56,7 +60,7 @@ public class VBanca extends Banca implements Mostravel {
 	@Override
 	public JComponent view() {
 		if(view == null) {
-			view = new VisaoBanca((VMao) getMao(), getJogador(0));
+			//view = new VisaoBanca((VMao) getMao(), getJogador(0));
 			addOptionListener(view);
 		}
 		return view;
@@ -70,17 +74,17 @@ public class VBanca extends Banca implements Mostravel {
 		
 		public VisaoBanca(VMao mao, Participante p) {
 			
-			super(new BorderLayout());
-		/*	super(new FlowLayout(FlowLayout.LEFT));
+			//super(new BorderLayout());
+			super(new FlowLayout(FlowLayout.LEFT));
 			String nome = VBanca.this.getNome(); // Talvez isso nao seja necessario
 			borda = new TitledBorder(nome);
 			setBorder(borda);
 			setBackground(new Color(35,142,35));
-			borda.setTitleColor(Color.black);*/
-			buildUI(p);
-			p.addListener(this);
-			/*add(mao.view(),BorderLayout.SOUTH);
-			repaint();*/
+			borda.setTitleColor(Color.black);
+			/*buildUI(p);
+			p.addListener(this);*/
+			add(mao.view(),BorderLayout.SOUTH);
+			repaint();
 		}
 
 		@Override
@@ -145,8 +149,8 @@ public class VBanca extends Banca implements Mostravel {
 		}
 		
 		private void buildUI(Participante j) {
-			add(cartas,BorderLayout.SOUTH);
-			borda = new TitledBorder(j.getNome());
+			add(cartas,BorderLayout.NORTH);
+			borda = new TitledBorder("Banca");
 			cartas.setBorder(borda);
 			cartas.setBackground(new Color(35,142,35));
 			borda.setTitleColor(Color.black);

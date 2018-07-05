@@ -79,10 +79,11 @@ public class OptionViewController implements ActionListener, PlayerListener {
 		view.enablePlayerControls(false);
 		view.enableDoubleDown(false);
 		view.enableGameControls(true);
-		banca.estourado(j);
+		j.getEstado().play(banca, j);
 		banca.getEstado().play(banca, banca);
 		banca.getMao().getCartaMao(1).setVisivel(true);
-		banca.getEstado().play(banca, modelo);
+		banca.getEstado().play(banca, banca);
+		viewJogador.repaint();
 	}
 
 	@Override
@@ -90,9 +91,10 @@ public class OptionViewController implements ActionListener, PlayerListener {
 		view.enablePlayerControls(false);
 		view.enableDoubleDown(false);
 		view.enableGameControls(true);
-		banca.blackJack(j);
+		j.getEstado().play(banca, j);
 		banca.getEstado().play(banca, banca);
 		banca.getMao().getCartaMao(1).setVisivel(true);
+		viewJogador.repaint();
 		
 	}
 
@@ -119,9 +121,10 @@ public class OptionViewController implements ActionListener, PlayerListener {
 	public void jogadorParou(Participante j) {
 		view.enablePlayerControls(false);
 		view.enableGameControls(true);
-		banca.esperando(j);
+		j.getEstado().play(banca, j);
 		banca.getEstado().play(banca, banca);
 		banca.getMao().getCartaMao(1).setVisivel(true);
+		viewJogador.repaint();
 		
 	}
 
